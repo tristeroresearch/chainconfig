@@ -1,0 +1,1304 @@
+// Centralized chain configuration for scripts
+// Each chain has a stable key usable as chainConfig[key].variable
+// rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one
+
+import { pulsechain } from "viem/chains";
+
+export const chainConfig = {
+    ethereum: {
+        key: 'ethereum',
+        display: 'Ethereum',
+        currency: 'ETH',
+        chainId: 1,
+        lzSrcId: 30101,
+        explorerUrl: 'https://etherscan.io',
+        explorerApiUrl: 'https://api.etherscan.io/api',
+        rpcUrls: [
+            'https://eth-mainnet.public.blastapi.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    bittorrent: {
+        key: 'bittorrent',
+        display: 'BitTorrent Chain Mainnet',
+        currency: 'BTT',
+        chainId: 199,
+        lzSrcId: undefined,
+        explorerUrl: 'https://bttcscan.com/',
+        rpcUrls: [
+            'https://bittorrent.drpc.org',
+            'https://rpc.bittorrentchain.io',
+            'https://rpc.bt.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x0000000000000000000000000000000000000000',
+            entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    fraxtal: {
+        key: 'fraxtal',
+        display: 'Fraxtal Mainnet',
+        currency: 'ETH',
+        chainId: 252,
+        lzSrcId: 30255,
+        explorerUrl: 'https://fraxscan.com/',
+        rpcUrls: [
+            'https://fraxtal.drpc.org',
+            'https://rpc.frax.com',
+            'https://fraxtal-rpc.publicnode.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    opbnb: {
+        key: 'opbnb',
+        display: 'opBNB Mainnet',
+        currency: 'BNB',
+        chainId: 204,
+        lzSrcId: 30202,
+        explorerUrl: 'https://opbnb.bscscan.com/',
+        rpcUrls: [
+            'https://opbnb.drpc.org',
+            'https://opbnb-mainnet-rpc.bnbchain.org',
+            'https://1rpc.io/opbnb',
+            'https://opbnb.therpc.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    taiko: {
+        key: 'taiko',
+        display: 'Taiko Mainnet',
+        currency: 'ETH',
+        chainId: 167000,
+        lzSrcId: 30290,
+        explorerUrl: 'https://taikoscan.io/',
+        rpcUrls: [
+            'https://taiko.drpc.org',
+            'https://rpc.taiko.xyz',
+            'https://rpc.ankr.com/taiko',
+            'https://taiko-rpc.publicnode.com'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    xdc: {
+        key: 'xdc',
+        display: 'XDC Mainnet',
+        currency: 'XDC',
+        chainId: 50,
+        lzSrcId: 30365,
+        explorerUrl: 'https://xdcscan.com/',
+        rpcUrls: [
+            'https://rpc.xdcrpc.com',
+            'https://rpc1.xinfin.network',
+            'https://erpc.xdcrpc.com',
+            'https://earpc.xinfin.network'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    sophon: {
+        key: 'sophon',
+        display: 'Sophon Mainnet',
+        currency: 'ETH',
+        chainId: 50104,
+        lzSrcId: 30334,
+        explorerUrl: 'https://sophscan.xyz/',
+        rpcUrls: [
+            'https://rpc.sophon.xyz',
+            'https://rpc-quicknode.sophon.xyz'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x0000000000000000000000000000000000000000',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    plume: {
+        key: 'plume',
+        display: 'Plume',
+        currency: 'PLUME',
+        chainId: 98866,
+        lzSrcId: 30370,
+        explorerUrl: 'https://phoenix-explorer.plumenetwork.xyz',
+        rpcUrls: [
+            'https://rpc.plume.org',
+            'PROTECTED_RPC'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xEa237441c92CAe6FC17Caaf9a7acB3f953be4bd1',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x222365EF19F7947e5484218551B56bb3965Aa7aF',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    abstract: {
+        key: 'abstract',
+        display: 'Abstract Mainnet',
+        currency: 'ETH',
+        chainId: 2741,
+        lzSrcId: 30324,
+        explorerUrl: 'https://abscan.org/',
+        rpcUrls: [
+            'https://abstract.drpc.org',
+            'https://api.mainnet.abs.xyz',
+            'https://abstract.api.onfinality.io/public'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    katana: {
+        key: 'katana',
+        display: 'Katana Mainnet',
+        currency: 'ETH',
+        chainId: 747474,
+        lzSrcId: 30375,
+        explorerUrl: 'https://katanascan.com/',
+        rpcUrls: [
+            'https://rpc.katana.network',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+
+    optimism: {
+        key: 'optimism',
+        display: 'Optimism',
+        currency: 'ETH',
+        chainId: 10,
+        lzSrcId: 30111,
+        explorerUrl: 'https://optimistic.etherscan.io/',
+        explorerApiUrl: 'https://api-optimistic.etherscan.io/api',
+        rpcUrls: [
+            'https://optimism.drpc.org',
+            'https://mainnet.optimism.io',
+            'https://1rpc.io/op',
+            'https://public-op-mainnet.fastnode.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    avalanche: {
+        key: 'avalanche',
+        display: 'Avalanche',
+        currency: 'AVAX',
+        chainId: 43114,
+        lzSrcId: 30106,
+        explorerUrl: 'https://snowscan.xyz/',
+        explorerApiUrl: 'https://api.snowscan.xyz/api',
+        rpcUrls: [
+            'https://avalanche-c-chain-rpc.publicnode.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    arbitrum_one: {
+        key: 'arbitrum_one',
+        display: 'Arbitrum One',
+        currency: 'ETH',
+        chainId: 42161,
+        lzSrcId: 30110,
+        explorerUrl: 'https://arbiscan.io',
+        explorerApiUrl: 'https://api.arbiscan.io/api',
+        rpcUrls: [
+            'https://arbitrum-one.public.blastapi.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    arbitrum_nova: {
+        key: 'arbitrum_nova',
+        display: 'Arbitrum Nova',
+        currency: 'ETH',
+        chainId: 42170,
+        lzSrcId: 30175,
+        explorerUrl: 'https://nova.arbiscan.io/',
+        rpcUrls: [
+            'https://nova.arbitrum.io/rpc',
+            'https://arbitrum-nova.public.blastapi.io',
+            'https://arbitrum-nova-rpc.publicnode.com',
+            'https://arbitrum-nova.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x750ba8b76187092B0D1E87E28daaf484d1b5273b',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    base: {
+        key: 'base',
+        display: 'Base',
+        currency: 'ETH',
+        chainId: 8453,
+        lzSrcId: 30184,
+        explorerUrl: 'https://basescan.org',
+        explorerApiUrl: 'https://api.basescan.org/api',
+        rpcUrls: [
+            'https://mainnet.base.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    polygon: {
+        key: 'polygon',
+        display: 'Polygon',
+        currency: 'POL',
+        chainId: 137,
+        lzSrcId: 30109,
+        explorerUrl: 'https://polygonscan.com',
+        explorerApiUrl: 'https://api.polygonscan.com/api',
+        rpcUrls: [
+            'https://1rpc.io/matic',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000001010',
+            wrappedGasToken: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+            usdc: '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    linea: {
+        key: 'linea',
+        display: 'Linea',
+        currency: 'ETH',
+        chainId: 59144,
+        lzSrcId: 30183,
+        explorerUrl: 'https://lineascan.build',
+        rpcUrls: [
+            'https://linea.drpc.org',
+            'https://rpc.linea.build'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xA0DD21C4789bf0225481dDCc3D7182C4876F4178',
+        },
+    },
+
+    bsc: {
+        key: 'bsc',
+        display: 'Binance Smart Chain',
+        currency: 'BNB',
+        chainId: 56,
+        lzSrcId: 30102,
+        explorerUrl: 'https://bscscan.com',
+        explorerApiUrl: 'https://api.bscscan.com/api',
+        rpcUrls: [
+            'https://bsc-dataseed.binance.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108', // 0x4337 not deployed
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    unichain: {
+        key: 'unichain',
+        display: 'Unichain',
+        currency: 'ETH',
+        chainId: 130,
+        lzSrcId: 30320,
+        explorerUrl: 'https://uniscan.xyz',
+        explorerApiUrl: 'https://api.uniscan.xyz/api',
+        rpcUrls: [
+            'https://unichain.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x078D782b760474a361dDA0AF3839290b0EF57AD6',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    sonic: {
+        key: 'sonic',
+        display: 'Sonic',
+        currency: 'S',
+        chainId: 146,
+        lzSrcId: 30332,
+        explorerUrl: 'https://sonicscan.com',
+        explorerApiUrl: 'https://api.sonicscan.com/api',
+        rpcUrls: [
+            'https://sonic.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x039e2fB66102314Ce7b64Ce5Ce3E5183bc94aD38',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x29219dd400f2Bf60E5a23d13Be72B486D4038894',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    sei: {
+        key: 'sei',
+        display: 'Sei',
+        currency: 'SEI',
+        chainId: 1329,
+        lzSrcId: 30280,
+        explorerUrl: 'https://seitrace.com',
+        explorerApiUrl: 'https://seitrace.com/pacific-1/api',
+        rpcUrls: [
+            'https://sei.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xe15fC38F6D8c56aF07bbCBe3BAf5708A2Bf42392',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    worldchain: {
+        key: 'worldchain',
+        display: 'Worldchain',
+        currency: 'ETH',
+        chainId: 480,
+        lzSrcId: 30319,
+        explorerUrl: 'https://worldscan.org',
+        explorerApiUrl: 'https://api.worldscan.org/api',
+        rpcUrls: [
+            'https://worldchain.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x79A02482A880bCE3F13e09Da970dC34db4CD24d1',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    zksync_era: {
+        key: 'zksync_era',
+        display: 'zkSync Era',
+        currency: 'ETH',
+        chainId: 324,
+        lzSrcId: 30165,
+        explorerUrl: 'https://explorer.zksync.io',
+        explorerApiUrl: 'https://api.zksync.io/api',
+        rpcUrls: [
+            'https://mainnet.era.zksync.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x5AEa5775959FbC2557Cc8789bC1bf90A239D9A91',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x1d17CBcF0D6D143135aE902365D2E5e2A16538D4',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    fantom: {
+        key: 'fantom',
+        display: 'Fantom',
+        currency: 'FTM',
+        chainId: 250,
+        lzSrcId: 30112,
+        explorerUrl: 'https://explorer.fantom.network',
+        explorerApiUrl: 'https://api.ftmscan.com/api',
+        rpcUrls: [
+            'https://1rpc.io/ftm',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    moonriver: {
+        key: 'moonriver',
+        display: 'Moonriver',
+        currency: 'MOVR',
+        chainId: 1285,
+        lzSrcId: 30167,
+        explorerUrl: 'https://moonriver.moonscan.io',
+        explorerApiUrl: 'https://api.moonscan.io/api',
+        rpcUrls: [
+            'https://moonriver.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    aurora: {
+        key: 'aurora',
+        display: 'Aurora',
+        currency: 'ETH',
+        chainId: 1313161554,
+        lzSrcId: 30211,
+        explorerUrl: 'https://explorer.aurora.dev',
+        explorerApiUrl: 'https://api.aurorascan.dev/api',
+        rpcUrls: [
+            'https://mainnet.aurora.dev',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    boba: {
+        key: 'boba',
+        display: 'Boba Network',
+        currency: 'ETH',
+        chainId: 288,
+        lzSrcId: undefined,
+        explorerUrl: 'https://bobascan.com/',
+        explorerApiUrl: 'https://api.bobascan.com/api',
+        rpcUrls: [
+            'https://mainnet.boba.network',
+            'https://boba-eth.drpc.org',
+            'https://1rpc.io/boba/eth',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x66a2A913e447d6b4BF33EFbec43aAeF87890FBbc',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    cronos: {
+        key: 'cronos',
+        display: 'Cronos',
+        currency: 'CRO',
+        chainId: 25,
+        lzSrcId: 30359,
+        explorerUrl: 'https://explorer.cronos.org',
+        explorerApiUrl: 'https://api.cronos.org/api',
+        rpcUrls: [
+            'https://cronos-evm-rpc.publicnode.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    harmony: {
+        key: 'harmony',
+        display: 'Harmony',
+        currency: 'ONE',
+        chainId: 1666600000,
+        lzSrcId: 30116,
+        explorerUrl: 'https://explorer.harmony.one',
+        explorerApiUrl: 'https://api.harmony.one/api',
+        rpcUrls: [
+            'wss://harmony-0.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x0000000000000000000000000000000000000000',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    kava: {
+        key: 'kava',
+        display: 'Kava',
+        currency: 'KAVA',
+        chainId: 2222,
+        lzSrcId: 30177,
+        explorerUrl: 'https://kavascan.com',
+        explorerApiUrl: 'https://api.kavascan.com/api',
+        rpcUrls: [
+            'https://kava-evm-rpc.publicnode.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    gravity: {
+        key: 'gravity',
+        display: 'Gravity',
+        currency: 'G',
+        chainId: 1625,
+        lzSrcId: 30294,
+        explorerUrl: 'https://explorer.gravity.xyz',
+        explorerApiUrl: 'https://api.gravity.xyz/api',
+        rpcUrls: [
+            'https://rpc.ankr.com/gravity',
+            'https://rpc.gravity.xyz',
+        ],
+        defaultRpcUrlIndex: 1,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    mode: {
+        key: 'mode',
+        display: 'Mode',
+        currency: 'ETH',
+        chainId: 34443,
+        lzSrcId: 30260,
+        explorerUrl: 'https://explorer.mode.network',
+        explorerApiUrl: 'https://api.mode.network/api',
+        rpcUrls: [
+            'https://mainnet.mode.network',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    metis: {
+        key: 'metis',
+        display: 'Metis',
+        currency: 'METIS',
+        chainId: 1088,
+        lzSrcId: 30151,
+        explorerUrl: 'https://explorer.metis.io',
+        explorerApiUrl: 'https://api.metis.io/api',
+        rpcUrls: [
+            'https://metis.drpc.org',
+            'https://metis.rpc.hypersync.xyz',
+            'https://metis-rpc.publicnode.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    soneium: {
+        key: 'soneium',
+        display: 'Soneium',
+        currency: 'ETH',
+        chainId: 1868,
+        lzSrcId: 30340,
+        explorerUrl: 'https://explorer.soneium.org',
+        explorerApiUrl: 'https://api.soneium.org/api',
+        rpcUrls: [
+            'https://soneium.drpc.org',
+            'https://rpc.soneium.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    apechain: {
+        key: 'apechain',
+        display: 'ApeChain',
+        currency: 'APE',
+        chainId: 33139,
+        lzSrcId: 30312,
+        explorerUrl: 'https://apescan.io',
+        explorerApiUrl: 'https://api.apescan.io/api',
+        rpcUrls: [
+            'https://apechain.drpc.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x48b62137edfa95a428d35c09e44256a739f6b557',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    berachain: {
+        key: 'berachain',
+        display: 'Berachain',
+        currency: 'BERA',
+        chainId: 80094,
+        lzSrcId: 30362,
+        explorerUrl: 'https://berascan.com',
+        explorerApiUrl: 'https://api.berascan.com/api',
+        rpcUrls: [
+            'https://rpc.berachain.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x6969696969696969696969696969696969696969',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    plasma: {
+        key: 'plasma',
+        display: 'Plasma',
+        currency: 'XPL',
+        chainId: 9745,
+        lzSrcId: 0,
+        explorerUrl: 'https://plasmascan.to',
+        explorerApiUrl: 'https://api.plasmascan.to/api',
+        rpcUrls: [
+            'https://rpc.plasma.to',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    telos: {
+
+    },
+
+    flowEVM: {
+
+    },
+
+    flare: {
+        key: 'flare',
+    },
+
+
+
+
+
+
+
+    swell: {
+        key: 'swell',
+        display: 'Swell',
+        currency: 'ETH',
+        chainId: 1923,
+        lzSrcId: 30335,
+        explorerUrl: 'https://swellchainscan.io/',
+        explorerApiUrl: 'https://api.swellchainscan.io/api',
+        rpcUrls: [
+            'https://rpc.ankr.com/swell',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    hyperevm: {
+        key: 'hyperevm',
+        display: 'HyperEVM',
+        currency: 'HYPE',
+        chainId: 999,
+        lzSrcId: 30367,
+        explorerUrl: 'https://hyperevmscan.io',
+        explorerApiUrl: 'https://api.hyperevmscan.io/api',
+        rpcUrls: [
+            'https://rpc.hyperliquid.xyz/evm',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x5555555555555555555555555555555555555555',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xb88339CB7199b77E23DB6E890353E22632Ba630f',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    injevm: {
+        key: 'injevm',
+        display: 'Injective EVM',
+        currency: 'INJ',
+        chainId: 1776,
+        lzSrcId: 0,
+        explorerUrl: 'https://blockscout.injective.network/',
+        explorerApiUrl: 'https://blockscout-api.injective.network/api',
+        rpcUrls: [
+            'https://sentry.evm-rpc.injective.network/',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000088827d2d103ee2d9A6b781773AE03FfB',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x88f7F2b685F9692caf8c478f5BADF09eE9B1Cc13',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x7888888Bca4EFBA996191CDDe167e9F30d3866ba',  // custom deployment.
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    ancient8: {
+        key: 'ancient8',
+        display: 'Ancient8',
+        currency: 'ETH',
+        chainId: 888888888,
+        lzSrcId: undefined,
+        explorerUrl: 'https://scan.ancient8.gg',
+        explorerApiUrl: 'https://api.ancient8.gg/api',
+        rpcUrls: [
+            'https://rpc.ancient8.gg',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    celo: {
+        key: 'celo',
+        display: 'Celo',
+        currency: 'CELO',
+        chainId: 42220,
+        lzSrcId: 30125,
+        explorerUrl: 'https://celoscan.io',
+        explorerApiUrl: 'https://api.celoscan.io/api',
+        rpcUrls: [
+            'https://forno.celo.org',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xcebA9300f2b948710d2653dD7B07f33A8B32118C',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    polygon_zkevm: {
+        key: 'polygon_zkevm',
+        display: 'Polygon zkEVM',
+        currency: 'ETH',
+        chainId: 1101,
+        lzSrcId: 30158,
+        explorerUrl: 'https://zkevm.polygonscan.com',
+        explorerApiUrl: 'https://api.zkevm.polygonscan.com/api',
+        rpcUrls: [
+            'https://zkevm-rpc.com',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    scroll: {
+        key: 'scroll',
+        display: 'Scroll',
+        currency: 'ETH',
+        chainId: 534352,
+        lzSrcId: 30158,
+        explorerUrl: 'https://scrollscan.com',
+        explorerApiUrl: 'https://api.scrollscan.com/api',
+        rpcUrls: [
+            'https://rpc.scroll.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    mantle: {
+        key: 'mantle',
+        display: 'Mantle',
+        currency: 'MNT',
+        chainId: 5000,
+        lzSrcId: 30181,
+        explorerUrl: 'https://mantlescan.xyz',
+        explorerApiUrl: 'https://api.mantlescan.xyz/api',
+        rpcUrls: [
+            'https://mantle-mainnet.public.blastapi.io',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    blast: {
+        key: 'blast',
+        display: 'Blast',
+        currency: 'ETH',
+        chainId: 81457,
+        lzSrcId: 30243,
+        explorerUrl: 'https://blastscan.io',
+        explorerApiUrl: 'https://api.blastscan.io/api',
+        rpcUrls: [
+            'https://rpc.ankr.com/blast',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4300000000000000000000000000000000000004',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
+    },
+
+    codex: {
+        key: 'codex',
+        display: 'Codex',
+        currency: 'ETH',
+        chainId: 81224,
+        lzSrcId: 30323,
+        explorerUrl: 'https://explorer.codex.xyz',
+        rpcUrls: [
+            'https://rpc.codex.xyz',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x4200000000000000000000000000000000000006',
+            tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
+            messageTransmitter: '0x81D40F21F12A8F0E3252Bccb954D722d4c464B64',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0xd996633a415985DBd7D6D12f4A4343E31f5037cf',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            multicall: '0x0000000000000000000000000000000000000000',
+        },
+    },
+}
+
+export function getRpcUrl(chain) {
+    if (!chain) return null;
+
+    // Priority 1: Check for environment variable override (e.g., ARBITRUM_ONE_RPC, INJEVM_RPC)
+    const envKey = `${chain.key.toUpperCase()}_RPC`;
+    const envRpc = process.env[envKey];
+    if (envRpc) return envRpc;
+
+    // Priority 2: Use default RPC from chain config
+    if (!Array.isArray(chain.rpcUrls) || chain.rpcUrls.length === 0) return null;
+    const idx = Number.isInteger(chain.defaultRpcUrlIndex) ? chain.defaultRpcUrlIndex : 0;
+    return chain.rpcUrls[Math.max(0, Math.min(idx, chain.rpcUrls.length - 1))];
+}
+
+export function configuredChains() {
+    return Object.values(chainConfig).filter(c => !!getRpcUrl(c));
+}
+
+// Select chains by keys (array of chainConfig keys). If requireRpc is true, only include chains with a default RPC.
+export function getChainsByKeys(keys, { requireRpc = true } = {}) {
+    if (!Array.isArray(keys)) return [];
+    const out = [];
+    for (const k of keys) {
+        if (!k) continue;
+        const key = String(k).trim();
+        const c = chainConfig[key];
+        if (!c) continue;
+        if (requireRpc && !getRpcUrl(c)) continue;
+        out.push(c);
+    }
+    return out;
+}
+
+// Convenience helper: read comma-separated keys from an env var (e.g., 'CHAINS')
+export function resolveChainsFromEnv(envVarName = 'CHAINS', { requireRpc = true } = {}) {
+    const raw = (process.env[envVarName] || '').trim();
+    if (!raw) return [];
+    const keys = raw.split(',').map(s => s.trim()).filter(Boolean);
+    return getChainsByKeys(keys, { requireRpc });
+}
