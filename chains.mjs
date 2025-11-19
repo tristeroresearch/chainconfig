@@ -785,11 +785,11 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
-            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
-            usdt: '0x0000000000000000000000000000000000000000',
-            usdc: '0x0000000000000000000000000000000000000000',
+            usdt: '0x919C1c267BC06a7039e03fcc2eF738525769109c',
+            usdc: '0xEB466342C4d449BC9f53A865D5Cb90586f405215', // axelar bridged
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
@@ -1256,15 +1256,17 @@ export const chainConfig = {
         explorerUrl: 'https://mantlescan.xyz',
         explorerApiUrl: 'https://api.mantlescan.xyz/api',
         rpcUrls: [
+            'https://1rpc.io/mantle',
+            'https://mantle.drpc.org',
             'https://mantle-mainnet.public.blastapi.io',
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
-            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
-            usdt: '0x0000000000000000000000000000000000000000',
+            usdt: '0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE',
             usdc: '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9',
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
@@ -1299,6 +1301,32 @@ export const chainConfig = {
         },
     },
 
+    rootstock: {
+        key: 'rootstock',
+        display: 'Rootstock',
+        currency: 'RBTC',
+        chainId: 30,
+        lzSrcId: 0,
+        explorerUrl: 'https://explorer.rsk.co',
+        rpcUrls: [
+            'https://public-node.rsk.co',
+            'https://rootstock.drpc.org'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x1945d8AEDC005c900c796e31CcE040363A6658d2',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
+        },
+    },
+    
     codex: {
         key: 'codex',
         display: 'Codex',
