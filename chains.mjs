@@ -2,8 +2,6 @@
 // Each chain has a stable key usable as chainConfig[key].variable
 // rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one
 
-import { pulsechain } from "viem/chains";
-
 export const chainConfig = {
     ethereum: {
         key: 'ethereum',
@@ -27,7 +25,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -54,7 +52,7 @@ export const chainConfig = {
             permit2: '0x0000000000000000000000000000000000000000',
             entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -81,7 +79,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -109,7 +107,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -137,7 +135,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -165,7 +163,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -191,7 +189,7 @@ export const chainConfig = {
             permit2: '0x0000000000000000000000000000000000000000',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -217,7 +215,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -236,15 +234,15 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
-            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x3439153EB7AF838Ad19d56E1571FBD09333C2809',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
-            usdt: '0x0000000000000000000000000000000000000000',
-            usdc: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0709F39376dEEe2A2dfC94A58EdEb2Eb9DF012bD',
+            usdc: '0x84A71ccD554Cc1b02749b35d22F684CC8ec987e1',
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -269,7 +267,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -299,7 +297,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -325,7 +323,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -351,7 +349,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -379,7 +377,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -405,7 +403,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -431,7 +429,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -457,7 +455,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xA0DD21C4789bf0225481dDCc3D7182C4876F4178',
+            relayRouter: '0xA0DD21C4789bf0225481dDCc3D7182C4876F4178',
         },
     },
 
@@ -483,7 +481,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108', // 0x4337 not deployed
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -509,7 +507,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -535,7 +533,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -561,7 +559,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -587,7 +585,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -613,7 +611,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -639,7 +637,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -665,7 +663,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -718,7 +716,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -739,12 +737,12 @@ export const chainConfig = {
             wrappedGasToken: '0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
-            usdt: '0x0000000000000000000000000000000000000000',
-            usdc: '0x0000000000000000000000000000000000000000',
+            usdt: '0x66e428c3f67a68878562e79A0234c1F83c208770',
+            usdc: '0xc21223249CA28397B4B6541dfFaEcC539BfF0c59',
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -813,15 +811,15 @@ export const chainConfig = {
         defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
-            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xBB859E225ac8Fb6BE1C7e38D87b767e95Fef0EbD',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
             usdt: '0x0000000000000000000000000000000000000000',
-            usdc: '0x0000000000000000000000000000000000000000',
+            usdc: '0xFbDa5F676cB37624f28265A144A48B0d6e87d3b6', // stargate bridged
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -847,7 +845,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -875,7 +873,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -902,7 +900,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -928,7 +926,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -954,7 +952,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -972,6 +970,34 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x6100E367285b01F48D07953803A2d8dCA5D19873',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    telos: {
+        key: 'telos',
+        display: 'Telos',
+        currency: 'TLOS',
+        chainId: 40,
+        lzSrcId: 0,
+        explorerUrl: 'https://teloscan.io',
+        explorerApiUrl: 'https://api.teloscan.io/api',
+        rpcUrls: [
+            'https://rpc.telos.net',
+            'https://rpc.ankr.com/telos',
+            'https://1rpc.io/telos/evm'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
             wrappedGasToken: '0x0000000000000000000000000000000000000000',
             tokenMessenger: '0x0000000000000000000000000000000000000000',
             messageTransmitter: '0x0000000000000000000000000000000000000000',
@@ -980,27 +1006,62 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
-    telos: {
-
-    },
-
     flowEVM: {
-
+        key: 'flowEVM',
+        display: 'Flow EVM',
+        currency: 'FLOW',
+        chainId: 747,
+        lzSrcId: 0,
+        explorerUrl: 'https://flowscan.io',
+        explorerApiUrl: 'https://api.flowscan.io/api',
+        rpcUrls: [
+            'https://mainnet.evm.nodes.onflow.org',
+            'https://flow-mainnet.gateway.tatum.io'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0xd3bf53dac106a0290b0483ecbc89d40fcc961f3e',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x674843c06ff83502ddb4d37c2e09c01cda38cbc8', // stargate bridged usdt
+            usdc: '0xf1815bd50389c46847f0bda824ec8da914045d14', // stargate bridged usdc
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+        },
     },
 
     flare: {
         key: 'flare',
+        display: 'Flare',
+        currency: 'FLR',
+        chainId: 14,
+        lzSrcId: 0,
+        explorerUrl: 'https://flare-explorer.flare.network',
+        explorerApiUrl: 'https://api.flare-explorer.flare.network/api',
+        rpcUrls: [
+            'https://flare-api.flare.network/ext/C/rpc',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x1D80c49BbBCd1C0911346656B529DF9E5c2F783d',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0B38e83B86d491735fEaa0a791F65c2B99535396',
+            usdc: '0xFbDa5F676cB37624f28265A144A48B0d6e87d3b6', // stargate bridged
+            permit2: '0x0000000000000000000000000000000000000000', // no permit2 yet
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
+        },
     },
-
-
-
-
-
-
 
     swell: {
         key: 'swell',
@@ -1024,7 +1085,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1050,7 +1111,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1076,7 +1137,7 @@ export const chainConfig = {
             permit2: '0x7888888Bca4EFBA996191CDDe167e9F30d3866ba',  // custom deployment.
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1102,7 +1163,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1128,7 +1189,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1154,7 +1215,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1180,7 +1241,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1206,7 +1267,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1232,7 +1293,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
         },
     },
 
@@ -1257,7 +1318,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x0000000000000000000000000000000000000000', // 0x4337 not deployed
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            multicall: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 }
