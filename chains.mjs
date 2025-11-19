@@ -1046,9 +1046,11 @@ export const chainConfig = {
         explorerUrl: 'https://flare-explorer.flare.network',
         explorerApiUrl: 'https://api.flare-explorer.flare.network/api',
         rpcUrls: [
+            'https://rpc.ankr.com/flare',
             'https://flare-api.flare.network/ext/C/rpc',
+            'https://flare.rpc.thirdweb.com'
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 2,
         addresses: {
             gasToken: '0x0000000000000000000000000000000000000000',
             wrappedGasToken: '0x1D80c49BbBCd1C0911346656B529DF9E5c2F783d',
@@ -1326,12 +1328,7 @@ export const chainConfig = {
 export function getRpcUrl(chain) {
     if (!chain) return null;
 
-    // Priority 1: Check for environment variable override (e.g., ARBITRUM_ONE_RPC, INJEVM_RPC)
-    const envKey = `${chain.key.toUpperCase()}_RPC`;
-    const envRpc = process.env[envKey];
-    if (envRpc) return envRpc;
-
-    // Priority 2: Use default RPC from chain config
+    // Use default RPC from chain config (rpcUrls[defaultRpcUrlIndex])
     if (!Array.isArray(chain.rpcUrls) || chain.rpcUrls.length === 0) return null;
     const idx = Number.isInteger(chain.defaultRpcUrlIndex) ? chain.defaultRpcUrlIndex : 0;
     return chain.rpcUrls[Math.max(0, Math.min(idx, chain.rpcUrls.length - 1))];
