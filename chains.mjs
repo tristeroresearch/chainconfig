@@ -34,7 +34,7 @@ export const chainConfig = {
         display: 'BitTorrent Chain Mainnet',
         currency: 'BTT',
         chainId: 199,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://bttcscan.com/',
         rpcUrls: [
             'https://bittorrent.drpc.org',
@@ -697,7 +697,7 @@ export const chainConfig = {
         display: 'Boba Network',
         currency: 'ETH',
         chainId: 288,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://bobascan.com/',
         explorerApiUrl: 'https://api.bobascan.com/api',
         rpcUrls: [
@@ -1148,7 +1148,7 @@ export const chainConfig = {
         display: 'Ancient8',
         currency: 'ETH',
         chainId: 888888888,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://scan.ancient8.gg',
         explorerApiUrl: 'https://api.ancient8.gg/api',
         rpcUrls: [
@@ -1399,7 +1399,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1424,7 +1424,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1449,7 +1449,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1458,7 +1458,7 @@ export const chainConfig = {
         display: 'AppChain',
         currency: 'ETH',
         chainId: 466,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer.appchain.xyz',
         rpcUrls: [
             'https://rpc.appchain.xyz/http',
@@ -1474,7 +1474,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1499,7 +1499,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1524,7 +1524,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1558,7 +1558,7 @@ export const chainConfig = {
         display: 'Perennial',
         currency: 'ETH',
         chainId: 1424,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer.perennial.xyz',
         rpcUrls: [
             'https://1424.rpc.thirdweb.com',
@@ -1599,7 +1599,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1624,7 +1624,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1649,7 +1649,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1658,7 +1658,7 @@ export const chainConfig = {
         display: 'Somnia',
         currency: 'SOMI',
         chainId: 5031,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer.somnia.network',
         rpcUrls: [
             'https://api.infra.mainnet.somnia.network',
@@ -1699,7 +1699,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1724,7 +1724,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1733,7 +1733,7 @@ export const chainConfig = {
         display: 'Powerloom V2',
         currency: 'ETH',
         chainId: 7869,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer-v2.powerloom.network',
         rpcUrls: [
             'https://rpc-v2.powerloom.network',
@@ -1774,7 +1774,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1799,7 +1799,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1808,7 +1808,7 @@ export const chainConfig = {
         display: 'Corn',
         currency: 'BTCN',
         chainId: 21000000,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://cornscan.io',
         rpcUrls: [
             'https://maizenet-rpc.usecorn.com',
@@ -1849,7 +1849,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1858,7 +1858,7 @@ export const chainConfig = {
         display: 'Gunz',
         currency: 'GUN',
         chainId: 43419,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://gunzscan.io',
         rpcUrls: [
             'https://rpc.gunzchain.io/ext/bc/2M47TxWHGnhNtq6pM5zPXdATBtuqubxn5EPFgFmEawCQr9WFML/rpc',
@@ -1924,7 +1924,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1974,7 +1974,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -1999,7 +1999,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -2024,7 +2024,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -2033,7 +2033,7 @@ export const chainConfig = {
         display: 'ZERO',
         currency: 'ETH',
         chainId: 543210,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer.zero.network',
         rpcUrls: [
             'https://rpc.zerion.io/v1/zero',
@@ -2058,7 +2058,7 @@ export const chainConfig = {
         display: 'Syndicate Commons',
         currency: 'SYND',
         chainId: 510003,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://commons.explorer.syndicate.io',
         rpcUrls: [
             'https://commons.rpc.syndicate.io',
@@ -2083,7 +2083,7 @@ export const chainConfig = {
         display: 'Forma',
         currency: 'TIA',
         chainId: 984122,
-        lzSrcId: undefined,
+        lzSrcId: 0,
         explorerUrl: 'https://explorer.forma.art',
         rpcUrls: [
             'https://rpc.forma.art',
@@ -2124,7 +2124,7 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 
@@ -2149,7 +2149,32 @@ export const chainConfig = {
             permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
             trustedForwarder: '0x0000000000000000000000000000000000000000',
-            relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+            relayRouter: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
+    ethereal: {
+        key: 'ethereal',
+        display: 'Ethereal',
+        currency: 'USDe',
+        chainId: 5064014,
+        lzSrcId: 0,
+        explorerUrl: 'https://explorer.ethereal.trade',
+        rpcUrls: [
+            'https://rpc.ethereal.trade',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
         },
     },
 }
