@@ -2003,6 +2003,31 @@ export const chainConfig = {
         },
     },
 
+    animechain: {
+        key: 'animechain',
+        display: 'Animechain',
+        currency: 'ANIME',
+        chainId: 69000,
+        lzSrcId: 0,
+        explorerUrl: 'https://explorer-animechain-39xf6m45e3.t.conduit.xyz',
+        rpcUrls: [
+            'https://rpc-animechain-39xf6m45e3.t.conduit.xyz',
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: '0x0000000000000000000000000000000000000000',
+            wrappedGasToken: '0x0000000000000000000000000000000000000000',
+            tokenMessenger: '0x0000000000000000000000000000000000000000',
+            messageTransmitter: '0x0000000000000000000000000000000000000000',
+            usdt: '0x0000000000000000000000000000000000000000',
+            usdc: '0x0000000000000000000000000000000000000000',
+            permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            entryPoint: '0x0000000000000000000000000000000000000000',
+            trustedForwarder: '0x0000000000000000000000000000000000000000',
+            relayRouter: '0x0000000000000000000000000000000000000000',
+        },
+    },
+
     xai: {
         key: 'xai',
         display: 'Xai',
