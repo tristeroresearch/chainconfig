@@ -3,3 +3,7 @@ __pycache__
 .env
 node_modules
 chains-corrected.mjs
+gz-chains.mjs
+gz-chains-evm.mjs
+gz-chains-non-evm.mjs
+gz-chains-error.mjs

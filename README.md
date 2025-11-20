@@ -62,6 +62,34 @@ node scripts/integrity_check.mjs fix
 
 This will create `chains-corrected.mjs` with suggested fixes. Review the file before replacing the original configuration.
 
+### Fetch Gas.zip Chains
+
+Fetch all chains supported by gas.zip and generate a list of chains not in your config:
+
+```bash
+npm run fetch-gaszip
+# or
+node scripts/fetch_gaszip_chains.mjs
+```
+
+This will create three separate files based on EVM compatibility verification:
+
+- **`gz-chains-evm.mjs`** - Confirmed EVM-compatible chains (exports `gaszipEvmChains` object)
+- **`gz-chains-non-evm.mjs`** - Confirmed non-EVM chains (exports `gaszipNonEvmChains` object)
+- **`gz-chains-error.mjs`** - Chains that couldn't be verified (exports `gaszipErrorChains` object)
+
+Each file exports an object keyed by chain key, making it easy to merge into your main `chainConfig`.
+
+The script:
+- Fetches chain definitions from the gas.zip API (mainnet only)
+- Tests each chain's RPC endpoint for EVM compatibility
+- Converts them to your config format
+- Filters out chains already in your config (by chainId)
+- Generates properly formatted chain objects with default contract addresses
+- Separates chains into three files based on verification status
+
+⚠️ **Note:** Chains in `gz-chains-error.mjs` require manual verification via block explorer before adding to your config.
+
 ## Features
 
 ### RPC Verification

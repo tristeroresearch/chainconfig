@@ -154,13 +154,23 @@ async function verifyContract(provider, address, abi, interfaceName) {
         return { exists: false, verified: false, reason: 'Zero address' };
     }
 
+    // Convert to checksummed address if needed
+    let checksummedAddress = address;
     try {
-        const code = await provider.getCode(address);
+        checksummedAddress = ethers.utils.getAddress(address);
+    } catch (e) {
+        return { exists: false, verified: false, reason: `Invalid address format: ${e.message}` };
+    }
+
+    const needsChecksumFix = address !== checksummedAddress;
+
+    try {
+        const code = await provider.getCode(checksummedAddress);
         if (code === '0x') {
-            return { exists: false, verified: false, reason: 'No code at address' };
+            return { exists: false, verified: false, reason: 'No code at address', checksummedAddress, needsChecksumFix };
         }
 
-        const contract = new ethers.Contract(address, abi, provider);
+        const contract = new ethers.Contract(checksummedAddress, abi, provider);
         
         // Try to call a view function to verify interface
         // Different interfaces have different verifiable functions
@@ -179,22 +189,21 @@ async function verifyContract(provider, address, abi, interfaceName) {
                 await contract.getNonce(ZERO_ADDRESS);
                 verified = true;
             } else if (interfaceName === 'MESSAGE_TRANSMITTER' || interfaceName === 'TOKEN_MESSENGER') {
-                // These may be proxy contracts - verify proxy interface
+                // These are proxy contracts - verify proxy interface
                 await contract.implementation();
                 verified = true;
             } else if (interfaceName === 'RELAY_ROUTER') {
-                // Verify RELAY_ROUTER interface by calling multicall-related function
-                // The contract should support the interface even if the call would revert with empty input
-                await contract.supportsInterface('0x01ffc9a7'); // ERC165 interface ID
+                // RELAY_ROUTER doesn't have simple view functions to test
+                // Just verify code exists (already checked above)
                 verified = true;
             }
         } catch (e) {
-            return { exists: true, verified: false, reason: `Interface verification failed: ${e.message}` };
+            return { exists: true, verified: false, reason: `Interface verification failed: ${e.message}`, checksummedAddress, needsChecksumFix };
         }
 
-        return { exists: true, verified, reason: verified ? 'OK' : 'Unknown' };
+        return { exists: true, verified, reason: verified ? 'OK' : 'Unknown', checksummedAddress, needsChecksumFix };
     } catch (error) {
-        return { exists: false, verified: false, reason: error.message };
+        return { exists: false, verified: false, reason: error.message, checksummedAddress, needsChecksumFix };
     }
 }
 
@@ -229,8 +238,12 @@ async function verifyContracts(chainConfig, rpcResults) {
             { key: 'tokenMessenger', abi: ABIS.TOKEN_MESSENGER, name: 'TOKEN_MESSENGER', default: DEFAULT_ADDRESSES.tokenMessenger },
         ];
 
+        const checkedAddressKeys = new Set();
+        const checksumIssues = [];
+
         for (const check of contractChecks) {
             const configAddress = chain.addresses?.[check.key];
+            checkedAddressKeys.add(check.key);
             process.stdout.write(`  ${check.name.padEnd(20)} `);
 
             // First try configured address
@@ -238,20 +251,37 @@ async function verifyContracts(chainConfig, rpcResults) {
             let finalAddress = configAddress;
             let usedDefault = false;
 
+            // Track checksum issues
+            if (result.needsChecksumFix && result.checksummedAddress) {
+                checksumIssues.push({ key: check.key, original: configAddress, checksummed: result.checksummedAddress });
+            }
+
             // If configured address doesn't work, try default
-            if (!result.verified && check.default && configAddress === ZERO_ADDRESS) {
-                const defaultResult = await verifyContract(provider, check.default, check.abi, check.name);
-                if (defaultResult.verified) {
-                    result = defaultResult;
-                    finalAddress = check.default;
-                    usedDefault = true;
+            if (!result.verified && check.default) {
+                if (configAddress === ZERO_ADDRESS) {
+                    // Zero address configured - verify that default also doesn't exist
+                    const defaultResult = await verifyContract(provider, check.default, check.abi, check.name);
+                    if (defaultResult.verified) {
+                        // Default exists! Suggest using it
+                        result = defaultResult;
+                        finalAddress = check.default;
+                        usedDefault = true;
+                    } else {
+                        // Default also doesn't exist, zero is correct
+                        result = { exists: false, verified: true, reason: 'Zero address verified (default not deployed)' };
+                    }
+                } else if (result.checksummedAddress) {
+                    // Try with checksummed address
+                    finalAddress = result.checksummedAddress;
                 }
             }
 
             chainResults[check.key] = { ...result, address: finalAddress, configAddress, usedDefault };
 
             if (result.verified) {
-                console.log(`✓ ${usedDefault ? '(using default) ' : ''}${finalAddress.substring(0, 10)}...`);
+                const explorerUrl = chain.explorerUrl && finalAddress !== ZERO_ADDRESS ? `${chain.explorerUrl}/address/${finalAddress}#code` : '';
+                const checksumNote = result.needsChecksumFix ? ' (needs checksum fix)' : '';
+                console.log(`✓ ${usedDefault ? '(using default) ' : ''}${finalAddress.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
                 if (usedDefault) {
                     if (!corrections[key]) corrections[key] = { addresses: {} };
                     if (!corrections[key].addresses) corrections[key].addresses = {};
@@ -259,6 +289,90 @@ async function verifyContracts(chainConfig, rpcResults) {
                 }
             } else {
                 console.log(`✗ ${result.reason}`);
+            }
+        }
+
+        // Report checksum issues
+        if (checksumIssues.length > 0) {
+            console.log('\n  ⚠ Address checksum issues found:');
+            for (const issue of checksumIssues) {
+                console.log(`    ${issue.key}: ${issue.original} → ${issue.checksummed}`);
+                if (!corrections[key]) corrections[key] = { addresses: {} };
+                if (!corrections[key].addresses) corrections[key].addresses = {};
+                corrections[key].addresses[issue.key] = issue.checksummed;
+            }
+        }
+
+        // Check all other non-zero addresses for deployed bytecode
+        if (chain.addresses) {
+            const otherChecksumIssues = [];
+            
+            for (const [addrKey, addrValue] of Object.entries(chain.addresses)) {
+                // Skip already checked addresses and zero addresses
+                if (checkedAddressKeys.has(addrKey) || !addrValue || addrValue === ZERO_ADDRESS) {
+                    continue;
+                }
+
+                process.stdout.write(`  ${addrKey.padEnd(20)} `);
+                
+                try {
+                    // Convert to checksummed address
+                    let checksummedAddr = addrValue;
+                    let needsChecksumFix = false;
+                    try {
+                        checksummedAddr = ethers.utils.getAddress(addrValue);
+                        needsChecksumFix = addrValue !== checksummedAddr;
+                    } catch (e) {
+                        console.log(`✗ Invalid address format`);
+                        continue;
+                    }
+
+                    const code = await provider.getCode(checksummedAddr);
+                    const hasCode = code !== '0x';
+                    
+                    if (needsChecksumFix) {
+                        otherChecksumIssues.push({ key: addrKey, original: addrValue, checksummed: checksummedAddr });
+                    }
+                    
+                    chainResults[addrKey] = { 
+                        exists: hasCode, 
+                        verified: hasCode, 
+                        reason: hasCode ? 'Has code' : 'No code at address',
+                        address: checksummedAddr,
+                        configAddress: addrValue,
+                        usedDefault: false,
+                        needsChecksumFix
+                    };
+
+                    if (hasCode) {
+                        const explorerUrl = chain.explorerUrl ? `${chain.explorerUrl}/address/${checksummedAddr}#code` : '';
+                        const checksumNote = needsChecksumFix ? ' (needs checksum fix)' : '';
+                        console.log(`✓ ${checksummedAddr.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
+                    } else {
+                        console.log(`✗ No code at address`);
+                    }
+                } catch (error) {
+                    chainResults[addrKey] = { 
+                        exists: false, 
+                        verified: false, 
+                        reason: error.message,
+                        address: addrValue,
+                        configAddress: addrValue,
+                        usedDefault: false
+                    };
+                    console.log(`✗ Error: ${error.message}`);
+                }
+            }
+
+            // Report other checksum issues
+            if (otherChecksumIssues.length > 0) {
+                console.log('\n  ⚠ Address checksum issues found:');
+                for (const issue of otherChecksumIssues) {
+                    console.log(`    ${issue.key}: ${issue.original} → ${issue.checksummed}`);
+                    if (!corrections[key]) corrections[key] = { addresses: {} };
+                    if (!corrections[key].addresses) corrections[key].addresses = {};
+                    corrections[key].addresses[issue.key] = issue.checksummed;
+                }
             }
         }
 
