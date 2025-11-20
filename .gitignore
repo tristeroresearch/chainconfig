@@ -8,3 +8,9 @@ gz-chains-evm.mjs
 gz-chains-non-evm.mjs
 gz-chains-error.mjs
 chains-updated.mjs
+gz-chains-node_modules/
+*.log
+npm-debug.log*
+
+# Auto-generated files
+contract-verification-log.json

@@ -227,6 +227,7 @@ async function verifyContracts(chainConfig, rpcResults) {
     console.log('\n=== Contract Verification ===');
     const results = {};
     const corrections = {};
+    const detailedLog = {};
 
     for (const [key, chain] of Object.entries(chainConfig)) {
         // Skip if no working RPC
@@ -241,6 +242,7 @@ async function verifyContracts(chainConfig, rpcResults) {
 
         console.log(`\nVerifying contracts for ${chain.display} (${key})...`);
         const chainResults = {};
+        detailedLog[key] = { chainName: chain.display || chain.name, chainId: chain.chainId, contracts: {} };
 
         // Check each contract type
         const contractChecks = [
@@ -263,58 +265,131 @@ async function verifyContracts(chainConfig, rpcResults) {
             checkedAddressKeys.add(check.key);
             process.stdout.write(`  ${check.name.padEnd(20)} `);
 
-            // First try configured address
-            let result = await verifyContract(provider, configAddress, check.abi, check.name);
             let finalAddress = configAddress;
-            let usedDefault = false;
+            let correctionNeeded = false;
+            let correctionReason = '';
+            let configCodeLength = 0;
+            let defaultCodeLength = 0;
+            let checksummedAddr = configAddress;
+            let needsChecksumFix = false;
 
-            // Track checksum issues and use checksummed address
-            if (result.needsChecksumFix && result.checksummedAddress) {
-                checksumIssues.push({ key: check.key, original: configAddress, checksummed: result.checksummedAddress });
-                // Always use the checksummed address if it's different
-                if (result.verified) {
-                    finalAddress = result.checksummedAddress;
+            try {
+                // Checksum the configured address
+                if (configAddress && configAddress !== ZERO_ADDRESS) {
+                    checksummedAddr = ethers.utils.getAddress(configAddress);
+                    needsChecksumFix = configAddress !== checksummedAddr;
                 }
+            } catch (e) {
+                // Invalid address format
             }
 
-            // If configured address is zero or doesn't work, try default
-            if (check.default) {
-                if (configAddress === ZERO_ADDRESS || !configAddress) {
-                    // Zero address configured - check if default has bytecode
-                    try {
-                        const code = await provider.getCode(check.default);
-                        if (code !== '0x') {
-                            // Default has bytecode! Use it
-                            const defaultResult = await verifyContract(provider, check.default, check.abi, check.name);
-                            result = defaultResult;
-                            finalAddress = check.default;
-                            usedDefault = true;
-                        } else {
-                            // Default doesn't have bytecode, zero is correct
-                            result = { exists: false, verified: true, reason: 'Zero address verified (default not deployed)' };
+            // Case 1: configured address != zero_address
+            if (configAddress && configAddress !== ZERO_ADDRESS) {
+                // Check bytecode at configured address
+                try {
+                    const configCode = await provider.getCode(checksummedAddr);
+                    configCodeLength = configCode === '0x' ? 0 : (configCode.length - 2) / 2;
+                    
+                    if (configCodeLength > 0) {
+                        // Bytecode exists at configured address
+                        const interfaceCheck = await verifyContract(provider, checksummedAddr, check.abi, check.name);
+                        if (interfaceCheck.verified || configCodeLength > 0) {
+                            // Either interface works or bytecode exists - configured address is OK
+                            finalAddress = checksummedAddr;
+                            if (needsChecksumFix) {
+                                checksumIssues.push({ key: check.key, original: configAddress, checksummed: checksummedAddr });
+                                correctionNeeded = true;
+                                correctionReason = 'Checksum fix';
+                            }
                         }
-                    } catch (e) {
-                        result = { exists: false, verified: true, reason: 'Zero address verified (default check failed)' };
+                    } else {
+                        // No bytecode at configured address - check default
+                        if (check.default) {
+                            const defaultCode = await provider.getCode(check.default);
+                            defaultCodeLength = defaultCode === '0x' ? 0 : (defaultCode.length - 2) / 2;
+                            
+                            if (defaultCodeLength > 0) {
+                                // Bytecode at default - correct to default
+                                finalAddress = check.default;
+                                correctionNeeded = true;
+                                correctionReason = 'No bytecode at configured, using default';
+                            } else {
+                                // Neither has bytecode - correct to zero
+                                finalAddress = ZERO_ADDRESS;
+                                correctionNeeded = true;
+                                correctionReason = 'No bytecode at configured or default';
+                            }
+                        } else {
+                            // No default, no bytecode - correct to zero
+                            finalAddress = ZERO_ADDRESS;
+                            correctionNeeded = true;
+                            correctionReason = 'No bytecode at configured';
+                        }
                     }
-                } else if (!result.verified && result.checksummedAddress) {
-                    // Try with checksummed address
-                    finalAddress = result.checksummedAddress;
-                }
-            }
-
-            chainResults[check.key] = { ...result, address: finalAddress, configAddress, usedDefault };
-
-            if (result.verified) {
-                const explorerUrl = chain.explorerUrl && finalAddress !== ZERO_ADDRESS ? `${chain.explorerUrl}/address/${finalAddress}#code` : '';
-                const checksumNote = result.needsChecksumFix ? ' (needs checksum fix)' : '';
-                console.log(`✓ ${usedDefault ? '(using default) ' : ''}${finalAddress.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
-                if (usedDefault) {
-                    if (!corrections[key]) corrections[key] = { addresses: {} };
-                    if (!corrections[key].addresses) corrections[key].addresses = {};
-                    corrections[key].addresses[check.key] = finalAddress;
+                } catch (e) {
+                    // RPC error
+                    correctionReason = `RPC error: ${e.message}`;
                 }
             } else {
-                console.log(`✗ ${result.reason}`);
+                // Case 2: configured address == zero_address
+                if (check.default) {
+                    try {
+                        const defaultCode = await provider.getCode(check.default);
+                        defaultCodeLength = defaultCode === '0x' ? 0 : (defaultCode.length - 2) / 2;
+                        
+                        if (defaultCodeLength > 0) {
+                            // Bytecode at default - correct to default
+                            finalAddress = check.default;
+                            correctionNeeded = true;
+                            correctionReason = 'Found bytecode at default';
+                        } else {
+                            // No bytecode at default - zero is correct
+                            finalAddress = ZERO_ADDRESS;
+                            correctionReason = 'Zero address correct (default not deployed)';
+                        }
+                    } catch (e) {
+                        correctionReason = `RPC error checking default: ${e.message}`;
+                    }
+                } else {
+                    correctionReason = 'Zero address (no default)';
+                }
+            }
+
+            // Log detailed info
+            detailedLog[key].contracts[check.key] = {
+                name: check.name,
+                configuredAddress: configAddress || ZERO_ADDRESS,
+                defaultAddress: check.default || 'N/A',
+                finalAddress: finalAddress,
+                configuredBytecodeLength: configCodeLength,
+                defaultBytecodeLength: defaultCodeLength,
+                correctionNeeded: correctionNeeded,
+                correctionReason: correctionReason
+            };
+
+            // Apply correction if needed
+            if (correctionNeeded && finalAddress !== configAddress) {
+                if (!corrections[key]) corrections[key] = { addresses: {} };
+                if (!corrections[key].addresses) corrections[key].addresses = {};
+                corrections[key].addresses[check.key] = finalAddress;
+            }
+
+            chainResults[check.key] = { 
+                address: finalAddress, 
+                configAddress, 
+                correctionNeeded, 
+                reason: correctionReason,
+                bytecodeLength: configCodeLength || defaultCodeLength
+            };
+
+            // Console output
+            if (finalAddress === ZERO_ADDRESS) {
+                console.log(`○ Zero address (${correctionReason})`);
+            } else {
+                const explorerUrl = chain.explorerUrl ? `${chain.explorerUrl}/address/${finalAddress}#code` : '';
+                const bytecodeNote = configCodeLength > 0 ? `${configCodeLength}B` : defaultCodeLength > 0 ? `${defaultCodeLength}B` : '0B';
+                const correctionNote = correctionNeeded ? ` [${correctionReason}]` : '';
+                console.log(`✓ ${finalAddress.substring(0, 10)}... (${bytecodeNote})${correctionNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
             }
         }
 
@@ -417,6 +492,11 @@ async function verifyContracts(chainConfig, rpcResults) {
 
         results[key] = chainResults;
     }
+
+    // Save detailed log to file
+    const logPath = path.join(__dirname, '..', 'contract-verification-log.json');
+    fs.writeFileSync(logPath, JSON.stringify(detailedLog, null, 2));
+    console.log(`\n📝 Detailed verification log saved to: contract-verification-log.json`);
 
     return { results, corrections };
 }
