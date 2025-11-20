@@ -49,6 +49,14 @@ const loadChainConfig = async () => {
     return configModule.chainConfig;
 };
 
+// Helper to get default explorer URL from chain config
+const getExplorerUrl = (chain) => {
+    if (!chain) return null;
+    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;
+    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;
+    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];
+};
+
 // Basic integrity checks
 function checkBasicIntegrity(chainConfig) {
     console.log('\n=== Basic Integrity Checks ===');
@@ -775,7 +783,7 @@ async function cmdInfo() {
 
     // Table headers
     const headers = ['Index', 'Key', 'Name', 'Chain ID', 'Default Explorer URL'];
-    const colWidths = [8, 20, 30, 12, 50];
+    const colWidths = [8, 20, 30, 20, 50];
     
     // Print header
     const headerRow = headers.map((h, i) => h.padEnd(colWidths[i])).join(' | ');
@@ -786,7 +794,7 @@ async function cmdInfo() {
     chainEntries.forEach(([key, chain], index) => {
         const name = chain.display || chain.name || key;
         const chainId = chain.chainId.toString();
-        const explorerUrl = chain.explorerUrl || 'N/A';
+        const explorerUrl = getExplorerUrl(chain) || 'N/A';
         
         const row = [
             index.toString().padEnd(colWidths[0]),
