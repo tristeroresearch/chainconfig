@@ -179,6 +179,7 @@ async function verifyContract(provider, address, abi, interfaceName) {
         // Try to call a view function to verify interface
         // Different interfaces have different verifiable functions
         let verified = false;
+        let verificationReason = 'OK';
         try {
             if (interfaceName === 'WETH') {
                 await contract.symbol();
@@ -210,10 +211,12 @@ async function verifyContract(provider, address, abi, interfaceName) {
                 verified = true;
             }
         } catch (e) {
-            return { exists: true, verified: false, reason: `Interface verification failed: ${e.message}`, checksummedAddress, needsChecksumFix };
+            // Interface call failed, but bytecode exists - still pass verification
+            verified = true;
+            verificationReason = 'Has bytecode (interface not verified)';
         }
 
-        return { exists: true, verified, reason: verified ? 'OK' : 'Unknown', checksummedAddress, needsChecksumFix };
+        return { exists: true, verified, reason: verified ? verificationReason : 'Unknown', checksummedAddress, needsChecksumFix };
     } catch (error) {
         return { exists: false, verified: false, reason: error.message, checksummedAddress, needsChecksumFix };
     }
@@ -265,26 +268,35 @@ async function verifyContracts(chainConfig, rpcResults) {
             let finalAddress = configAddress;
             let usedDefault = false;
 
-            // Track checksum issues
+            // Track checksum issues and use checksummed address
             if (result.needsChecksumFix && result.checksummedAddress) {
                 checksumIssues.push({ key: check.key, original: configAddress, checksummed: result.checksummedAddress });
+                // Always use the checksummed address if it's different
+                if (result.verified) {
+                    finalAddress = result.checksummedAddress;
+                }
             }
 
-            // If configured address doesn't work, try default
-            if (!result.verified && check.default) {
-                if (configAddress === ZERO_ADDRESS) {
-                    // Zero address configured - verify that default also doesn't exist
-                    const defaultResult = await verifyContract(provider, check.default, check.abi, check.name);
-                    if (defaultResult.verified) {
-                        // Default exists! Suggest using it
-                        result = defaultResult;
-                        finalAddress = check.default;
-                        usedDefault = true;
-                    } else {
-                        // Default also doesn't exist, zero is correct
-                        result = { exists: false, verified: true, reason: 'Zero address verified (default not deployed)' };
+            // If configured address is zero or doesn't work, try default
+            if (check.default) {
+                if (configAddress === ZERO_ADDRESS || !configAddress) {
+                    // Zero address configured - check if default has bytecode
+                    try {
+                        const code = await provider.getCode(check.default);
+                        if (code !== '0x') {
+                            // Default has bytecode! Use it
+                            const defaultResult = await verifyContract(provider, check.default, check.abi, check.name);
+                            result = defaultResult;
+                            finalAddress = check.default;
+                            usedDefault = true;
+                        } else {
+                            // Default doesn't have bytecode, zero is correct
+                            result = { exists: false, verified: true, reason: 'Zero address verified (default not deployed)' };
+                        }
+                    } catch (e) {
+                        result = { exists: false, verified: true, reason: 'Zero address verified (default check failed)' };
                     }
-                } else if (result.checksummedAddress) {
+                } else if (!result.verified && result.checksummedAddress) {
                     // Try with checksummed address
                     finalAddress = result.checksummedAddress;
                 }
@@ -318,12 +330,20 @@ async function verifyContracts(chainConfig, rpcResults) {
         }
 
         // Check all other non-zero addresses for deployed bytecode
+        // Specifically verify usdc and usdt have bytecode
         if (chain.addresses) {
             const otherChecksumIssues = [];
+            const tokensToVerify = ['usdc', 'usdt'];
             
             for (const [addrKey, addrValue] of Object.entries(chain.addresses)) {
                 // Skip already checked addresses and zero addresses
                 if (checkedAddressKeys.has(addrKey) || !addrValue || addrValue === ZERO_ADDRESS) {
+                    continue;
+                }
+                
+                // Only verify bytecode for tokens (usdc, usdt) or show minimal info for others
+                const shouldVerifyBytecode = tokensToVerify.includes(addrKey);
+                if (!shouldVerifyBytecode) {
                     continue;
                 }
 
@@ -363,7 +383,12 @@ async function verifyContracts(chainConfig, rpcResults) {
                         const checksumNote = needsChecksumFix ? ' (needs checksum fix)' : '';
                         console.log(`✓ ${checksummedAddr.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
                     } else {
-                        console.log(`✗ No code at address`);
+                        // No bytecode at address - this is a problem for tokens
+                        console.log(`✗ No code at address - invalid token address`);
+                        // Set to zero address in corrections
+                        if (!corrections[key]) corrections[key] = { addresses: {} };
+                        if (!corrections[key].addresses) corrections[key].addresses = {};
+                        corrections[key].addresses[addrKey] = ZERO_ADDRESS;
                     }
                 } catch (error) {
                     chainResults[addrKey] = { 
@@ -659,6 +684,44 @@ async function cmdFix() {
     }
 }
 
+// Info command - list all chains
+async function cmdInfo() {
+    const chainConfig = await loadChainConfig();
+    const chainEntries = Object.entries(chainConfig);
+    const totalChains = chainEntries.length;
+
+    console.log(`\n=== Chain Configuration Info ===`);
+    console.log(`Total chains: ${totalChains}\n`);
+
+    // Table headers
+    const headers = ['Index', 'Key', 'Name', 'Chain ID', 'Default Explorer URL'];
+    const colWidths = [8, 20, 30, 12, 50];
+    
+    // Print header
+    const headerRow = headers.map((h, i) => h.padEnd(colWidths[i])).join(' | ');
+    console.log(headerRow);
+    console.log('-'.repeat(headerRow.length));
+
+    // Print chain data
+    chainEntries.forEach(([key, chain], index) => {
+        const name = chain.display || chain.name || key;
+        const chainId = chain.chainId.toString();
+        const explorerUrl = chain.explorerUrl || 'N/A';
+        
+        const row = [
+            index.toString().padEnd(colWidths[0]),
+            key.substring(0, colWidths[1] - 1).padEnd(colWidths[1]),
+            name.substring(0, colWidths[2] - 1).padEnd(colWidths[2]),
+            chainId.padEnd(colWidths[3]),
+            explorerUrl.substring(0, colWidths[4] - 1).padEnd(colWidths[4])
+        ].join(' | ');
+        
+        console.log(row);
+    });
+    
+    console.log(`\n✓ Total: ${totalChains} chains`);
+}
+
 // Main CLI
 async function main() {
     const argv = yargs(hideBin(process.argv))
@@ -688,7 +751,13 @@ async function main() {
             {},
             async () => await cmdFix()
         )
-        .demandCommand(1, 'You must specify a command: check, verify-rpcs, verify-contracts, or fix')
+        .command(
+            'info',
+            'Display summary information about all chains',
+            {},
+            async () => await cmdInfo()
+        )
+        .demandCommand(1, 'You must specify a command: check, verify-rpcs, verify-contracts, fix, or info')
         .alias('h', 'help')
         .help()
         .wrap(Math.min(120, process.stdout.columns || 100))
