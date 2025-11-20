@@ -3895,6 +3895,58 @@ export const chainConfig = {
             },
         },
 
+        moonbeam: {
+            key: "moonbeam",
+            name: "Moonbeam",
+            vmType: "EVM",
+            chainId: 1284,
+            lzSrcId: 0,
+            currency: "GLMR",
+            explorerUrl: "https://moonscan.io",
+            apiUrl: "https://api.moonscan.io/api",
+            rpcUrls: [
+                "https://lb.drpc.org/ogrpc?network=moonbeam&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0",
+                "https://rpc.api.moonbeam.network/",
+            ],
+            defaultRpcUrlIndex: 0,
+            addresses: {
+                usdc: "0xFFfffffF7D2B0B761Af01Ca8e25242976ac0aD7D",
+                usdt: "0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d",
+                permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+                entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
+                trustedForwarder: "0xB2b5841DBeF766d4b521221732F9B618fCf34A87",
+                relayRouter: "0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222",
+                messageTransmitter: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
+                tokenMessenger: "0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d",
+            },
+        },
+
+        etherlink: {
+            key: "etherlink",
+            name: "Etherlink",
+            vmType: "EVM",
+            chainId: 42793,
+            lzSrcId: 0,
+            currency: "XTZ",
+            explorerUrl: "https://explorer.etherlink.com",
+            apiUrl: "https://explorer.etherlink.com/api",
+            rpcUrls: [
+                "PROTECTED_RPC",
+                "https://node.mainnet.etherlink.com",
+            ],
+            defaultRpcUrlIndex: 0,
+            addresses: {
+                usdc: "0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9",
+                usdt: "0x2C03058C8AFC06713be23e58D2febC8337dbfE6A",
+                permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+                entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
+                trustedForwarder: "0xB2b5841DBeF766d4b521221732F9B618fCf34A87",
+                relayRouter: "0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222",
+                messageTransmitter: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
+                tokenMessenger: "0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d",
+            },
+        },
+
     }
 }
 
