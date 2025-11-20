@@ -4976,6 +4976,39 @@ export const chainConfig = {
         },
     },
 
+    zora: {
+        key: "zora",
+        display: "Zora",
+        currency: "ETH",
+        vmType: "EVM",
+        chainId: 7777777,
+        lzSrcId: 0,
+        explorerUrls: [
+            "https://explorer.zora.energy",
+        ],
+        defaultExplorerUrlIndex: 0,
+        apiUrl: "https://explorer.zora.energy/api",
+        rpcUrls: [
+            "https://rpc.zora.energy",
+            "https://zora.drpc.org",
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
 }
 
 export function getRpcUrl(chain) {

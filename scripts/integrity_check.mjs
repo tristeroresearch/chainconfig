@@ -593,7 +593,7 @@ function formatChainObject(key, chain, indent = '    ') {
     lines.push(`${indent}    chainId: ${chain.chainId},`);
     lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
 
-    // Add explorerUrls if present
+    // Add explorerUrls
     if (chain.explorerUrls && Array.isArray(chain.explorerUrls)) {
         lines.push(`${indent}    explorerUrls: [`);
         for (const url of chain.explorerUrls) {
@@ -602,9 +602,6 @@ function formatChainObject(key, chain, indent = '    ') {
         lines.push(`${indent}    ],`);
         lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex || 0},`);
     }
-
-    // Add explorerUrl
-    lines.push(`${indent}    explorerUrl: "${chain.explorerUrl}",`);
 
     // Add explorerApiUrl/apiUrl if exists
     if (chain.explorerApiUrl) {
