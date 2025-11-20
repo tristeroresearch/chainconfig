@@ -5009,6 +5009,138 @@ export const chainConfig = {
         },
     },
 
+    cronos_zkevm: {
+        key: 'cronos_zkevm',
+        display: 'Cronos zkEVM',
+        currency: 'zkCRO',
+        chainId: 388,
+        lzSrcId: 0,
+        explorerUrls: [
+            'https://explorer.zkevm.cronos.org'
+        ],
+        defaultRpcUrlIndex: 0,
+        rpcUrls: [
+            'https://lb.drpc.org/ogrpc?network=cronos-zkevm&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0',
+            'https://mainnet.zkevm.cronos.org/'
+        ],
+        apiUrl: 'https://explorer.zkevm.cronos.org/api',
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    wemix: {
+        key: "wemix",
+        display: "Wemix",
+        currency: "WEMIX",
+        vmType: "EVM",
+        chainId: 1111,
+        lzSrcId: 0,
+        explorerUrls: [
+            "https://explorer.wemix.com",
+        ],
+        defaultExplorerUrlIndex: 0,
+        apiUrl: "https://explorer.wemix.com/api",
+        rpcUrls: [
+            "https://lb.drpc.org/ogrpc?network=wemix&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0",
+            "https://api.wemix.com",
+        ],
+        defaultRpcUrlIndex: 1,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x0000000000000000000000000000000000000000",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    ailayer: {
+        key: "ailayer",
+        display: "AILayer",
+        currency: "BTC",
+        vmType: "EVM",
+        chainId: 2649,
+        lzSrcId: 0,
+        explorerUrls: [
+            'https://mainnet-explorer.ailayer.xyz',
+        ],
+        defaultExplorerUrlIndex: 0,
+        apiUrl: "https://mainnet-explorer.ailayer.xyz/api",
+        rpcUrls: [
+            'https://mainnet-rpc.ailayer.xyz'
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x0000000000000000000000000000000000000000",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0x0000000000000000000000000000000000000000",
+        },
+    },
+
+    x_layer: {
+        key: "x_layer",
+        display: "X-Layer",
+        currency: "OKB",
+        vmType: "EVM",
+        chainId: 196,
+        lzSrcId: 0,
+        explorerUrls: [
+            "https://www.oklink.com/xlayer",
+        ],
+        defaultExplorerUrlIndex: 0,
+        apiUrl: "https://www.oklink.com/xlayer/api",
+        rpcUrls: [
+            "https://endpoints.omniatech.io/v1/xlayer/mainnet/public",
+            "https://xlayer.drpc.org",
+            "https://rpc.ankr.com/xlayer/697e90c0df4c82240c1def9ca28fea89eb5bd48dba57b3bde249af9ae1269394",
+        ],
+        defaultRpcUrlIndex: 1,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+
 }
 
 export function getRpcUrl(chain) {

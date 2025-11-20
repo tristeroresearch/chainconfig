@@ -394,7 +394,8 @@ async function verifyContracts(chainConfig, rpcResults) {
             if (finalAddress === ZERO_ADDRESS) {
                 console.log(`○ Zero address (${correctionReason})`);
             } else {
-                const explorerUrl = chain.explorerUrl ? `${chain.explorerUrl}/address/${finalAddress}#code` : '';
+                const baseExplorerUrl = getExplorerUrl(chain);
+                const explorerUrl = baseExplorerUrl ? `${baseExplorerUrl}/address/${finalAddress}#code` : '';
                 const bytecodeNote = configCodeLength > 0 ? `${configCodeLength}B` : defaultCodeLength > 0 ? `${defaultCodeLength}B` : '0B';
                 const correctionNote = correctionNeeded ? ` [${correctionReason}]` : '';
                 console.log(`✓ ${finalAddress.substring(0, 10)}... (${bytecodeNote})${correctionNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
@@ -462,7 +463,8 @@ async function verifyContracts(chainConfig, rpcResults) {
                     };
 
                     if (hasCode) {
-                        const explorerUrl = chain.explorerUrl ? `${chain.explorerUrl}/address/${checksummedAddr}#code` : '';
+                        const baseExplorerUrl = getExplorerUrl(chain);
+                        const explorerUrl = baseExplorerUrl ? `${baseExplorerUrl}/address/${checksummedAddr}#code` : '';
                         const checksumNote = needsChecksumFix ? ' (needs checksum fix)' : '';
                         console.log(`✓ ${checksummedAddr.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
                     } else {
@@ -686,9 +688,9 @@ function saveCorrectedConfig(correctedConfig) {
     outputLines.push('');
     outputLines.push('export function getExplorerUrl(chain) {');
     outputLines.push('    if (!chain) return null;');
-    outputLines.push('    if (!chain.explorerUrls || chain.explorerUrls.length === 0) return chain.explorerUrl || null;');
-    outputLines.push('    const index = chain.defaultExplorerUrlIndex || 0;');
-    outputLines.push('    return chain.explorerUrls[index] || chain.explorerUrls[0];');
+    outputLines.push('    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;');
+    outputLines.push('    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;');
+    outputLines.push('    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];');
     outputLines.push('}');
     outputLines.push('');
 
