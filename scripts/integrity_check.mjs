@@ -727,8 +727,36 @@ async function cmdVerifyContracts() {
     }
 }
 
-async function cmdFix() {
-    const chainConfig = await loadChainConfig();
+async function cmdFix(argv) {
+    const fullChainConfig = await loadChainConfig();
+    
+    // Filter chains if --chains option is provided
+    let chainConfig = fullChainConfig;
+    let selectedKeys = null;
+    
+    if (argv.chains) {
+        selectedKeys = argv.chains.split(',').map(k => k.trim()).filter(Boolean);
+        console.log(`\n=== Fixing specific chains: ${selectedKeys.join(', ')} ===\n`);
+        
+        chainConfig = {};
+        const notFound = [];
+        for (const key of selectedKeys) {
+            if (fullChainConfig[key]) {
+                chainConfig[key] = fullChainConfig[key];
+            } else {
+                notFound.push(key);
+            }
+        }
+        
+        if (notFound.length > 0) {
+            console.warn(`Warning: Chain keys not found: ${notFound.join(', ')}`);
+        }
+        
+        if (Object.keys(chainConfig).length === 0) {
+            console.error('Error: No valid chain keys provided.');
+            process.exit(1);
+        }
+    }
     
     // Run all checks
     checkBasicIntegrity(chainConfig);
@@ -748,14 +776,16 @@ async function cmdFix() {
         };
     }
     
-    const { corrected, hasChanges, changesSummary } = generateCorrectedConfig(chainConfig, allCorrections);
+    // If filtering chains, merge corrections back into full config for output
+    const configForOutput = selectedKeys ? fullChainConfig : chainConfig;
+    const { corrected, hasChanges, changesSummary } = generateCorrectedConfig(configForOutput, allCorrections);
     
     if (hasChanges) {
         // Print summary of changes
         console.log('\n=== Summary of Fixes ===');
         let totalChanges = 0;
         for (const [chainKey, changes] of Object.entries(changesSummary)) {
-            const chain = chainConfig[chainKey];
+            const chain = fullChainConfig[chainKey];
             const displayName = chain?.display || chain?.name || chainKey;
             console.log(`\n${displayName} (${chainKey}):`);
             for (const change of changes) {
@@ -836,8 +866,13 @@ async function main() {
         .command(
             'fix',
             'Run all checks and generate corrected config file',
-            {},
-            async () => await cmdFix()
+            (yargs) => {
+                return yargs.option('chains', {
+                    describe: 'Comma-separated list of chain keys to fix (e.g., ethereum,base,polygon)',
+                    type: 'string',
+                });
+            },
+            async (argv) => await cmdFix(argv)
         )
         .command(
             'info',
