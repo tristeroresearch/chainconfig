@@ -278,7 +278,7 @@ export const chainConfig = {
             "https://rpc.sophon.xyz",
             "https://rpc-quicknode.sophon.xyz",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x0000000000000000000000000000000000000000",
@@ -4048,7 +4048,7 @@ export const chainConfig = {
 
     debank: {
         key: "debank",
-        display: "undefined",
+        display: "Debank",
         currency: "ETH",
         vmType: "EVM",
         chainId: 20240603,
