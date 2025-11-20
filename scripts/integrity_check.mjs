@@ -18,6 +18,8 @@ const DEFAULT_ADDRESSES = {
     entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
     trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
     relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+    create5: '0x7000000db505d50f077492Efa36a8968ff7493dD',
+    multicall3: '0xcA11bde05977b3631167028862bE2a173976CA11',
 };
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
@@ -36,6 +38,8 @@ const ABIS = {
     PERMIT2: loadAbi('PERMIT2'),
     MESSAGE_TRANSMITTER: loadAbi('MESSAGE_TRANSMITTER'),
     TOKEN_MESSENGER: loadAbi('TOKEN_MESSENGER'),
+    CREATE5: loadAbi('CREATE5'),
+    MULTICALL3: loadAbi('MULTICALL3'),
 };
 
 // Load chain config
@@ -196,6 +200,14 @@ async function verifyContract(provider, address, abi, interfaceName) {
                 // RELAY_ROUTER doesn't have simple view functions to test
                 // Just verify code exists (already checked above)
                 verified = true;
+            } else if (interfaceName === 'CREATE5') {
+                // Verify CREATE5 by calling computeAddress
+                await contract.computeAddress(ethers.utils.formatBytes32String('test'), ethers.utils.formatBytes32String('salt'));
+                verified = true;
+            } else if (interfaceName === 'MULTICALL3') {
+                // Verify MULTICALL3 by calling getBlockNumber
+                await contract.getBlockNumber();
+                verified = true;
             }
         } catch (e) {
             return { exists: true, verified: false, reason: `Interface verification failed: ${e.message}`, checksummedAddress, needsChecksumFix };
@@ -236,6 +248,8 @@ async function verifyContracts(chainConfig, rpcResults) {
             { key: 'relayRouter', abi: ABIS.RELAY_ROUTER, name: 'RELAY_ROUTER', default: DEFAULT_ADDRESSES.relayRouter },
             { key: 'messageTransmitter', abi: ABIS.MESSAGE_TRANSMITTER, name: 'MESSAGE_TRANSMITTER', default: DEFAULT_ADDRESSES.messageTransmitter },
             { key: 'tokenMessenger', abi: ABIS.TOKEN_MESSENGER, name: 'TOKEN_MESSENGER', default: DEFAULT_ADDRESSES.tokenMessenger },
+            { key: 'create5', abi: ABIS.CREATE5, name: 'CREATE5', default: DEFAULT_ADDRESSES.create5 },
+            { key: 'multicall3', abi: ABIS.MULTICALL3, name: 'MULTICALL3', default: DEFAULT_ADDRESSES.multicall3 },
         ];
 
         const checkedAddressKeys = new Set();
@@ -382,39 +396,193 @@ async function verifyContracts(chainConfig, rpcResults) {
     return { results, corrections };
 }
 
+// Required addresses that every chain should have
+const REQUIRED_ADDRESSES = [
+    'gasToken',
+    'wrappedGasToken',
+    'usdc',
+    'usdt',
+    'permit2',
+    'entryPoint',
+    'trustedForwarder',
+    'relayRouter',
+    'messageTransmitter',
+    'tokenMessenger',
+    'create5',
+    'multicall3',
+];
+
 // Generate corrected config
 function generateCorrectedConfig(chainConfig, allCorrections) {
     const corrected = JSON.parse(JSON.stringify(chainConfig)); // Deep clone
-    let hasChanges = false;
+    const changesSummary = {};
 
-    for (const [key, corrections] of Object.entries(allCorrections)) {
-        if (!corrected[key]) continue;
+    for (const [key, chain] of Object.entries(corrected)) {
+        const chainChanges = [];
 
-        if (corrections.defaultRpcUrlIndex !== undefined) {
-            corrected[key].defaultRpcUrlIndex = corrections.defaultRpcUrlIndex;
-            hasChanges = true;
+        // Apply corrections from checks
+        const corrections = allCorrections[key];
+        if (corrections) {
+            if (corrections.defaultRpcUrlIndex !== undefined) {
+                corrected[key].defaultRpcUrlIndex = corrections.defaultRpcUrlIndex;
+                chainChanges.push(`Updated defaultRpcUrlIndex to ${corrections.defaultRpcUrlIndex}`);
+            }
+
+            if (corrections.chainId !== undefined) {
+                corrected[key].chainId = corrections.chainId;
+                chainChanges.push(`Updated chainId to ${corrections.chainId}`);
+            }
+
+            if (corrections.addresses) {
+                if (!corrected[key].addresses) corrected[key].addresses = {};
+                for (const [addrKey, addrValue] of Object.entries(corrections.addresses)) {
+                    corrected[key].addresses[addrKey] = addrValue;
+                    chainChanges.push(`Updated address ${addrKey} to ${addrValue}`);
+                }
+            }
         }
 
-        if (corrections.chainId !== undefined) {
-            corrected[key].chainId = corrections.chainId;
-            hasChanges = true;
+        // Ensure all required addresses are present
+        if (!corrected[key].addresses) corrected[key].addresses = {};
+        for (const addrKey of REQUIRED_ADDRESSES) {
+            if (!corrected[key].addresses[addrKey]) {
+                corrected[key].addresses[addrKey] = ZERO_ADDRESS;
+                chainChanges.push(`Added missing address ${addrKey} as zero address`);
+            }
         }
 
-        if (corrections.addresses) {
-            if (!corrected[key].addresses) corrected[key].addresses = {};
-            Object.assign(corrected[key].addresses, corrections.addresses);
-            hasChanges = true;
+        if (chainChanges.length > 0) {
+            changesSummary[key] = chainChanges;
         }
     }
 
-    return { corrected, hasChanges };
+    const hasChanges = Object.keys(changesSummary).length > 0;
+    return { corrected, hasChanges, changesSummary };
+}
+
+// Format a chain object as JavaScript code
+function formatChainObject(key, chain, indent = '    ') {
+    const lines = [
+        `${indent}${key}: {`,
+        `${indent}    key: "${chain.key}",`,
+    ];
+
+    // Add display/name field
+    if (chain.display !== undefined) {
+        lines.push(`${indent}    display: "${chain.display}",`);
+    }
+    if (chain.name !== undefined) {
+        lines.push(`${indent}    name: "${chain.name}",`);
+    }
+
+    lines.push(`${indent}    currency: "${chain.currency}",`);
+    lines.push(`${indent}    vmType: "${chain.vmType || 'EVM'}",`);
+    lines.push(`${indent}    chainId: ${chain.chainId},`);
+    lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
+
+    // Add explorerUrls if present
+    if (chain.explorerUrls && Array.isArray(chain.explorerUrls)) {
+        lines.push(`${indent}    explorerUrls: [`);
+        for (const url of chain.explorerUrls) {
+            lines.push(`${indent}        "${url}",`);
+        }
+        lines.push(`${indent}    ],`);
+        lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex || 0},`);
+    }
+
+    // Add explorerUrl
+    lines.push(`${indent}    explorerUrl: "${chain.explorerUrl}",`);
+
+    // Add explorerApiUrl/apiUrl if exists
+    if (chain.explorerApiUrl) {
+        lines.push(`${indent}    explorerApiUrl: "${chain.explorerApiUrl}",`);
+    }
+    if (chain.apiUrl) {
+        lines.push(`${indent}    apiUrl: "${chain.apiUrl}",`);
+    }
+
+    // Add rpcUrls
+    lines.push(`${indent}    rpcUrls: [`);
+    for (const url of chain.rpcUrls) {
+        lines.push(`${indent}        "${url}",`);
+    }
+    lines.push(`${indent}    ],`);
+    lines.push(`${indent}    defaultRpcUrlIndex: ${chain.defaultRpcUrlIndex},`);
+
+    // Add addresses - ensure proper ordering
+    lines.push(`${indent}    addresses: {`);
+    
+    // Order: token addresses first, then contract addresses
+    const tokenAddresses = ['gasToken', 'wrappedGasToken', 'usdc', 'usdt'];
+    const contractAddresses = ['permit2', 'entryPoint', 'trustedForwarder', 'relayRouter', 'messageTransmitter', 'tokenMessenger', 'create5', 'multicall3'];
+    const otherAddresses = Object.keys(chain.addresses || {}).filter(
+        k => ![...tokenAddresses, ...contractAddresses].includes(k)
+    );
+
+    // Add token addresses
+    for (const addrKey of tokenAddresses) {
+        if (chain.addresses && chain.addresses[addrKey] !== undefined) {
+            lines.push(`${indent}        ${addrKey}: "${chain.addresses[addrKey]}",`);
+        }
+    }
+
+    // Add other addresses (like stables, etc)
+    for (const addrKey of otherAddresses) {
+        lines.push(`${indent}        ${addrKey}: "${chain.addresses[addrKey]}",`);
+    }
+
+    // Add contract addresses
+    for (const addrKey of contractAddresses) {
+        if (chain.addresses && chain.addresses[addrKey] !== undefined) {
+            lines.push(`${indent}        ${addrKey}: "${chain.addresses[addrKey]}",`);
+        }
+    }
+
+    lines.push(`${indent}    },`);
+    lines.push(`${indent}},`);
+    lines.push('');
+
+    return lines.join('\n');
 }
 
 // Save corrected config to file
 function saveCorrectedConfig(correctedConfig) {
     const outputPath = path.join(__dirname, '..', 'chains-corrected.mjs');
-    const content = `// Auto-generated corrected chain configuration\n// Generated on ${new Date().toISOString()}\n\nexport const chainConfig = ${JSON.stringify(correctedConfig, null, 4)};\n`;
-    fs.writeFileSync(outputPath, content, 'utf8');
+    
+    const outputLines = [
+        '// Auto-generated corrected chain configuration',
+        `// Generated on ${new Date().toISOString()}`,
+        '// Centralized chain configuration for scripts',
+        '// Each chain has a stable key usable as chainConfig[key].variable',
+        '// rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one',
+        '',
+        'export const chainConfig = {',
+    ];
+
+    for (const [key, chain] of Object.entries(correctedConfig)) {
+        outputLines.push(formatChainObject(key, chain));
+    }
+
+    outputLines.push('}');
+    outputLines.push('');
+
+    // Add helper functions
+    outputLines.push('export function getRpcUrl(chain) {');
+    outputLines.push('    if (!chain) return null;');
+    outputLines.push('    if (!chain.rpcUrls || chain.rpcUrls.length === 0) return null;');
+    outputLines.push('    const index = chain.defaultRpcUrlIndex || 0;');
+    outputLines.push('    return chain.rpcUrls[index] || chain.rpcUrls[0];');
+    outputLines.push('}');
+    outputLines.push('');
+    outputLines.push('export function getExplorerUrl(chain) {');
+    outputLines.push('    if (!chain) return null;');
+    outputLines.push('    if (!chain.explorerUrls || chain.explorerUrls.length === 0) return chain.explorerUrl || null;');
+    outputLines.push('    const index = chain.defaultExplorerUrlIndex || 0;');
+    outputLines.push('    return chain.explorerUrls[index] || chain.explorerUrls[0];');
+    outputLines.push('}');
+    outputLines.push('');
+
+    fs.writeFileSync(outputPath, outputLines.join('\n'), 'utf8');
     console.log(`\n✓ Corrected configuration saved to: ${outputPath}`);
 }
 
@@ -467,9 +635,23 @@ async function cmdFix() {
         };
     }
     
-    const { corrected, hasChanges } = generateCorrectedConfig(chainConfig, allCorrections);
+    const { corrected, hasChanges, changesSummary } = generateCorrectedConfig(chainConfig, allCorrections);
     
     if (hasChanges) {
+        // Print summary of changes
+        console.log('\n=== Summary of Fixes ===');
+        let totalChanges = 0;
+        for (const [chainKey, changes] of Object.entries(changesSummary)) {
+            const chain = chainConfig[chainKey];
+            const displayName = chain?.display || chain?.name || chainKey;
+            console.log(`\n${displayName} (${chainKey}):`);
+            for (const change of changes) {
+                console.log(`  • ${change}`);
+                totalChanges++;
+            }
+        }
+        console.log(`\n✓ Total: ${totalChanges} changes across ${Object.keys(changesSummary).length} chains`);
+        
         saveCorrectedConfig(corrected);
         console.log('\n✓ Corrections applied. Review chains-corrected.mjs before using.');
     } else {
