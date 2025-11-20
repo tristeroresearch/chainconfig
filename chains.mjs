@@ -18,7 +18,6 @@ export const chainConfig = {
             "https://ethereum.routescan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://etherscan.io",
         explorerApiUrl: "https://api.etherscan.io/api",
         rpcUrls: [
             "https://eth-mainnet.public.blastapi.io",
@@ -87,7 +86,6 @@ export const chainConfig = {
             "https://bttcscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://bttcscan.com/",
         rpcUrls: [
             "https://bittorrent.drpc.org",
             "https://rpc.bittorrentchain.io",
@@ -122,7 +120,6 @@ export const chainConfig = {
             "https://fraxscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://fraxscan.com/",
         rpcUrls: [
             "https://fraxtal.drpc.org",
             "https://rpc.frax.com",
@@ -158,7 +155,6 @@ export const chainConfig = {
             "https://mainnet.opbnbscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://opbnb.bscscan.com/",
         rpcUrls: [
             "https://opbnb.drpc.org",
             "https://opbnb-mainnet-rpc.bnbchain.org",
@@ -198,7 +194,6 @@ export const chainConfig = {
             "https://taikoexplorer.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://taikoscan.io/",
         rpcUrls: [
             "https://taiko.drpc.org",
             "https://rpc.taiko.xyz",
@@ -239,7 +234,6 @@ export const chainConfig = {
             "https://xdcscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://xdcscan.com/",
         rpcUrls: [
             "https://rpc.xdcrpc.com",
             "https://rpc1.xinfin.network",
@@ -280,7 +274,6 @@ export const chainConfig = {
             "https://explorer.sophon.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://sophscan.xyz/",
         rpcUrls: [
             "https://rpc.sophon.xyz",
             "https://rpc-quicknode.sophon.xyz",
@@ -314,7 +307,6 @@ export const chainConfig = {
             "https://explorer.plume.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://phoenix-explorer.plumenetwork.xyz",
         rpcUrls: [
             "https://rpc.plume.org",
             "PROTECTED_RPC",
@@ -350,7 +342,6 @@ export const chainConfig = {
             "https://explorer.mainnet.abs.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://abscan.org/",
         rpcUrls: [
             "https://abstract.drpc.org",
             "https://api.mainnet.abs.xyz",
@@ -385,7 +376,6 @@ export const chainConfig = {
             "https://explorer.katanarpc.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://katanascan.com/",
         rpcUrls: [
             "https://rpc.katana.network",
             "https://katana.drpc.org",
@@ -422,7 +412,6 @@ export const chainConfig = {
             "https://mainnet.superscan.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://optimistic.etherscan.io/",
         explorerApiUrl: "https://api-optimistic.etherscan.io/api",
         rpcUrls: [
             "https://optimism.drpc.org",
@@ -467,7 +456,6 @@ export const chainConfig = {
             "https://avascan.info",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://snowscan.xyz/",
         explorerApiUrl: "https://api.snowscan.xyz/api",
         rpcUrls: [
             "https://avalanche-c-chain-rpc.publicnode.com",
@@ -510,7 +498,6 @@ export const chainConfig = {
             "https://arbitrum.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://arbiscan.io",
         explorerApiUrl: "https://api.arbiscan.io/api",
         rpcUrls: [
             "https://arbitrum-one.public.blastapi.io",
@@ -554,7 +541,6 @@ export const chainConfig = {
             "https://nova-explorer.arbitrum.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://nova.arbiscan.io/",
         rpcUrls: [
             "https://nova.arbitrum.io/rpc",
             "https://arbitrum-nova.public.blastapi.io",
@@ -592,7 +578,6 @@ export const chainConfig = {
             "https://base.superscan.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://basescan.org",
         explorerApiUrl: "https://api.basescan.org/api",
         rpcUrls: [
             "https://mainnet.base.org",
@@ -636,7 +621,6 @@ export const chainConfig = {
             "https://polygon.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://polygonscan.com",
         explorerApiUrl: "https://api.polygonscan.com/api",
         rpcUrls: [
             "https://1rpc.io/matic",
@@ -682,7 +666,6 @@ export const chainConfig = {
             "https://linea.l2scan.co",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://lineascan.build",
         rpcUrls: [
             "https://linea.drpc.org",
             "https://rpc.linea.build",
@@ -719,7 +702,6 @@ export const chainConfig = {
             "https://bnb.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://bscscan.com",
         explorerApiUrl: "https://api.bscscan.com/api",
         rpcUrls: [
             "https://bsc-dataseed.binance.org",
@@ -781,7 +763,6 @@ export const chainConfig = {
             "https://unichain.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://uniscan.xyz",
         explorerApiUrl: "https://api.uniscan.xyz/api",
         rpcUrls: [
             "https://unichain.drpc.org",
@@ -818,7 +799,6 @@ export const chainConfig = {
             "https://explorer.soniclabs.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://sonicscan.com",
         explorerApiUrl: "https://api.sonicscan.com/api",
         rpcUrls: [
             "https://sonic.drpc.org",
@@ -854,7 +834,6 @@ export const chainConfig = {
             "https://seitrace.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://seitrace.com",
         explorerApiUrl: "https://seitrace.com/pacific-1/api",
         rpcUrls: [
             "https://sei.drpc.org",
@@ -890,7 +869,6 @@ export const chainConfig = {
             "https://worldchain-mainnet.explorer.alchemy.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://worldscan.org",
         explorerApiUrl: "https://api.worldscan.org/api",
         rpcUrls: [
             "https://worldchain.drpc.org",
@@ -927,7 +905,6 @@ export const chainConfig = {
             "https://explorer.zksync.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.zksync.io",
         explorerApiUrl: "https://api.zksync.io/api",
         rpcUrls: [
             "https://mainnet.era.zksync.io",
@@ -967,7 +944,6 @@ export const chainConfig = {
             "https://fantom.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.fantom.network",
         explorerApiUrl: "https://api.ftmscan.com/api",
         rpcUrls: [
             "https://1rpc.io/ftm",
@@ -1010,7 +986,6 @@ export const chainConfig = {
             "https://moonriver.moonscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://moonriver.moonscan.io",
         explorerApiUrl: "https://api.moonscan.io/api",
         rpcUrls: [
             "https://moonriver.drpc.org",
@@ -1045,7 +1020,6 @@ export const chainConfig = {
             "https://explorer.aurora.dev",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.aurora.dev",
         explorerApiUrl: "https://api.aurorascan.dev/api",
         rpcUrls: [
             "https://mainnet.aurora.dev",
@@ -1082,7 +1056,6 @@ export const chainConfig = {
             "https://bobascan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://bobascan.com/",
         explorerApiUrl: "https://api.bobascan.com/api",
         rpcUrls: [
             "https://mainnet.boba.network",
@@ -1118,7 +1091,6 @@ export const chainConfig = {
             "https://explorer.cronos.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.cronos.org",
         explorerApiUrl: "https://api.cronos.org/api",
         rpcUrls: [
             "https://cronos-evm-rpc.publicnode.com",
@@ -1159,7 +1131,6 @@ export const chainConfig = {
             "https://explorer.harmony.one",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.harmony.one",
         explorerApiUrl: "https://api.harmony.one/api",
         rpcUrls: [
             "wss://harmony-0.drpc.org",
@@ -1199,7 +1170,6 @@ export const chainConfig = {
             "https://kavascan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://kavascan.com",
         explorerApiUrl: "https://api.kavascan.com/api",
         rpcUrls: [
             "https://kava-evm-rpc.publicnode.com",
@@ -1239,7 +1209,6 @@ export const chainConfig = {
             "https://www.oklink.com/gravity-alpha",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.gravity.xyz",
         explorerApiUrl: "https://api.gravity.xyz/api",
         rpcUrls: [
             "https://rpc.ankr.com/gravity",
@@ -1274,7 +1243,6 @@ export const chainConfig = {
             "https://modescan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.mode.network",
         explorerApiUrl: "https://api.mode.network/api",
         rpcUrls: [
             "https://mainnet.mode.network",
@@ -1310,7 +1278,6 @@ export const chainConfig = {
             "https://andromeda-explorer.metis.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.metis.io",
         explorerApiUrl: "https://api.metis.io/api",
         rpcUrls: [
             "https://metis.drpc.org",
@@ -1350,7 +1317,6 @@ export const chainConfig = {
             "https://soneium.slam.vision",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.soneium.org",
         explorerApiUrl: "https://api.soneium.org/api",
         rpcUrls: [
             "https://soneium.drpc.org",
@@ -1384,7 +1350,6 @@ export const chainConfig = {
             "https://apescan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://apescan.io",
         explorerApiUrl: "https://api.apescan.io/api",
         rpcUrls: [
             "https://apechain.drpc.org",
@@ -1419,7 +1384,6 @@ export const chainConfig = {
             "https://beratrail.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://berascan.com",
         explorerApiUrl: "https://api.berascan.com/api",
         rpcUrls: [
             "https://rpc.berachain.com",
@@ -1455,7 +1419,6 @@ export const chainConfig = {
             "https://plasmascan.to",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://plasmascan.to",
         explorerApiUrl: "https://api.plasmascan.to/api",
         rpcUrls: [
             "https://rpc.plasma.to",
@@ -1489,7 +1452,6 @@ export const chainConfig = {
             "https://teloscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://teloscan.io",
         explorerApiUrl: "https://api.teloscan.io/api",
         rpcUrls: [
             "https://rpc.telos.net",
@@ -1526,7 +1488,6 @@ export const chainConfig = {
             "https://evm.flowscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://flowscan.io",
         explorerApiUrl: "https://api.flowscan.io/api",
         rpcUrls: [
             "https://mainnet.evm.nodes.onflow.org",
@@ -1561,7 +1522,6 @@ export const chainConfig = {
             "https://mainnet.flarescan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://flare-explorer.flare.network",
         explorerApiUrl: "https://api.flare-explorer.flare.network/api",
         rpcUrls: [
             "https://rpc.ankr.com/flare",
@@ -1601,7 +1561,6 @@ export const chainConfig = {
             "https://explorer.swellnetwork.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://swellchainscan.io/",
         explorerApiUrl: "https://api.swellchainscan.io/api",
         rpcUrls: [
             "https://rpc.ankr.com/swell",
@@ -1636,7 +1595,6 @@ export const chainConfig = {
             "https://purrsec.com/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://hyperevmscan.io",
         explorerApiUrl: "https://api.hyperevmscan.io/api",
         rpcUrls: [
             "https://rpc.hyperliquid.xyz/evm",
@@ -1676,7 +1634,6 @@ export const chainConfig = {
             "https://blockscout.injective.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://blockscout.injective.network/",
         explorerApiUrl: "https://blockscout-api.injective.network/api",
         rpcUrls: [
             "https://sentry.evm-rpc.injective.network/",
@@ -1711,7 +1668,6 @@ export const chainConfig = {
             "https://scan.ancient8.gg",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.ancient8.gg",
         explorerApiUrl: "https://api.ancient8.gg/api",
         rpcUrls: [
             "https://rpc.ancient8.gg",
@@ -1745,7 +1701,6 @@ export const chainConfig = {
             "https://celo.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://celoscan.io",
         explorerApiUrl: "https://api.celoscan.io/api",
         rpcUrls: [
             "https://forno.celo.org",
@@ -1781,7 +1736,6 @@ export const chainConfig = {
             "https://zkevm.polygonscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://zkevm.polygonscan.com",
         explorerApiUrl: "https://api.zkevm.polygonscan.com/api",
         rpcUrls: [
             "https://zkevm-rpc.com",
@@ -1818,7 +1772,6 @@ export const chainConfig = {
             "https://scrollscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scrollscan.com",
         explorerApiUrl: "https://api.scrollscan.com/api",
         rpcUrls: [
             "https://rpc.scroll.io",
@@ -1859,7 +1812,6 @@ export const chainConfig = {
             "https://explorer.mantle.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mantlescan.xyz",
         explorerApiUrl: "https://api.mantlescan.xyz/api",
         rpcUrls: [
             "https://1rpc.io/mantle",
@@ -1898,7 +1850,6 @@ export const chainConfig = {
             "https://blastexplorer.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://blastscan.io",
         explorerApiUrl: "https://api.blastscan.io/api",
         rpcUrls: [
             "https://rpc.ankr.com/blast",
@@ -1941,7 +1892,6 @@ export const chainConfig = {
             "https://rootstock.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.rsk.co",
         rpcUrls: [
             "https://public-node.rsk.co",
             "https://rootstock.drpc.org",
@@ -1975,7 +1925,6 @@ export const chainConfig = {
             "https://explorer.codex.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.codex.xyz",
         rpcUrls: [
             "https://rpc.codex.xyz",
         ],
@@ -2009,7 +1958,6 @@ export const chainConfig = {
             "https://gnosis.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://gnosisscan.io",
         rpcUrls: [
             "https://rpc.gnosischain.com",
             "https://gnosis.drpc.org",
@@ -2053,7 +2001,6 @@ export const chainConfig = {
             "https://pacific-explorer.manta.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://pacific-explorer.manta.network",
         rpcUrls: [
             "https://pacific-rpc.manta.network/http",
             "https://1rpc.io/manta",
@@ -2093,7 +2040,6 @@ export const chainConfig = {
             "https://explorer.mintchain.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.mintchain.io",
         rpcUrls: [
             "https://rpc.mintchain.io",
             "https://global.rpc.mintchain.io",
@@ -2127,7 +2073,6 @@ export const chainConfig = {
             "https://shapescan.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://shapescan.xyz",
         rpcUrls: [
             "https://mainnet.shape.network",
             "https://shape-mainnet.g.alchemy.com/public",
@@ -2160,7 +2105,6 @@ export const chainConfig = {
             "https://explorer.appchain.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.appchain.xyz",
         rpcUrls: [
             "https://rpc.appchain.xyz/http",
         ],
@@ -2192,7 +2136,6 @@ export const chainConfig = {
             "https://explorer.redstone.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.redstone.xyz",
         rpcUrls: [
             "https://rpc.redstonechain.com",
         ],
@@ -2224,7 +2167,6 @@ export const chainConfig = {
             "https://blockscout.lisk.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://blockscout.lisk.com",
         rpcUrls: [
             "https://rpc.api.lisk.com",
             "https://lisk.drpc.org",
@@ -2257,7 +2199,6 @@ export const chainConfig = {
             "https://mainnet.storyscan.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mainnet.storyscan.xyz",
         rpcUrls: [
             "https://mainnet.storyrpc.io",
             "https://story-evm-rpc.spidernode.net",
@@ -2303,7 +2244,6 @@ export const chainConfig = {
             "https://explorer.perennial.foundation",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.perennial.xyz",
         rpcUrls: [
             "https://1424.rpc.thirdweb.com",
             "https://rpc.perennial.foundation",
@@ -2336,7 +2276,6 @@ export const chainConfig = {
             "https://explorer.sanko.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.sanko.xyz",
         rpcUrls: [
             "https://mainnet.sanko.xyz",
         ],
@@ -2369,7 +2308,6 @@ export const chainConfig = {
             "https://app.roninchain.com/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://app.roninchain.com",
         rpcUrls: [
             "https://ronin.drpc.org",
             "https://api.roninchain.com/rpc",
@@ -2404,7 +2342,6 @@ export const chainConfig = {
             "https://explorer.morphl2.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.morphl2.io",
         rpcUrls: [
             "https://rpc.morphl2.io",
             "https://rpc-quicknode.morphl2.io",
@@ -2437,7 +2374,6 @@ export const chainConfig = {
             "https://explorer.somnia.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.somnia.network",
         rpcUrls: [
             "https://api.infra.mainnet.somnia.network",
             "https://rpc.somnia.network",
@@ -2473,7 +2409,6 @@ export const chainConfig = {
             "https://explorer.superseed.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer-superseed-mainnet-0.t.conduit.xyz",
         rpcUrls: [
             "https://mainnet.superseed.xyz",
             "https://superseed.drpc.org",
@@ -2506,7 +2441,6 @@ export const chainConfig = {
             "https://cyberscan.co",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://cyberscan.co",
         rpcUrls: [
             "https://cyber.alt.technology",
             "https://rpc.cyber.co",
@@ -2539,7 +2473,6 @@ export const chainConfig = {
             "https://explorer-v2.powerloom.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer-v2.powerloom.network",
         rpcUrls: [
             "https://rpc-v2.powerloom.network",
         ],
@@ -2571,7 +2504,6 @@ export const chainConfig = {
             "https://explorer.arena-z.gg",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.arena-z.gg",
         rpcUrls: [
             "https://rpc.arena-z.gg",
         ],
@@ -2603,7 +2535,6 @@ export const chainConfig = {
             "https://explorer.b3.fun",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.b3.fun",
         rpcUrls: [
             "https://mainnet-rpc.b3.fun/http",
             "https://mainnet-rpc.b3.fun",
@@ -2637,7 +2568,6 @@ export const chainConfig = {
             "https://maizenet-explorer.usecorn.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://cornscan.io",
         rpcUrls: [
             "https://maizenet-rpc.usecorn.com",
             "https://mainnet.corn-rpc.com",
@@ -2672,7 +2602,6 @@ export const chainConfig = {
             "https://explorer.funkichain.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://funkiscan.io",
         rpcUrls: [
             "https://rpc-mainnet.funkichain.com",
         ],
@@ -2704,7 +2633,6 @@ export const chainConfig = {
             "https://gunzscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://gunzscan.io",
         rpcUrls: [
             "https://rpc.gunzchain.io/ext/bc/2M47TxWHGnhNtq6pM5zPXdATBtuqubxn5EPFgFmEawCQr9WFML/rpc",
         ],
@@ -2736,7 +2664,6 @@ export const chainConfig = {
             "https://explorer.hemi.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.hemi.xyz",
         rpcUrls: [
             "https://rpc.hemi.network/rpc",
             "https://hemi.drpc.org",
@@ -2769,7 +2696,6 @@ export const chainConfig = {
             "https://explorer.zircuit.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.zircuit.com",
         rpcUrls: [
             "https://mainnet.zircuit.com",
             "https://zircuit-mainnet.drpc.org",
@@ -2802,7 +2728,6 @@ export const chainConfig = {
             "https://explorer.superposition.so",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.superposition.so",
         rpcUrls: [
             "https://rpc.superposition.so",
         ],
@@ -2834,7 +2759,6 @@ export const chainConfig = {
             "https://explorer.inkonchain.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.inkonchain.com",
         rpcUrls: [
             "https://rpc-gel.inkonchain.com",
             "https://rpc-qnd.inkonchain.com",
@@ -2868,7 +2792,6 @@ export const chainConfig = {
             "https://explorer.gobob.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.gobob.xyz",
         rpcUrls: [
             "https://rpc.gobob.xyz",
             "https://bob.drpc.org",
@@ -2903,7 +2826,6 @@ export const chainConfig = {
             "https://explorer.anime.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer-animechain-39xf6m45e3.t.conduit.xyz",
         rpcUrls: [
             "https://rpc-animechain-39xf6m45e3.t.conduit.xyz",
         ],
@@ -2936,7 +2858,6 @@ export const chainConfig = {
             "https://explorer.xai-chain.net",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://xaiscan.io",
         rpcUrls: [
             "https://xai-chain.net/rpc",
             "https://rpc.ankr.com/xai",
@@ -2969,7 +2890,6 @@ export const chainConfig = {
             "https://explorer.zero.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.zero.network",
         rpcUrls: [
             "https://rpc.zerion.io/v1/zero",
             "https://zero.drpc.org",
@@ -3003,7 +2923,6 @@ export const chainConfig = {
             "https://explorer.commons.syndicate.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://commons.explorer.syndicate.io",
         rpcUrls: [
             "https://commons.rpc.syndicate.io",
         ],
@@ -3035,7 +2954,6 @@ export const chainConfig = {
             "https://explorer.forma.art",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.forma.art",
         rpcUrls: [
             "https://rpc.forma.art",
         ],
@@ -3068,7 +2986,6 @@ export const chainConfig = {
             "https://mainnet.explorer.rarichain.org/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mainnet.explorer.rarichain.org",
         rpcUrls: [
             "https://mainnet.rpc.rarichain.org/http",
         ],
@@ -3100,7 +3017,6 @@ export const chainConfig = {
             "https://explorer.degen.tips",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.degen.tips",
         rpcUrls: [
             "https://rpc.degen.tips",
         ],
@@ -3132,7 +3048,6 @@ export const chainConfig = {
             "https://explorer.ethereal.trade",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.ethereal.trade",
         rpcUrls: [
             "https://rpc.ethereal.trade",
         ],
@@ -3165,7 +3080,6 @@ export const chainConfig = {
             "https://explorer.bsquared.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.bsquared.network/",
         apiUrl: "https://explorer.bsquared.network/api",
         rpcUrls: [
             "https://rpc.bsquared.network/",
@@ -3203,7 +3117,6 @@ export const chainConfig = {
             "https://scope.silicon.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scope.silicon.network",
         apiUrl: "https://scope.silicon.network/api",
         rpcUrls: [
             "https://rpc.silicon.network",
@@ -3238,7 +3151,6 @@ export const chainConfig = {
             "https://hashkey.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.hsk.xyz",
         apiUrl: "https://explorer.hsk.xyz/api",
         rpcUrls: [
             "https://hashkeychain-mainnet.alt.technology",
@@ -3273,7 +3185,6 @@ export const chainConfig = {
             "https://explorer.lyra.finance",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.lyra.finance",
         apiUrl: "https://explorer.lyra.finance/api",
         rpcUrls: [
             "https://rpc.lyra.finance",
@@ -3306,7 +3217,6 @@ export const chainConfig = {
             "https://explorer.zkcandy.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.zkcandy.io",
         apiUrl: "https://api.explorer.zkcandy.io/api",
         rpcUrls: [
             "https://rpc.zkcandy.io",
@@ -3339,7 +3249,6 @@ export const chainConfig = {
             "https://inevm.calderaexplorer.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://inevm.calderaexplorer.xyz",
         apiUrl: "https://inevm.calderaexplorer.xyz/api",
         rpcUrls: [
             "https://inevm.calderachain.xyz/http",
@@ -3374,7 +3283,6 @@ export const chainConfig = {
             "https://mitoscan.io/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mitoscan.io",
         apiUrl: "https://api.mitoscan.io/api",
         rpcUrls: [
             "https://rpc.mitosis.org",
@@ -3408,7 +3316,6 @@ export const chainConfig = {
             "https://scan.optopia.ai",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.optopia.ai/",
         apiUrl: "https://scan.optopia.ai/api",
         rpcUrls: [
             "https://rpc-mainnet.optopia.ai",
@@ -3443,7 +3350,6 @@ export const chainConfig = {
             "https://matchscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://www.matchscan.io/",
         apiUrl: "https://api.www.matchscan.io/api/",
         rpcUrls: [
             "https://rpc.matchain.io/",
@@ -3479,7 +3385,6 @@ export const chainConfig = {
             "https://scan.coredao.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.coredao.org",
         apiUrl: "https://scan.coredao.org/api",
         rpcUrls: [
             "https://rpc.coredao.org",
@@ -3517,7 +3422,6 @@ export const chainConfig = {
             "https://scan.merlinchain.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://merlin.l2scan.co",
         apiUrl: "https://merlin.l2scan.co/api",
         rpcUrls: [
             "https://rpc.merlinchain.io",
@@ -3554,7 +3458,6 @@ export const chainConfig = {
             "https://camp.cloud.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://camp.cloud.blockscout.com",
         apiUrl: "https://camp.cloud.blockscout.com/api",
         rpcUrls: [
             "https://rpc.camp.raas.gelato.cloud",
@@ -3587,7 +3490,6 @@ export const chainConfig = {
             "https://vanascan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://vanascan.io",
         apiUrl: "https://api.vanascan.io/api",
         rpcUrls: [
             "https://rpc.vana.org",
@@ -3623,7 +3525,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/yominet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/yominet-1",
         apiUrl: "https://scan.initia.xyz/yominet-1/api",
         rpcUrls: [
             "https://jsonrpc-yominet-1.anvil.initia.xyz",
@@ -3658,7 +3559,6 @@ export const chainConfig = {
             "https://mainnet.num.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mainnet.num.network/",
         apiUrl: "https://mainnet.num.network/api",
         rpcUrls: [
             "https://mainnetrpc.num.network",
@@ -3691,7 +3591,6 @@ export const chainConfig = {
             "https://edgenscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://edgenscan.io",
         apiUrl: "https://api.edgenscan.io/api",
         rpcUrls: [
             "https://rpc.layeredge.io",
@@ -3727,7 +3626,6 @@ export const chainConfig = {
             "https://explorer.dogechain.dog",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.dogechain.dog",
         apiUrl: "https://explorer.dogechain.dog/api",
         rpcUrls: [
             "https://rpc.dogechain.dog",
@@ -3767,7 +3665,6 @@ export const chainConfig = {
             "https://polynomialscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer-polynomial-mainnet-0.t.conduit.xyz",
         apiUrl: "https://explorer-polynomial-mainnet-0.t.conduit.xyz/api",
         rpcUrls: [
             "https://rpc.polynomial.fi",
@@ -3800,7 +3697,6 @@ export const chainConfig = {
             "https://swanscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://swanscan.io",
         apiUrl: "https://api.swanscan.io/api",
         rpcUrls: [
             "https://mainnet-rpc.swanchain.org",
@@ -3837,7 +3733,6 @@ export const chainConfig = {
             "https://blockscout.mainnet.fluence.dev",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://blockscout.mainnet.fluence.dev",
         apiUrl: "https://blockscout.mainnet.fluence.dev/apimainnet.fluence.dev",
         rpcUrls: [
             "https://rpc.mainnet.fluence.dev",
@@ -3870,7 +3765,6 @@ export const chainConfig = {
             "https://explorer.zklink.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.zklink.io",
         apiUrl: "https://api.explorer.zklink.io/api",
         rpcUrls: [
             "https://rpc.zklink.io",
@@ -3903,7 +3797,6 @@ export const chainConfig = {
             "https://scan.exsat.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.exsat.network",
         apiUrl: "https://scan.exsat.network/api",
         rpcUrls: [
             "https://evm.exsat.network",
@@ -3936,7 +3829,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/bfb-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/bfb-1",
         apiUrl: "https://scan.initia.xyz/bfb-1/api",
         rpcUrls: [
             "https://jsonrpc-bfb-1.anvil.europe-west.initia.xyz",
@@ -3970,7 +3862,6 @@ export const chainConfig = {
             "https://www.oklink.com/ethw/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://www.oklink.com/ethw",
         apiUrl: "https://www.oklink.com/ethw/api",
         rpcUrls: [
             "https://mainnet.ethereumpow.org",
@@ -4003,7 +3894,6 @@ export const chainConfig = {
             "https://explorer.unit0.dev",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.unit0.dev",
         apiUrl: "https://explorer.unit0.dev/api",
         rpcUrls: [
             "https://rpc.unit0.dev",
@@ -4036,7 +3926,6 @@ export const chainConfig = {
             "https://explorer.ham.fun",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.ham.fun",
         apiUrl: "https://explorer.ham.fun/api",
         rpcUrls: [
             "https://ham.calderachain.xyz/http",
@@ -4070,7 +3959,6 @@ export const chainConfig = {
             "https://chainscan.0g.ai",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://chainscan.0g.ai",
         apiUrl: "https://chainscan.0g.ai/api",
         rpcUrls: [
             "https://evmrpc.0g.ai",
@@ -4103,7 +3991,6 @@ export const chainConfig = {
             "https://explorer.goat.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.goat.network",
         apiUrl: "https://explorer.goat.network/api",
         rpcUrls: [
             "https://rpc.goat.network",
@@ -4138,7 +4025,6 @@ export const chainConfig = {
             "https://humanode.subscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://humanode.subscan.io",
         apiUrl: "https://api.humanode.subscan.io/api",
         rpcUrls: [
             "https://explorer-rpc-http.mainnet.stages.humanode.io",
@@ -4171,7 +4057,6 @@ export const chainConfig = {
             "https://scan.dbkchain.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.dbkchain.io",
         apiUrl: "https://scan.dbkchain.io/api",
         rpcUrls: [
             "https://rpc.mainnet.dbkchain.io",
@@ -4205,7 +4090,6 @@ export const chainConfig = {
             "https://explorer.saakuru.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.saakuru.network/",
         apiUrl: "https://explorer.saakuru.network/api",
         rpcUrls: [
             "https://rpc.saakuru.network/",
@@ -4239,7 +4123,6 @@ export const chainConfig = {
             "https://explorer.r5.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.r5.network",
         apiUrl: "https://explorer.r5.network/api",
         rpcUrls: [
             "https://rpc.r5.network",
@@ -4274,7 +4157,6 @@ export const chainConfig = {
             "https://otter.pulsechain.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://otter.pulsechain.com/",
         apiUrl: "https://otter.pulsechain.com/api",
         rpcUrls: [
             "https://rpc.pulsechain.com",
@@ -4312,7 +4194,6 @@ export const chainConfig = {
             "https://dym.fyi",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://dym.fyi",
         apiUrl: "https://dym.fyi/api",
         rpcUrls: [
             "https://dymension-evm-rpc.publicnode.com",
@@ -4354,7 +4235,6 @@ export const chainConfig = {
             "https://explorer.callistodao.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.callisto.network",
         apiUrl: "https://explorer.callisto.network/api",
         rpcUrls: [
             "https://rpc.callistodao.org",
@@ -4387,7 +4267,6 @@ export const chainConfig = {
             "https://explorer-frame.syndicate.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer-frame.syndicate.io",
         apiUrl: "https://explorer-frame.syndicate.io/api",
         rpcUrls: [
             "https://rpc-frame.syndicate.io",
@@ -4421,7 +4300,6 @@ export const chainConfig = {
             "https://explorer.xrplevm.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "explorer.xrplevm.org",
         apiUrl: "explorer.xrplevm.org/api",
         rpcUrls: [
             "https://rpc.xrplevm.org",
@@ -4454,7 +4332,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/rave-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/rave-1",
         apiUrl: "https://scan.initia.xyz/rave-1/api",
         rpcUrls: [
             "https://jsonrpc-rave-1.anvil.asia-southeast.initia.xyz",
@@ -4488,7 +4365,6 @@ export const chainConfig = {
             "https://explorer.lukso.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.execution.mainnet.lukso.network",
         apiUrl: "https://explorer.execution.mainnet.lukso.network/api",
         rpcUrls: [
             "https://rpc.mainnet.lukso.network",
@@ -4522,7 +4398,6 @@ export const chainConfig = {
             "https://explorer.phala.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.phala.network",
         apiUrl: "https://explorer.phala.network/api",
         rpcUrls: [
             "https://rpc.phala.network",
@@ -4555,7 +4430,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/ingnetwork-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/ingnetwork-1",
         apiUrl: "https://scan.initia.xyz/ingnetwork-1/api",
         rpcUrls: [
             "https://jsonrpc-ingnetwork-1.anvil.asia-southeast.initia.xyz",
@@ -4588,7 +4462,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/zaar-mainnet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/zaar-mainnet-1",
         apiUrl: "https://scan.initia.xyz/zaar-mainnet-1/api",
         rpcUrls: [
             "https://jsonrpc-zaar-mainnet-1.anvil.asia-southeast.initia.xyz",
@@ -4621,7 +4494,6 @@ export const chainConfig = {
             "https://nibiscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://nibiscan.io",
         apiUrl: "https://api.nibiscan.io/api",
         rpcUrls: [
             "https://evm-rpc.nibiru.fi",
@@ -4656,7 +4528,6 @@ export const chainConfig = {
             "https://www.oklink.com/bevm",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan-mainnet.bevm.io",
         apiUrl: "https://scan-mainnet.bevm.io/api",
         rpcUrls: [
             "https://rpc-mainnet-1.bevm.io/",
@@ -4691,7 +4562,6 @@ export const chainConfig = {
             "https://scan.initia.xyz/embrmainnet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://scan.initia.xyz/embrmainnet-1",
         apiUrl: "https://scan.initia.xyz/embrmainnet-1/api",
         rpcUrls: [
             "https://jsonrpc-embrmainnet-1.anvil.asia-southeast.initia.xyz",
@@ -4725,7 +4595,6 @@ export const chainConfig = {
             "https://mainnet-explorer.ailayer.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://mainnet-explorer.ailayer.xyz/",
         apiUrl: "https://mainnet-explorer.ailayer.xyz/api",
         rpcUrls: [
             "https://mainnet-rpc.ailayer.xyz",
@@ -4758,7 +4627,6 @@ export const chainConfig = {
             "https://escan.live",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://escan.live",
         apiUrl: "https://escan.live/api",
         rpcUrls: [
             "https://evmos-evm.publicnode.com",
@@ -4818,7 +4686,6 @@ export const chainConfig = {
             "https://subnets.avax.network/beam",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://subnets.avax.network/beam",
         apiUrl: "https://subnets.avax.network/beam/api",
         rpcUrls: [
             "https://subnets.avax.network/beam/mainnet/rpc",
@@ -4853,7 +4720,6 @@ export const chainConfig = {
             "https://prom-blockscout.eu-north-2.gateway.fm",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://promscan.io",
         apiUrl: "https://api.promscan.io/api",
         rpcUrls: [
             "https://rpc.prom.io",
@@ -4888,7 +4754,6 @@ export const chainConfig = {
             "https://explorer.onyx.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.onyx.org/",
         apiUrl: "https://explorer.onyx.org/api",
         rpcUrls: [
             "https://rpc.onyx.org",
@@ -4918,12 +4783,10 @@ export const chainConfig = {
         chainId: 550,
         lzSrcId: 0,
         explorerUrls: [
-            "",
             "https://explorer.river.build",
             "https://towns-mainnet.calderaexplorer.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "",
         rpcUrls: [
             "https://mainnet.rpc.river.build/http",
             "https://mainnet.rpc.river.build",
@@ -4954,11 +4817,9 @@ export const chainConfig = {
         chainId: 5050,
         lzSrcId: 0,
         explorerUrls: [
-            "",
             "https://scan.skatechain.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "",
         rpcUrls: [
             "https://rpc.skatechain.org",
             "https://rpc.liquidchain.net",
@@ -4993,7 +4854,6 @@ export const chainConfig = {
             "https://svmscan.io/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://svmscan.io",
         apiUrl: "https://api.svmscan.io/api",
         rpcUrls: [
             "https://alpha-rpc-node-http.svmscan.io",
@@ -5027,7 +4887,6 @@ export const chainConfig = {
             "https://explorer.jovay.io/l2",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.jovay.io",
         apiUrl: "https://api.explorer.jovay.io/api",
         rpcUrls: [
             "https://rpc.jovay.io",
@@ -5061,7 +4920,6 @@ export const chainConfig = {
             "https://ernscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://ernscan.io",
         apiUrl: "https://api.ernscan.io/api",
         rpcUrls: [
             "https://mainnet.ethernitychain.io",
@@ -5094,7 +4952,6 @@ export const chainConfig = {
             "https://explorer.mezo.org",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerUrl: "https://explorer.mezo.org",
         apiUrl: "https://explorer.mezo.org/api",
         rpcUrls: [
             "https://rpc-internal.mezo.org",
@@ -5128,6 +4985,15 @@ export function getRpcUrl(chain) {
     if (!Array.isArray(chain.rpcUrls) || chain.rpcUrls.length === 0) return null;
     const idx = Number.isInteger(chain.defaultRpcUrlIndex) ? chain.defaultRpcUrlIndex : 0;
     return chain.rpcUrls[Math.max(0, Math.min(idx, chain.rpcUrls.length - 1))];
+}
+
+export function getExplorerUrl(chain) {
+    if (!chain) return null;
+
+    // Use default explorer from chain config (explorerUrls[defaultExplorerUrlIndex])
+    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;
+    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;
+    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];
 }
 
 export function configuredChains() {
