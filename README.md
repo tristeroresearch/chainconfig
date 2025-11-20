@@ -90,6 +90,40 @@ The script:
 
 ⚠️ **Note:** Chains in `gz-chains-error.mjs` require manual verification via block explorer before adding to your config.
 
+### Fetch Chainlist RPCs
+
+Extend your existing chains with additional RPC URLs and explorers from chainlist.org:
+
+```bash
+npm run fetch-chainlist
+# or
+node scripts/fetch_chainlist_rpcs.mjs
+```
+
+This will create `chains-updated.mjs` with enhanced chain configurations:
+
+- **Additional RPC URLs** - Privacy-friendly HTTPS endpoints (no tracking or tracking: "none")
+- **Multiple Explorer URLs** - All available block explorers from chainlist.org
+- **New Fields**:
+  - `explorerUrls` - Array of all explorer URLs
+  - `defaultExplorerUrlIndex` - Index of the preferred explorer (default: 0)
+  - `explorerUrl` - Kept for backwards compatibility
+
+The script:
+- Fetches chain data from chainlist.org API
+- Matches chains by `chainId` with your existing config
+- Adds new RPC URLs (only HTTPS, no tracking)
+- Adds new explorer URLs from chainlist.org
+- Preserves all existing chain data
+- Generates `chains-updated.mjs` with enhanced configurations
+
+**Usage:**
+1. Run the script to generate `chains-updated.mjs`
+2. Review the changes
+3. If satisfied, replace `chains.mjs` with `chains-updated.mjs`
+
+⚠️ **Note:** The original `chains.mjs` is never modified directly. Always review the generated file before replacing.
+
 ## Features
 
 ### RPC Verification

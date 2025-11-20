@@ -8,7 +8,8 @@
     "verify-rpcs": "node scripts/integrity_check.mjs verify-rpcs",
     "verify-contracts": "node scripts/integrity_check.mjs verify-contracts",
     "fix": "node scripts/integrity_check.mjs fix",
-    "fetch-gaszip": "node scripts/fetch_gaszip_chains.mjs"
+    "fetch-gaszip": "node scripts/fetch_gaszip_chains.mjs",
+    "fetch-chainlist": "node scripts/fetch_chainlist_rpcs.mjs"
   },
   "keywords": ["blockchain", "config", "multichain"],
   "author": "",

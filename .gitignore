@@ -7,3 +7,4 @@ gz-chains.mjs
 gz-chains-evm.mjs
 gz-chains-non-evm.mjs
 gz-chains-error.mjs
+chains-updated.mjs
