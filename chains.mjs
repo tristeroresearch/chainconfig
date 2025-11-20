@@ -2314,7 +2314,7 @@ export const chainConfig = {
             "https://api-gateway.skymavis.com/rpc?apikey=9aqYLBbxSC6LROynQJBvKkEIsioqwHmr",
             "https://ronin.lgns.net/rpc",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x0000000000000000000000000000000000000000",
@@ -5021,10 +5021,12 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         rpcUrls: [
             'https://lb.drpc.org/ogrpc?network=cronos-zkevm&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0',
-            'https://mainnet.zkevm.cronos.org/'
+            'https://mainnet.zkevm.cronos.org/',
+            'https://cronos-zkevm.drpc.org',
+            'https://mainnet.zkevm.cronos.org'
         ],
         apiUrl: 'https://explorer.zkevm.cronos.org/api',
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x0000000000000000000000000000000000000000",
