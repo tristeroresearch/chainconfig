@@ -1,0 +1,19 @@
+{
+  "name": "@tristeroresearch/chainconfig",
+  "version": "1.0.0",
+  "description": "Chain configuration and integrity checker for Create5 project",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/integrity_check.mjs check",
+    "verify-rpcs": "node scripts/integrity_check.mjs verify-rpcs",
+    "verify-contracts": "node scripts/integrity_check.mjs verify-contracts",
+    "fix": "node scripts/integrity_check.mjs fix"
+  },
+  "keywords": ["blockchain", "config", "multichain"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "yargs": "^17.7.2"
+  }
+}
