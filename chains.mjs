@@ -303,7 +303,8 @@ export const chainConfig = {
         chainId: 143,
         lzSrcId: 30390,
         explorerUrls: [
-           "https://monadvision.com"
+            "https://monadscan.com",
+            "https://monadvision.com"
         ],
         defaultExplorerUrlIndex: 0,
         rpcUrls: [
