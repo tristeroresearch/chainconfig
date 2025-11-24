@@ -295,6 +295,41 @@ export const chainConfig = {
         },
     },
 
+    monad: {
+        key: "monad",
+        display: "Monad",
+        currency: "MON",
+        vmType: "EVM",
+        chainId: 143,
+        lzSrcId: 30390,
+        explorerUrls: [
+           "https://monadvision.com/"
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://rpc-mainnet.monadinfra.com",
+            "https://rpc3.monad.xyz",
+            "https://rpc2.monad.xyz",
+            "https://rpc1.monad.xyz",
+
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A",
+            usdc: "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+            usdt: "0xe7cd86e13AC4309349F30B3435a9d337750fC82D",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
+            tokenMessenger: "0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d",
+            create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
     plume: {
         key: "plume",
         display: "Plume",
