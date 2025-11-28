@@ -876,7 +876,7 @@ export const chainConfig = {
             "https://evm-rpc.sei-apis.com",
             "https://sei-evm-rpc.stakeme.pro",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7",
