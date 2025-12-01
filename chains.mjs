@@ -1,3 +1,5 @@
+// Auto-generated chain configuration with CoinGecko IDs
+// Generated on 2025-12-01T12:18:34.530Z
 // Centralized chain configuration for scripts
 // Each chain has a stable key usable as chainConfig[key].variable
 // rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one
@@ -11,6 +13,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1,
         lzSrcId: 30101,
+        cgPlatformId: "ethereum",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://etherscan.io",
             "https://eth.blockscout.com",
@@ -18,7 +22,7 @@ export const chainConfig = {
             "https://ethereum.routescan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.etherscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://eth-mainnet.public.blastapi.io",
             "https://eth.llamarpc.com",
@@ -81,6 +85,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 199,
         lzSrcId: 0,
+        cgPlatformId: "bittorrent",
+        cgGasAssetId: "bittorrent",
         explorerUrls: [
             "https://bttcscan.com/",
             "https://bttcscan.com",
@@ -115,6 +121,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 252,
         lzSrcId: 30255,
+        cgPlatformId: "fraxtal",
+        cgGasAssetId: "frax-share",
         explorerUrls: [
             "https://fraxscan.com/",
             "https://fraxscan.com",
@@ -150,6 +158,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 204,
         lzSrcId: 30202,
+        cgPlatformId: "opbnb",
+        cgGasAssetId: "binancecoin",
         explorerUrls: [
             "https://opbnb.bscscan.com/",
             "https://mainnet.opbnbscan.com",
@@ -188,6 +198,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 167000,
         lzSrcId: 30290,
+        cgPlatformId: "taiko",
+        cgGasAssetId: "taiko",
         explorerUrls: [
             "https://taikoscan.io/",
             "https://taikoscan.io",
@@ -228,6 +240,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 50,
         lzSrcId: 30365,
+        cgPlatformId: "xdc-network",
+        cgGasAssetId: "xdce-crowd-sale",
         explorerUrls: [
             "https://xdcscan.com/",
             "https://xdcscan.com",
@@ -269,6 +283,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 50104,
         lzSrcId: 30334,
+        cgPlatformId: "sophon",
+        cgGasAssetId: "sophon",
         explorerUrls: [
             "https://sophscan.xyz/",
             "https://explorer.sophon.xyz",
@@ -302,9 +318,11 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 143,
         lzSrcId: 30390,
+        cgPlatformId: "monad",
+        cgGasAssetId: "monad",
         explorerUrls: [
             "https://monadscan.com",
-            "https://monadvision.com"
+            "https://monadvision.com",
         ],
         defaultExplorerUrlIndex: 0,
         rpcUrls: [
@@ -312,7 +330,6 @@ export const chainConfig = {
             "https://rpc3.monad.xyz",
             "https://rpc2.monad.xyz",
             "https://rpc1.monad.xyz",
-
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
@@ -323,7 +340,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",  // custom deployment
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
             tokenMessenger: "0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -338,6 +355,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 98866,
         lzSrcId: 30370,
+        cgPlatformId: "plume-network",
+        cgGasAssetId: "plume",
         explorerUrls: [
             "https://phoenix-explorer.plumenetwork.xyz",
             "https://explorer.plume.org",
@@ -372,6 +391,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2741,
         lzSrcId: 30324,
+        cgPlatformId: "abstract",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://abscan.org/",
             "https://abscan.org",
@@ -407,6 +428,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 747474,
         lzSrcId: 30375,
+        cgPlatformId: "katana",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://katanascan.com/",
             "https://explorer.katanarpc.com",
@@ -440,6 +463,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 10,
         lzSrcId: 30111,
+        cgPlatformId: "optimistic-ethereum",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://optimistic.etherscan.io/",
             "https://optimistic.etherscan.io",
@@ -448,7 +473,7 @@ export const chainConfig = {
             "https://mainnet.superscan.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api-optimistic.etherscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://optimism.drpc.org",
             "https://mainnet.optimism.io",
@@ -485,6 +510,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 43114,
         lzSrcId: 30106,
+        cgPlatformId: "avalanche",
+        cgGasAssetId: "avalanche-2",
         explorerUrls: [
             "https://snowscan.xyz/",
             "https://snowscan.xyz",
@@ -492,7 +519,7 @@ export const chainConfig = {
             "https://avascan.info",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.snowscan.xyz/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://avalanche-c-chain-rpc.publicnode.com",
             "https://api.avax.network/ext/bc/C/rpc",
@@ -528,13 +555,15 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 42161,
         lzSrcId: 30110,
+        cgPlatformId: "arbitrum-one",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://arbiscan.io",
             "https://explorer.arbitrum.io",
             "https://arbitrum.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.arbiscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://arbitrum-one.public.blastapi.io",
             "https://arb1.arbitrum.io/rpc",
@@ -572,6 +601,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 42170,
         lzSrcId: 30175,
+        cgPlatformId: "arbitrum-nova",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://nova.arbiscan.io/",
             "https://nova-explorer.arbitrum.io",
@@ -607,6 +638,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 8453,
         lzSrcId: 30184,
+        cgPlatformId: "base",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://basescan.org",
             "https://base.blockscout.com",
@@ -614,7 +647,7 @@ export const chainConfig = {
             "https://base.superscan.network",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.basescan.org/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://mainnet.base.org",
             "https://base.llamarpc.com",
@@ -652,12 +685,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 137,
         lzSrcId: 30109,
+        cgPlatformId: "polygon-pos",
+        cgGasAssetId: "polygon-ecosystem-token",
         explorerUrls: [
             "https://polygonscan.com",
             "https://polygon.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.polygonscan.com/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://1rpc.io/matic",
             "https://polygon-rpc.com",
@@ -696,6 +731,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 59144,
         lzSrcId: 30183,
+        cgPlatformId: "linea",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://lineascan.build",
             "https://explorer.linea.build",
@@ -733,12 +770,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 56,
         lzSrcId: 30102,
+        cgPlatformId: "binance-smart-chain",
+        cgGasAssetId: "binancecoin",
         explorerUrls: [
             "https://bscscan.com",
             "https://bnb.dex.guru",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.bscscan.com/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://bsc-dataseed.binance.org",
             "https://binance.llamarpc.com",
@@ -794,12 +833,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 130,
         lzSrcId: 30320,
+        cgPlatformId: "unichain",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://uniscan.xyz",
             "https://unichain.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.uniscan.xyz/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://unichain.drpc.org",
             "https://mainnet.unichain.org",
@@ -830,12 +871,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 146,
         lzSrcId: 30332,
+        cgPlatformId: "sonic",
+        cgGasAssetId: "sonic-3",
         explorerUrls: [
             "https://sonicscan.com",
             "https://explorer.soniclabs.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.sonicscan.com/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://sonic.drpc.org",
             "https://rpc.soniclabs.com",
@@ -866,11 +909,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1329,
         lzSrcId: 30280,
+        cgPlatformId: "sei-v2",
+        cgGasAssetId: "wrapped-sei",
         explorerUrls: [
             "https://seitrace.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://seitrace.com/pacific-1/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://sei.drpc.org",
             "https://evm-rpc.sei-apis.com",
@@ -900,12 +945,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 480,
         lzSrcId: 30319,
+        cgPlatformId: "world-chain",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://worldscan.org",
             "https://worldchain-mainnet.explorer.alchemy.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.worldscan.org/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://worldchain.drpc.org",
             "https://worldchain-mainnet.g.alchemy.com/public",
@@ -937,11 +984,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 324,
         lzSrcId: 30165,
+        cgPlatformId: "zksync",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://explorer.zksync.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.zksync.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://mainnet.era.zksync.io",
             "https://zksync.meowrpc.com",
@@ -974,6 +1023,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 250,
         lzSrcId: 30112,
+        cgPlatformId: "fantom",
+        cgGasAssetId: "fantom",
         explorerUrls: [
             "https://explorer.fantom.network",
             "https://ftmscan.com",
@@ -1018,11 +1069,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1285,
         lzSrcId: 30167,
+        cgPlatformId: "moonriver",
+        cgGasAssetId: "moonriver",
         explorerUrls: [
             "https://moonriver.moonscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.moonscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://moonriver.drpc.org",
             "https://moonriver-rpc.publicnode.com",
@@ -1052,6 +1105,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1313161554,
         lzSrcId: 30211,
+        cgPlatformId: "aurora",
+        cgGasAssetId: "aurora-near",
         explorerUrls: [
             "https://explorer.aurora.dev",
         ],
@@ -1087,6 +1142,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 288,
         lzSrcId: 0,
+        cgPlatformId: "boba",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://bobascan.com/",
             "https://bobascan.com",
@@ -1123,6 +1180,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 25,
         lzSrcId: 30359,
+        cgPlatformId: "cronos",
+        cgGasAssetId: "crypto-com-chain",
         explorerUrls: [
             "https://explorer.cronos.org",
         ],
@@ -1163,6 +1222,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1666600000,
         lzSrcId: 30116,
+        cgPlatformId: "harmony-shard-0",
+        cgGasAssetId: "harmony",
         explorerUrls: [
             "https://explorer.harmony.one",
         ],
@@ -1202,6 +1263,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2222,
         lzSrcId: 30177,
+        cgPlatformId: "kava",
+        cgGasAssetId: "kava",
         explorerUrls: [
             "https://kavascan.com",
         ],
@@ -1239,6 +1302,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1625,
         lzSrcId: 30294,
+        cgPlatformId: "gravity-alpha",
+        cgGasAssetId: "g-token",
         explorerUrls: [
             "https://explorer.gravity.xyz",
             "https://gscan.xyz",
@@ -1274,6 +1339,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 34443,
         lzSrcId: 30260,
+        cgPlatformId: "mode",
+        cgGasAssetId: "mode",
         explorerUrls: [
             "https://explorer.mode.network",
             "https://modescan.io",
@@ -1309,6 +1376,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1088,
         lzSrcId: 30151,
+        cgPlatformId: "metis-andromeda",
+        cgGasAssetId: "metis-token",
         explorerUrls: [
             "https://explorer.metis.io",
             "https://andromeda-explorer.metis.io",
@@ -1346,6 +1415,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1868,
         lzSrcId: 30340,
+        cgPlatformId: "soneium",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://explorer.soneium.org",
             "https://soneium.blockscout.com",
@@ -1382,11 +1453,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 33139,
         lzSrcId: 30312,
+        cgPlatformId: "apechain",
+        cgGasAssetId: "apecoin",
         explorerUrls: [
             "https://apescan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.apescan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://apechain.drpc.org",
             "https://rpc.apechain.com",
@@ -1415,12 +1488,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 80094,
         lzSrcId: 30362,
+        cgPlatformId: "berachain",
+        cgGasAssetId: "berachain-bera",
         explorerUrls: [
             "https://berascan.com",
             "https://beratrail.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.berascan.com/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://rpc.berachain.com",
             "https://berachain-rpc.publicnode.com",
@@ -1451,6 +1526,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 9745,
         lzSrcId: 0,
+        cgPlatformId: "plasma",
+        cgGasAssetId: "plasma",
         explorerUrls: [
             "https://plasmascan.to",
         ],
@@ -1484,6 +1561,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 40,
         lzSrcId: 0,
+        cgPlatformId: "telos",
+        cgGasAssetId: "telos",
         explorerUrls: [
             "https://teloscan.io",
         ],
@@ -1519,6 +1598,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 747,
         lzSrcId: 0,
+        cgPlatformId: "flow-evm",
+        cgGasAssetId: "flow",
         explorerUrls: [
             "https://flowscan.io",
             "https://evm.flowscan.io",
@@ -1553,6 +1634,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 14,
         lzSrcId: 0,
+        cgPlatformId: "flare-network",
+        cgGasAssetId: "flare-networks",
         explorerUrls: [
             "https://flare-explorer.flare.network",
             "https://mainnet.flarescan.com",
@@ -1592,12 +1675,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1923,
         lzSrcId: 30335,
+        cgPlatformId: "swellchain",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://swellchainscan.io/",
             "https://explorer.swellnetwork.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.swellchainscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://rpc.ankr.com/swell",
             "https://swell-mainnet.alt.technology",
@@ -1626,12 +1711,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 999,
         lzSrcId: 30367,
+        cgPlatformId: "hyperevm",
+        cgGasAssetId: "hyperliquid",
         explorerUrls: [
             "https://hyperevmscan.io",
             "https://purrsec.com/",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.hyperevmscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://rpc.hyperliquid.xyz/evm",
             "https://rpc.hypurrscan.io",
@@ -1665,6 +1752,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1776,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://blockscout.injective.network/",
             "https://blockscout.injective.network",
@@ -1700,6 +1789,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 888888888,
         lzSrcId: 0,
+        cgPlatformId: "ancient8",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://scan.ancient8.gg",
         ],
@@ -1732,12 +1823,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 42220,
         lzSrcId: 30125,
+        cgPlatformId: "celo",
+        cgGasAssetId: "celo",
         explorerUrls: [
             "https://celoscan.io",
             "https://celo.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.celoscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://forno.celo.org",
             "https://rpc.celocolombia.org",
@@ -1768,6 +1861,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1101,
         lzSrcId: 30158,
+        cgPlatformId: "polygon-zkevm",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://zkevm.polygonscan.com",
         ],
@@ -1804,11 +1899,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 534352,
         lzSrcId: 30214,
+        cgPlatformId: "scroll",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://scrollscan.com",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.scrollscan.com/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://rpc.scroll.io",
             "https://rpc-scroll.icecreamswap.com",
@@ -1843,12 +1940,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5000,
         lzSrcId: 30181,
+        cgPlatformId: "mantle",
+        cgGasAssetId: "mantle",
         explorerUrls: [
             "https://mantlescan.xyz",
             "https://explorer.mantle.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.mantlescan.xyz/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://1rpc.io/mantle",
             "https://mantle.drpc.org",
@@ -1881,12 +1980,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 81457,
         lzSrcId: 30243,
+        cgPlatformId: "blast",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://blastscan.io",
             "https://blastexplorer.io",
         ],
         defaultExplorerUrlIndex: 0,
-        explorerApiUrl: "https://api.blastscan.io/api",
+        explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://rpc.ankr.com/blast",
             "https://rpc.blast.io",
@@ -1923,6 +2024,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 30,
         lzSrcId: 0,
+        cgPlatformId: "rootstock",
+        cgGasAssetId: "rootstock",
         explorerUrls: [
             "https://explorer.rsk.co",
             "https://rootstock.blockscout.com",
@@ -1957,6 +2060,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 81224,
         lzSrcId: 30323,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.codex.xyz",
         ],
@@ -1988,6 +2093,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 100,
         lzSrcId: 30145,
+        cgPlatformId: "xdai",
+        cgGasAssetId: "xdai",
         explorerUrls: [
             "https://gnosisscan.io",
             "https://gnosis.blockscout.com",
@@ -2033,6 +2140,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 169,
         lzSrcId: 30217,
+        cgPlatformId: "manta-pacific",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://pacific-explorer.manta.network",
         ],
@@ -2072,6 +2181,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 185,
         lzSrcId: 0,
+        cgPlatformId: "mint",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.mintchain.io",
         ],
@@ -2105,6 +2216,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 360,
         lzSrcId: 30327,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://shapescan.xyz",
         ],
@@ -2137,6 +2250,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 466,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.appchain.xyz",
         ],
@@ -2168,6 +2283,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 690,
         lzSrcId: 30273,
+        cgPlatformId: "redstone",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.redstone.xyz",
         ],
@@ -2199,6 +2316,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1135,
         lzSrcId: 30308,
+        cgPlatformId: "lisk",
+        cgGasAssetId: "lisk",
         explorerUrls: [
             "https://blockscout.lisk.com",
         ],
@@ -2231,6 +2350,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1514,
         lzSrcId: 30326,
+        cgPlatformId: "story",
+        cgGasAssetId: "story-2",
         explorerUrls: [
             "https://mainnet.storyscan.xyz",
         ],
@@ -2275,6 +2396,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1424,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.perennial.xyz",
             "https://explorer.perennial.foundation",
@@ -2308,6 +2431,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1996,
         lzSrcId: 30301,
+        cgPlatformId: "sanko",
+        cgGasAssetId: "dream-machine-token",
         explorerUrls: [
             "https://explorer.sanko.xyz",
         ],
@@ -2339,6 +2464,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2020,
         lzSrcId: 30178,
+        cgPlatformId: "ronin",
+        cgGasAssetId: "ronin",
         explorerUrls: [
             "https://app.roninchain.com",
             "https://app.roninchain.com/",
@@ -2374,6 +2501,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2818,
         lzSrcId: 30321,
+        cgPlatformId: "morph-l2",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.morphl2.io",
         ],
@@ -2406,6 +2535,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5031,
         lzSrcId: 0,
+        cgPlatformId: "somnia",
+        cgGasAssetId: "somnia",
         explorerUrls: [
             "https://explorer.somnia.network",
         ],
@@ -2440,6 +2571,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5330,
         lzSrcId: 30337,
+        cgPlatformId: "superseed",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://explorer-superseed-mainnet-0.t.conduit.xyz",
             "https://explorer.superseed.xyz",
@@ -2473,6 +2606,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7560,
         lzSrcId: 30282,
+        cgPlatformId: "cyber",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://cyberscan.co",
         ],
@@ -2505,6 +2640,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7869,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer-v2.powerloom.network",
         ],
@@ -2536,6 +2673,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7897,
         lzSrcId: 30316,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.arena-z.gg",
         ],
@@ -2567,6 +2706,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 8333,
         lzSrcId: 30325,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.b3.fun",
         ],
@@ -2599,6 +2740,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 21000000,
         lzSrcId: 0,
+        cgPlatformId: "corn",
+        cgGasAssetId: "bitcorn-3",
         explorerUrls: [
             "https://cornscan.io",
             "https://maizenet-explorer.usecorn.com",
@@ -2633,6 +2776,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 33979,
         lzSrcId: 30313,
+        cgPlatformId: "funki",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://funkiscan.io",
             "https://explorer.funkichain.com",
@@ -2665,6 +2810,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 43419,
         lzSrcId: 0,
+        cgPlatformId: "gunz",
+        cgGasAssetId: "gunz",
         explorerUrls: [
             "https://gunzscan.io",
         ],
@@ -2696,6 +2843,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 43111,
         lzSrcId: 30368,
+        cgPlatformId: "hemi",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.hemi.xyz",
         ],
@@ -2728,6 +2877,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 48900,
         lzSrcId: 30309,
+        cgPlatformId: "zircuit",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.zircuit.com",
         ],
@@ -2760,6 +2911,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 55244,
         lzSrcId: 30369,
+        cgPlatformId: "Superposition",
+        cgGasAssetId: "superposition-bridged-weth-superposition",
         explorerUrls: [
             "https://explorer.superposition.so",
         ],
@@ -2791,6 +2944,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 57073,
         lzSrcId: 30329,
+        cgPlatformId: "ink",
+        cgGasAssetId: "ethereum",
         explorerUrls: [
             "https://explorer.inkonchain.com",
         ],
@@ -2824,6 +2979,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 60808,
         lzSrcId: 30279,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.gobob.xyz",
         ],
@@ -2857,6 +3014,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 69000,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer-animechain-39xf6m45e3.t.conduit.xyz",
             "https://explorer.anime.xyz",
@@ -2889,6 +3048,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 660279,
         lzSrcId: 30285,
+        cgPlatformId: "xai",
+        cgGasAssetId: "xai-blockchain",
         explorerUrls: [
             "https://xaiscan.io",
             "https://explorer.xai-chain.net",
@@ -2922,6 +3083,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 543210,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.zero.network",
         ],
@@ -2954,6 +3117,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 510003,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://commons.explorer.syndicate.io",
             "https://explorer.commons.syndicate.io",
@@ -2986,6 +3151,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 984122,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.forma.art",
         ],
@@ -3017,6 +3184,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1380012617,
         lzSrcId: 30310,
+        cgPlatformId: "rari",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://mainnet.explorer.rarichain.org",
             "https://mainnet.explorer.rarichain.org/",
@@ -3049,6 +3218,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 666666666,
         lzSrcId: 30315,
+        cgPlatformId: "degen",
+        cgGasAssetId: "degen-base",
         explorerUrls: [
             "https://explorer.degen.tips",
         ],
@@ -3080,6 +3251,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5064014,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.ethereal.trade",
         ],
@@ -3111,12 +3284,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 223,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.bsquared.network/",
             "https://explorer.bsquared.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.bsquared.network/api",
         rpcUrls: [
             "https://rpc.bsquared.network/",
             "https://rpc.bsquared.network",
@@ -3149,11 +3323,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2355,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scope.silicon.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scope.silicon.network/api",
         rpcUrls: [
             "https://rpc.silicon.network",
             "https://silicon-mainnet.nodeinfra.com",
@@ -3182,12 +3357,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 177,
         lzSrcId: 0,
+        cgPlatformId: "hashkey-chain",
+        cgGasAssetId: "hashkey-ecopoints",
         explorerUrls: [
             "https://explorer.hsk.xyz",
             "https://hashkey.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.hsk.xyz/api",
         rpcUrls: [
             "https://hashkeychain-mainnet.alt.technology",
             "https://mainnet.hsk.xyz",
@@ -3217,11 +3393,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 957,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.lyra.finance",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.lyra.finance/api",
         rpcUrls: [
             "https://rpc.lyra.finance",
         ],
@@ -3249,11 +3426,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 320,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.zkcandy.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.explorer.zkcandy.io/api",
         rpcUrls: [
             "https://rpc.zkcandy.io",
         ],
@@ -3281,11 +3459,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2525,
         lzSrcId: 0,
+        cgPlatformId: "inevm",
+        cgGasAssetId: "injective-protocol",
         explorerUrls: [
             "https://inevm.calderaexplorer.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://inevm.calderaexplorer.xyz/api",
         rpcUrls: [
             "https://inevm.calderachain.xyz/http",
             "https://mainnet.rpc.inevm.com/http",
@@ -3314,12 +3493,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 124816,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://mitoscan.io",
             "https://mitoscan.io/",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.mitoscan.io/api",
         rpcUrls: [
             "https://rpc.mitosis.org",
         ],
@@ -3347,12 +3527,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 62050,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.optopia.ai/",
             "https://scan.optopia.ai",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.optopia.ai/api",
         rpcUrls: [
             "https://rpc-mainnet.optopia.ai",
             "https://rpc-mainnet-2.optopia.ai",
@@ -3381,12 +3562,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 698,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://www.matchscan.io/",
             "https://matchscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.www.matchscan.io/api/",
         rpcUrls: [
             "https://rpc.matchain.io/",
             "https://rpc.ankr.com/matchain_mainnet/697e90c0df4c82240c1def9ca28fea89eb5bd48dba57b3bde249af9ae1269394",
@@ -3417,11 +3599,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1116,
         lzSrcId: 0,
+        cgPlatformId: "core",
+        cgGasAssetId: "coredaoorg",
         explorerUrls: [
             "https://scan.coredao.org",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.coredao.org/api",
         rpcUrls: [
             "https://rpc.coredao.org",
             "https://core.public.infstones.com",
@@ -3453,12 +3636,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 4200,
         lzSrcId: 0,
+        cgPlatformId: "merlin-chain",
+        cgGasAssetId: "wrapped-bitcoin",
         explorerUrls: [
             "https://merlin.l2scan.co",
             "https://scan.merlinchain.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://merlin.l2scan.co/api",
         rpcUrls: [
             "https://rpc.merlinchain.io",
             "https://endpoints.omniatech.io/v1/merlin/mainnet/public",
@@ -3490,11 +3674,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 484,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://camp.cloud.blockscout.com",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://camp.cloud.blockscout.com/api",
         rpcUrls: [
             "https://rpc.camp.raas.gelato.cloud",
         ],
@@ -3522,11 +3707,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1480,
         lzSrcId: 0,
+        cgPlatformId: "vana",
+        cgGasAssetId: "vana",
         explorerUrls: [
             "https://vanascan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.vanascan.io/api",
         rpcUrls: [
             "https://rpc.vana.org",
             "https://evm-rpc-vana.josephtran.xyz",
@@ -3557,11 +3743,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 428962654539583,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/yominet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/yominet-1/api",
         rpcUrls: [
             "https://jsonrpc-yominet-1.anvil.initia.xyz",
             "https://jsonrpc-yominet-1.anvil.asia-southeast.initia.xyz",
@@ -3590,12 +3777,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 10507,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://mainnet.num.network/",
             "https://mainnet.num.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://mainnet.num.network/api",
         rpcUrls: [
             "https://mainnetrpc.num.network",
         ],
@@ -3623,11 +3811,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 4207,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://edgenscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.edgenscan.io/api",
         rpcUrls: [
             "https://rpc.layeredge.io",
             "https://layeredge-mainnet-evm.itrocket.net",
@@ -3658,11 +3847,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2000,
         lzSrcId: 0,
+        cgPlatformId: "dogechain",
+        cgGasAssetId: "dogechain",
         explorerUrls: [
             "https://explorer.dogechain.dog",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.dogechain.dog/api",
         rpcUrls: [
             "https://rpc.dogechain.dog",
             "https://rpc-us.dogechain.dog",
@@ -3696,12 +3886,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 8008,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer-polynomial-mainnet-0.t.conduit.xyz",
             "https://polynomialscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer-polynomial-mainnet-0.t.conduit.xyz/api",
         rpcUrls: [
             "https://rpc.polynomial.fi",
         ],
@@ -3729,11 +3920,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 254,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://swanscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.swanscan.io/api",
         rpcUrls: [
             "https://mainnet-rpc.swanchain.org",
             "https://mainnet-rpc-01.swanchain.org",
@@ -3765,11 +3957,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 9999999,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://blockscout.mainnet.fluence.dev",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://blockscout.mainnet.fluence.dev/apimainnet.fluence.dev",
         rpcUrls: [
             "https://rpc.mainnet.fluence.dev",
         ],
@@ -3797,11 +3990,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 810180,
         lzSrcId: 0,
+        cgPlatformId: "zklink-nova",
+        cgGasAssetId: "zklink",
         explorerUrls: [
             "https://explorer.zklink.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.explorer.zklink.io/api",
         rpcUrls: [
             "https://rpc.zklink.io",
         ],
@@ -3829,11 +4023,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7200,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.exsat.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.exsat.network/api",
         rpcUrls: [
             "https://evm.exsat.network",
         ],
@@ -3861,11 +4056,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 3920262608331171,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/bfb-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/bfb-1/api",
         rpcUrls: [
             "https://jsonrpc-bfb-1.anvil.europe-west.initia.xyz",
         ],
@@ -3893,12 +4089,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 10001,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://www.oklink.com/ethw",
             "https://www.oklink.com/ethw/",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://www.oklink.com/ethw/api",
         rpcUrls: [
             "https://mainnet.ethereumpow.org",
         ],
@@ -3926,11 +4123,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 88811,
         lzSrcId: 0,
+        cgPlatformId: "units-network",
+        cgGasAssetId: "unit0",
         explorerUrls: [
             "https://explorer.unit0.dev",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.unit0.dev/api",
         rpcUrls: [
             "https://rpc.unit0.dev",
         ],
@@ -3958,11 +4156,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5112,
         lzSrcId: 0,
+        cgPlatformId: "ham",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.ham.fun",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.ham.fun/api",
         rpcUrls: [
             "https://ham.calderachain.xyz/http",
             "https://rpc.ham.fun",
@@ -3991,11 +4190,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 16661,
         lzSrcId: 0,
+        cgPlatformId: "0g",
+        cgGasAssetId: "zero-gravity",
         explorerUrls: [
             "https://chainscan.0g.ai",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://chainscan.0g.ai/api",
         rpcUrls: [
             "https://evmrpc.0g.ai",
         ],
@@ -4023,11 +4223,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2345,
         lzSrcId: 0,
+        cgPlatformId: "goat",
+        cgGasAssetId: "wrapped-bitcoin",
         explorerUrls: [
             "https://explorer.goat.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.goat.network/api",
         rpcUrls: [
             "https://rpc.goat.network",
             "https://goat-mainnet-alpha.drpc.org",
@@ -4057,11 +4258,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5234,
         lzSrcId: 0,
+        cgPlatformId: "humanode",
+        cgGasAssetId: "wrapped-ehmnd",
         explorerUrls: [
             "https://humanode.subscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.humanode.subscan.io/api",
         rpcUrls: [
             "https://explorer-rpc-http.mainnet.stages.humanode.io",
         ],
@@ -4089,11 +4291,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 20240603,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.dbkchain.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.dbkchain.io/api",
         rpcUrls: [
             "https://rpc.mainnet.dbkchain.io",
         ],
@@ -4121,12 +4324,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7225878,
         lzSrcId: 0,
+        cgPlatformId: "saakuru",
+        cgGasAssetId: "wrapped-oasys",
         explorerUrls: [
             "https://explorer.saakuru.network/",
             "https://explorer.saakuru.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.saakuru.network/api",
         rpcUrls: [
             "https://rpc.saakuru.network/",
             "https://rpc.saakuru.network",
@@ -4155,11 +4359,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 337,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.r5.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.r5.network/api",
         rpcUrls: [
             "https://rpc.r5.network",
         ],
@@ -4187,13 +4392,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 369,
         lzSrcId: 0,
+        cgPlatformId: "pulsechain",
+        cgGasAssetId: "pulsechain",
         explorerUrls: [
             "https://otter.pulsechain.com/",
             "https://ipfs.scan.pulsechain.com",
             "https://otter.pulsechain.com",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://otter.pulsechain.com/api",
         rpcUrls: [
             "https://rpc.pulsechain.com",
             "https://rpc.gigatheminter.com",
@@ -4226,11 +4432,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1100,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://dym.fyi",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://dym.fyi/api",
         rpcUrls: [
             "https://dymension-evm-rpc.publicnode.com",
             "https://jsonrpc.dymension.nodestake.org",
@@ -4266,12 +4473,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 820,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.callisto.network",
             "https://explorer.callistodao.org",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.callisto.network/api",
         rpcUrls: [
             "https://rpc.callistodao.org",
         ],
@@ -4299,11 +4507,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5101,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer-frame.syndicate.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer-frame.syndicate.io/api",
         rpcUrls: [
             "https://rpc-frame.syndicate.io",
         ],
@@ -4331,12 +4540,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1440000,
         lzSrcId: 0,
+        cgPlatformId: "xrpl-evm",
+        cgGasAssetId: "ripple",
         explorerUrls: [
             "explorer.xrplevm.org",
             "https://explorer.xrplevm.org",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "explorer.xrplevm.org/api",
         rpcUrls: [
             "https://rpc.xrplevm.org",
         ],
@@ -4364,11 +4574,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 555110192329996,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/rave-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/rave-1/api",
         rpcUrls: [
             "https://jsonrpc-rave-1.anvil.asia-southeast.initia.xyz",
         ],
@@ -4396,12 +4607,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 42,
         lzSrcId: 0,
+        cgPlatformId: "lukso",
+        cgGasAssetId: "lukso-token-2",
         explorerUrls: [
             "https://explorer.execution.mainnet.lukso.network",
             "https://explorer.lukso.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.execution.mainnet.lukso.network/api",
         rpcUrls: [
             "https://rpc.mainnet.lukso.network",
             "https://rpc.lukso.sigmacore.io",
@@ -4430,11 +4642,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2035,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.phala.network",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.phala.network/api",
         rpcUrls: [
             "https://rpc.phala.network",
         ],
@@ -4462,11 +4675,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2780922216980457,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/ingnetwork-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/ingnetwork-1/api",
         rpcUrls: [
             "https://jsonrpc-ingnetwork-1.anvil.asia-southeast.initia.xyz",
         ],
@@ -4494,11 +4708,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1335097526422335,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/zaar-mainnet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/zaar-mainnet-1/api",
         rpcUrls: [
             "https://jsonrpc-zaar-mainnet-1.anvil.asia-southeast.initia.xyz",
         ],
@@ -4526,11 +4741,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 6900,
         lzSrcId: 0,
+        cgPlatformId: "nibiru",
+        cgGasAssetId: "nibiru",
         explorerUrls: [
             "https://nibiscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.nibiscan.io/api",
         rpcUrls: [
             "https://evm-rpc.nibiru.fi",
         ],
@@ -4558,13 +4774,14 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 11501,
         lzSrcId: 0,
+        cgPlatformId: "bevm",
+        cgGasAssetId: "bitcoin",
         explorerUrls: [
             "https://scan-mainnet.bevm.io",
             "https://scan.geb.network",
             "https://www.oklink.com/bevm",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan-mainnet.bevm.io/api",
         rpcUrls: [
             "https://rpc-mainnet-1.bevm.io/",
             "https://rpc-mainnet-1.geb.network",
@@ -4594,11 +4811,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2598901095158506,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.initia.xyz/embrmainnet-1",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://scan.initia.xyz/embrmainnet-1/api",
         rpcUrls: [
             "https://jsonrpc-embrmainnet-1.anvil.asia-southeast.initia.xyz",
         ],
@@ -4621,17 +4839,17 @@ export const chainConfig = {
 
     ailayer: {
         key: "ailayer",
-        display: "undefined",
+        display: "AILayer",
         currency: "BTC",
         vmType: "EVM",
         chainId: 2649,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
-            "https://mainnet-explorer.ailayer.xyz/",
             "https://mainnet-explorer.ailayer.xyz",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://mainnet-explorer.ailayer.xyz/api",
         rpcUrls: [
             "https://mainnet-rpc.ailayer.xyz",
         ],
@@ -4659,11 +4877,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 9001,
         lzSrcId: 0,
+        cgPlatformId: "evmos",
+        cgGasAssetId: "evmos",
         explorerUrls: [
             "https://escan.live",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://escan.live/api",
         rpcUrls: [
             "https://evmos-evm.publicnode.com",
             "https://evmos-evm-rpc.publicnode.com",
@@ -4718,11 +4937,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 4337,
         lzSrcId: 0,
+        cgPlatformId: "beam",
+        cgGasAssetId: "beam",
         explorerUrls: [
             "https://subnets.avax.network/beam",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://subnets.avax.network/beam/api",
         rpcUrls: [
             "https://subnets.avax.network/beam/mainnet/rpc",
             "https://build.onbeam.com/rpc",
@@ -4751,12 +4971,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 227,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://promscan.io",
             "https://prom-blockscout.eu-north-2.gateway.fm",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.promscan.io/api",
         rpcUrls: [
             "https://rpc.prom.io",
             "https://prom-rpc.eu-north-2.gateway.fm",
@@ -4785,12 +5006,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 80888,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.onyx.org/",
             "https://explorer.onyx.org",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.onyx.org/api",
         rpcUrls: [
             "https://rpc.onyx.org",
         ],
@@ -4818,6 +5040,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 550,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.river.build",
             "https://towns-mainnet.calderaexplorer.xyz",
@@ -4852,6 +5076,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5050,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://scan.skatechain.org",
         ],
@@ -4885,12 +5111,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 3109,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://svmscan.io",
             "https://svmscan.io/",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.svmscan.io/api",
         rpcUrls: [
             "https://alpha-rpc-node-http.svmscan.io",
         ],
@@ -4918,12 +5145,13 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 5734951,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://explorer.jovay.io",
             "https://explorer.jovay.io/l2",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.explorer.jovay.io/api",
         rpcUrls: [
             "https://rpc.jovay.io",
             "https://api.zan.top/node/v1/jovay/mainnet/${ZAN_API_KEY}",
@@ -4952,11 +5180,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 183,
         lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
         explorerUrls: [
             "https://ernscan.io",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://api.ernscan.io/api",
         rpcUrls: [
             "https://mainnet.ethernitychain.io",
         ],
@@ -4984,11 +5213,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 31612,
         lzSrcId: 0,
+        cgPlatformId: "mezo",
+        cgGasAssetId: "wrapped-bitcoin",
         explorerUrls: [
             "https://explorer.mezo.org",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.mezo.org/api",
         rpcUrls: [
             "https://rpc-internal.mezo.org",
             "https://rpc_evm-mezo.imperator.co",
@@ -5019,11 +5249,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 7777777,
         lzSrcId: 0,
+        cgPlatformId: "zora-network",
+        cgGasAssetId: "weth",
         explorerUrls: [
             "https://explorer.zora.energy",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.zora.energy/api",
         rpcUrls: [
             "https://rpc.zora.energy",
             "https://zora.drpc.org",
@@ -5046,22 +5277,24 @@ export const chainConfig = {
     },
 
     cronos_zkevm: {
-        key: 'cronos_zkevm',
-        display: 'Cronos zkEVM',
-        currency: 'zkCRO',
+        key: "cronos_zkevm",
+        display: "Cronos zkEVM",
+        currency: "zkCRO",
+        vmType: "EVM",
         chainId: 388,
         lzSrcId: 0,
+        cgPlatformId: "cronos-zkevm",
+        cgGasAssetId: "cronos-zkevm-cro",
         explorerUrls: [
-            'https://explorer.zkevm.cronos.org'
+            "https://explorer.zkevm.cronos.org",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultExplorerUrlIndex: 0,
         rpcUrls: [
-            'https://lb.drpc.org/ogrpc?network=cronos-zkevm&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0',
-            'https://mainnet.zkevm.cronos.org/',
-            'https://cronos-zkevm.drpc.org',
-            'https://mainnet.zkevm.cronos.org'
+            "https://lb.drpc.org/ogrpc?network=cronos-zkevm&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0",
+            "https://mainnet.zkevm.cronos.org/",
+            "https://cronos-zkevm.drpc.org",
+            "https://mainnet.zkevm.cronos.org",
         ],
-        apiUrl: 'https://explorer.zkevm.cronos.org/api',
         defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
@@ -5086,11 +5319,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 1111,
         lzSrcId: 0,
+        cgPlatformId: "wemix-network",
+        cgGasAssetId: "wemix-token",
         explorerUrls: [
             "https://explorer.wemix.com",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://explorer.wemix.com/api",
         rpcUrls: [
             "https://lb.drpc.org/ogrpc?network=wemix&dkey=AoJh2RKNJUIviZEZZt-0igEzVw0J7wQR773l0mSYF3e0",
             "https://api.wemix.com",
@@ -5112,38 +5346,6 @@ export const chainConfig = {
         },
     },
 
-    ailayer: {
-        key: "ailayer",
-        display: "AILayer",
-        currency: "BTC",
-        vmType: "EVM",
-        chainId: 2649,
-        lzSrcId: 0,
-        explorerUrls: [
-            'https://mainnet-explorer.ailayer.xyz',
-        ],
-        defaultExplorerUrlIndex: 0,
-        apiUrl: "https://mainnet-explorer.ailayer.xyz/api",
-        rpcUrls: [
-            'https://mainnet-rpc.ailayer.xyz'
-        ],
-        defaultRpcUrlIndex: 0,
-        addresses: {
-            gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
-            permit2: "0x0000000000000000000000000000000000000000",
-            entryPoint: "0x0000000000000000000000000000000000000000",
-            trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
-            messageTransmitter: "0x0000000000000000000000000000000000000000",
-            tokenMessenger: "0x0000000000000000000000000000000000000000",
-            create5: "0x0000000000000000000000000000000000000000",
-            multicall3: "0x0000000000000000000000000000000000000000",
-        },
-    },
-
     x_layer: {
         key: "x_layer",
         display: "X-Layer",
@@ -5151,11 +5353,12 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 196,
         lzSrcId: 0,
+        cgPlatformId: "x-layer",
+        cgGasAssetId: "okb",
         explorerUrls: [
             "https://www.oklink.com/xlayer",
         ],
         defaultExplorerUrlIndex: 0,
-        apiUrl: "https://www.oklink.com/xlayer/api",
         rpcUrls: [
             "https://endpoints.omniatech.io/v1/xlayer/mainnet/public",
             "https://xlayer.drpc.org",
@@ -5178,50 +5381,31 @@ export const chainConfig = {
         },
     },
 
+};
 
+// All chains as an array
+export const configuredChains = Object.values(chainConfig);
+
+// Get chains by keys
+export function getChainsByKeys(keys) {
+    if (!Array.isArray(keys)) return [];
+    return keys.map(key => chainConfig[key]).filter(Boolean);
 }
 
-export function getRpcUrl(chain) {
+// Get RPC URL for a chain
+export function getRpcUrl(chainKeyOrObject) {
+    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;
     if (!chain) return null;
-
-    // Use default RPC from chain config (rpcUrls[defaultRpcUrlIndex])
-    if (!Array.isArray(chain.rpcUrls) || chain.rpcUrls.length === 0) return null;
-    const idx = Number.isInteger(chain.defaultRpcUrlIndex) ? chain.defaultRpcUrlIndex : 0;
-    return chain.rpcUrls[Math.max(0, Math.min(idx, chain.rpcUrls.length - 1))];
+    if (!chain.rpcUrls || chain.rpcUrls.length === 0) return null;
+    const index = chain.defaultRpcUrlIndex || 0;
+    return chain.rpcUrls[index] || chain.rpcUrls[0];
 }
 
-export function getExplorerUrl(chain) {
+// Get explorer URL for a chain
+export function getExplorerUrl(chainKeyOrObject) {
+    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;
     if (!chain) return null;
-
-    // Use default explorer from chain config (explorerUrls[defaultExplorerUrlIndex])
     if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;
     const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;
     return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];
-}
-
-export function configuredChains() {
-    return Object.values(chainConfig).filter(c => !!getRpcUrl(c));
-}
-
-// Select chains by keys (array of chainConfig keys). If requireRpc is true, only include chains with a default RPC.
-export function getChainsByKeys(keys, { requireRpc = true } = {}) {
-    if (!Array.isArray(keys)) return [];
-    const out = [];
-    for (const k of keys) {
-        if (!k) continue;
-        const key = String(k).trim();
-        const c = chainConfig[key];
-        if (!c) continue;
-        if (requireRpc && !getRpcUrl(c)) continue;
-        out.push(c);
-    }
-    return out;
-}
-
-// Convenience helper: read comma-separated keys from an env var (e.g., 'CHAINS')
-export function resolveChainsFromEnv(envVarName = 'CHAINS', { requireRpc = true } = {}) {
-    const raw = (process.env[envVarName] || '').trim();
-    if (!raw) return [];
-    const keys = raw.split(',').map(s => s.trim()).filter(Boolean);
-    return getChainsByKeys(keys, { requireRpc });
 }
