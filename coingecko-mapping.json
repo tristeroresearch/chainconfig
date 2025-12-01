@@ -1,0 +1,584 @@
+{
+  "ethereum": {
+    "cgPlatformId": "ethereum",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Ethereum",
+    "platformShortname": "Ethereum"
+  },
+  "bittorrent": {
+    "cgPlatformId": "bittorrent",
+    "cgGasAssetId": "bittorrent",
+    "platformName": "BitTorrent",
+    "platformShortname": ""
+  },
+  "fraxtal": {
+    "cgPlatformId": "fraxtal",
+    "cgGasAssetId": "frax-share",
+    "platformName": "Fraxtal",
+    "platformShortname": ""
+  },
+  "opbnb": {
+    "cgPlatformId": "opbnb",
+    "cgGasAssetId": "binancecoin",
+    "platformName": "opBNB",
+    "platformShortname": ""
+  },
+  "taiko": {
+    "cgPlatformId": "taiko",
+    "cgGasAssetId": "taiko",
+    "platformName": "Taiko",
+    "platformShortname": "taiko"
+  },
+  "xdc": {
+    "cgPlatformId": "xdc-network",
+    "cgGasAssetId": "xdce-crowd-sale",
+    "platformName": "XDC Network",
+    "platformShortname": "xdc xinfin"
+  },
+  "sophon": {
+    "cgPlatformId": "sophon",
+    "cgGasAssetId": "sophon",
+    "platformName": "Sophon",
+    "platformShortname": ""
+  },
+  "monad": {
+    "cgPlatformId": "monad",
+    "cgGasAssetId": "monad",
+    "platformName": "Monad",
+    "platformShortname": ""
+  },
+  "plume": {
+    "cgPlatformId": "plume-network",
+    "cgGasAssetId": "plume",
+    "platformName": "Plume Network",
+    "platformShortname": ""
+  },
+  "abstract": {
+    "cgPlatformId": "abstract",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Abstract",
+    "platformShortname": ""
+  },
+  "katana": {
+    "cgPlatformId": "katana",
+    "cgGasAssetId": "weth",
+    "platformName": "Katana",
+    "platformShortname": ""
+  },
+  "optimism": {
+    "cgPlatformId": "optimistic-ethereum",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Optimism",
+    "platformShortname": "Optimism"
+  },
+  "avalanche": {
+    "cgPlatformId": "avalanche",
+    "cgGasAssetId": "avalanche-2",
+    "platformName": "Avalanche",
+    "platformShortname": "AVAX"
+  },
+  "arbitrum_one": {
+    "cgPlatformId": "arbitrum-one",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Arbitrum One",
+    "platformShortname": "Arbitrum"
+  },
+  "arbitrum_nova": {
+    "cgPlatformId": "arbitrum-nova",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Arbitrum Nova",
+    "platformShortname": ""
+  },
+  "base": {
+    "cgPlatformId": "base",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Base",
+    "platformShortname": ""
+  },
+  "polygon": {
+    "cgPlatformId": "polygon-pos",
+    "cgGasAssetId": "polygon-ecosystem-token",
+    "platformName": "Polygon POS",
+    "platformShortname": "Polygon"
+  },
+  "linea": {
+    "cgPlatformId": "linea",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Linea",
+    "platformShortname": ""
+  },
+  "bsc": {
+    "cgPlatformId": "binance-smart-chain",
+    "cgGasAssetId": "binancecoin",
+    "platformName": "BNB Smart Chain",
+    "platformShortname": "BSC"
+  },
+  "unichain": {
+    "cgPlatformId": "unichain",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Unichain",
+    "platformShortname": ""
+  },
+  "sonic": {
+    "cgPlatformId": "sonic",
+    "cgGasAssetId": "sonic-3",
+    "platformName": "Sonic",
+    "platformShortname": "sonic"
+  },
+  "sei": {
+    "cgPlatformId": "sei-v2",
+    "cgGasAssetId": "wrapped-sei",
+    "platformName": "Sei Network",
+    "platformShortname": ""
+  },
+  "worldchain": {
+    "cgPlatformId": "world-chain",
+    "cgGasAssetId": "weth",
+    "platformName": "World Chain",
+    "platformShortname": ""
+  },
+  "zksync_era": {
+    "cgPlatformId": "zksync",
+    "cgGasAssetId": "ethereum",
+    "platformName": "zkSync",
+    "platformShortname": "zkSync"
+  },
+  "fantom": {
+    "cgPlatformId": "fantom",
+    "cgGasAssetId": "fantom",
+    "platformName": "Fantom",
+    "platformShortname": ""
+  },
+  "moonriver": {
+    "cgPlatformId": "moonriver",
+    "cgGasAssetId": "moonriver",
+    "platformName": "Moonriver",
+    "platformShortname": "moonriver"
+  },
+  "aurora": {
+    "cgPlatformId": "aurora",
+    "cgGasAssetId": "aurora-near",
+    "platformName": "Aurora",
+    "platformShortname": "aurora"
+  },
+  "boba": {
+    "cgPlatformId": "boba",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Boba Network",
+    "platformShortname": ""
+  },
+  "cronos": {
+    "cgPlatformId": "cronos",
+    "cgGasAssetId": "crypto-com-chain",
+    "platformName": "Cronos",
+    "platformShortname": "CRO"
+  },
+  "harmony": {
+    "cgPlatformId": "harmony-shard-0",
+    "cgGasAssetId": "harmony",
+    "platformName": "Harmony Shard 0",
+    "platformShortname": "Harmony Shard 0"
+  },
+  "kava": {
+    "cgPlatformId": "kava",
+    "cgGasAssetId": "kava",
+    "platformName": "Kava",
+    "platformShortname": ""
+  },
+  "gravity": {
+    "cgPlatformId": "gravity-alpha",
+    "cgGasAssetId": "g-token",
+    "platformName": "Gravity",
+    "platformShortname": "gravity-alpha"
+  },
+  "mode": {
+    "cgPlatformId": "mode",
+    "cgGasAssetId": "mode",
+    "platformName": "Mode",
+    "platformShortname": ""
+  },
+  "metis": {
+    "cgPlatformId": "metis-andromeda",
+    "cgGasAssetId": "metis-token",
+    "platformName": "Metis Andromeda",
+    "platformShortname": ""
+  },
+  "soneium": {
+    "cgPlatformId": "soneium",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Soneium",
+    "platformShortname": ""
+  },
+  "apechain": {
+    "cgPlatformId": "apechain",
+    "cgGasAssetId": "apecoin",
+    "platformName": "ApeChain",
+    "platformShortname": ""
+  },
+  "berachain": {
+    "cgPlatformId": "berachain",
+    "cgGasAssetId": "berachain-bera",
+    "platformName": "Berachain",
+    "platformShortname": ""
+  },
+  "plasma": {
+    "cgPlatformId": "plasma",
+    "cgGasAssetId": "plasma",
+    "platformName": "Plasma",
+    "platformShortname": ""
+  },
+  "telos": {
+    "cgPlatformId": "telos",
+    "cgGasAssetId": "telos",
+    "platformName": "Telos",
+    "platformShortname": ""
+  },
+  "flowEVM": {
+    "cgPlatformId": "flow-evm",
+    "cgGasAssetId": "flow",
+    "platformName": "Flow EVM",
+    "platformShortname": ""
+  },
+  "flare": {
+    "cgPlatformId": "flare-network",
+    "cgGasAssetId": "flare-networks",
+    "platformName": "Flare Network",
+    "platformShortname": ""
+  },
+  "swell": {
+    "cgPlatformId": "swellchain",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Swellchain",
+    "platformShortname": ""
+  },
+  "hyperevm": {
+    "cgPlatformId": "hyperevm",
+    "cgGasAssetId": "hyperliquid",
+    "platformName": "HyperEVM",
+    "platformShortname": ""
+  },
+  "ancient8": {
+    "cgPlatformId": "ancient8",
+    "cgGasAssetId": "weth",
+    "platformName": "Ancient8",
+    "platformShortname": ""
+  },
+  "celo": {
+    "cgPlatformId": "celo",
+    "cgGasAssetId": "celo",
+    "platformName": "Celo",
+    "platformShortname": "celo"
+  },
+  "polygon_zkevm": {
+    "cgPlatformId": "polygon-zkevm",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Polygon zkEVM",
+    "platformShortname": ""
+  },
+  "scroll": {
+    "cgPlatformId": "scroll",
+    "cgGasAssetId": "weth",
+    "platformName": "Scroll",
+    "platformShortname": ""
+  },
+  "mantle": {
+    "cgPlatformId": "mantle",
+    "cgGasAssetId": "mantle",
+    "platformName": "Mantle",
+    "platformShortname": ""
+  },
+  "blast": {
+    "cgPlatformId": "blast",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Blast",
+    "platformShortname": ""
+  },
+  "rootstock": {
+    "cgPlatformId": "rootstock",
+    "cgGasAssetId": "rootstock",
+    "platformName": "Rootstock RSK",
+    "platformShortname": ""
+  },
+  "gnosis": {
+    "cgPlatformId": "xdai",
+    "cgGasAssetId": "xdai",
+    "platformName": "Gnosis Chain",
+    "platformShortname": ""
+  },
+  "manta_pacific": {
+    "cgPlatformId": "manta-pacific",
+    "cgGasAssetId": "weth",
+    "platformName": "Manta Pacific",
+    "platformShortname": ""
+  },
+  "mint": {
+    "cgPlatformId": "mint",
+    "cgGasAssetId": "weth",
+    "platformName": "Mint",
+    "platformShortname": ""
+  },
+  "redstone": {
+    "cgPlatformId": "redstone",
+    "cgGasAssetId": "weth",
+    "platformName": "Redstone",
+    "platformShortname": ""
+  },
+  "lisk": {
+    "cgPlatformId": "lisk",
+    "cgGasAssetId": "lisk",
+    "platformName": "Lisk",
+    "platformShortname": "lisk"
+  },
+  "story": {
+    "cgPlatformId": "story",
+    "cgGasAssetId": "story-2",
+    "platformName": "Story",
+    "platformShortname": ""
+  },
+  "sanko": {
+    "cgPlatformId": "sanko",
+    "cgGasAssetId": "dream-machine-token",
+    "platformName": "Sanko",
+    "platformShortname": ""
+  },
+  "ronin": {
+    "cgPlatformId": "ronin",
+    "cgGasAssetId": "ronin",
+    "platformName": "Ronin",
+    "platformShortname": "ron"
+  },
+  "morph": {
+    "cgPlatformId": "morph-l2",
+    "cgGasAssetId": "weth",
+    "platformName": "Morph L2",
+    "platformShortname": ""
+  },
+  "somnia": {
+    "cgPlatformId": "somnia",
+    "cgGasAssetId": "somnia",
+    "platformName": "Somnia",
+    "platformShortname": ""
+  },
+  "superseed": {
+    "cgPlatformId": "superseed",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Superseed",
+    "platformShortname": ""
+  },
+  "cyber": {
+    "cgPlatformId": "cyber",
+    "cgGasAssetId": "weth",
+    "platformName": "Cyber",
+    "platformShortname": ""
+  },
+  "corn": {
+    "cgPlatformId": "corn",
+    "cgGasAssetId": "bitcorn-3",
+    "platformName": "Corn",
+    "platformShortname": ""
+  },
+  "funkichain": {
+    "cgPlatformId": "funki",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Funki",
+    "platformShortname": ""
+  },
+  "gunz": {
+    "cgPlatformId": "gunz",
+    "cgGasAssetId": "gunz",
+    "platformName": "GUNZ",
+    "platformShortname": ""
+  },
+  "hemi": {
+    "cgPlatformId": "hemi",
+    "cgGasAssetId": "weth",
+    "platformName": "Hemi",
+    "platformShortname": ""
+  },
+  "zircuit": {
+    "cgPlatformId": "zircuit",
+    "cgGasAssetId": "weth",
+    "platformName": "Zircuit",
+    "platformShortname": ""
+  },
+  "superposition": {
+    "cgPlatformId": "Superposition",
+    "cgGasAssetId": "superposition-bridged-weth-superposition",
+    "platformName": "Superposition",
+    "platformShortname": ""
+  },
+  "ink": {
+    "cgPlatformId": "ink",
+    "cgGasAssetId": "ethereum",
+    "platformName": "Ink",
+    "platformShortname": "ink"
+  },
+  "xai": {
+    "cgPlatformId": "xai",
+    "cgGasAssetId": "xai-blockchain",
+    "platformName": "XAI",
+    "platformShortname": ""
+  },
+  "rari": {
+    "cgPlatformId": "rari",
+    "cgGasAssetId": "weth",
+    "platformName": "Rari",
+    "platformShortname": ""
+  },
+  "degen": {
+    "cgPlatformId": "degen",
+    "cgGasAssetId": "degen-base",
+    "platformName": "Degen",
+    "platformShortname": ""
+  },
+  "hashkey": {
+    "cgPlatformId": "hashkey-chain",
+    "cgGasAssetId": "hashkey-ecopoints",
+    "platformName": "HashKey Chain",
+    "platformShortname": ""
+  },
+  "injective_evm": {
+    "cgPlatformId": "inevm",
+    "cgGasAssetId": "injective-protocol",
+    "platformName": "inEVM",
+    "platformShortname": ""
+  },
+  "coredao": {
+    "cgPlatformId": "core",
+    "cgGasAssetId": "coredaoorg",
+    "platformName": "Core",
+    "platformShortname": ""
+  },
+  "merlin": {
+    "cgPlatformId": "merlin-chain",
+    "cgGasAssetId": "wrapped-bitcoin",
+    "platformName": "Merlin Chain",
+    "platformShortname": ""
+  },
+  "vana": {
+    "cgPlatformId": "vana",
+    "cgGasAssetId": "vana",
+    "platformName": "Vana",
+    "platformShortname": ""
+  },
+  "dogechain": {
+    "cgPlatformId": "dogechain",
+    "cgGasAssetId": "dogechain",
+    "platformName": "Dogechain",
+    "platformShortname": ""
+  },
+  "zklink_nova": {
+    "cgPlatformId": "zklink-nova",
+    "cgGasAssetId": "zklink",
+    "platformName": " zkLink Nova",
+    "platformShortname": ""
+  },
+  "unit0": {
+    "cgPlatformId": "units-network",
+    "cgGasAssetId": "unit0",
+    "platformName": "Unit Zero Network",
+    "platformShortname": ""
+  },
+  "ham": {
+    "cgPlatformId": "ham",
+    "cgGasAssetId": "weth",
+    "platformName": "Ham",
+    "platformShortname": ""
+  },
+  "zero_g": {
+    "cgPlatformId": "0g",
+    "cgGasAssetId": "zero-gravity",
+    "platformName": "0G",
+    "platformShortname": ""
+  },
+  "goat": {
+    "cgPlatformId": "goat",
+    "cgGasAssetId": "wrapped-bitcoin",
+    "platformName": "Goat",
+    "platformShortname": ""
+  },
+  "humanode": {
+    "cgPlatformId": "humanode",
+    "cgGasAssetId": "wrapped-ehmnd",
+    "platformName": "Humanode",
+    "platformShortname": ""
+  },
+  "saakuru": {
+    "cgPlatformId": "saakuru",
+    "cgGasAssetId": "wrapped-oasys",
+    "platformName": "Saakuru",
+    "platformShortname": ""
+  },
+  "pulsechain": {
+    "cgPlatformId": "pulsechain",
+    "cgGasAssetId": "pulsechain",
+    "platformName": "Pulsechain",
+    "platformShortname": ""
+  },
+  "xrpl_evm": {
+    "cgPlatformId": "xrpl-evm",
+    "cgGasAssetId": "ripple",
+    "platformName": "XRPL EVM ",
+    "platformShortname": ""
+  },
+  "lukso": {
+    "cgPlatformId": "lukso",
+    "cgGasAssetId": "lukso-token-2",
+    "platformName": "Lukso",
+    "platformShortname": ""
+  },
+  "nibiru": {
+    "cgPlatformId": "nibiru",
+    "cgGasAssetId": "nibiru",
+    "platformName": "Nibiru",
+    "platformShortname": ""
+  },
+  "bevm": {
+    "cgPlatformId": "bevm",
+    "cgGasAssetId": "bitcoin",
+    "platformName": "BEVM",
+    "platformShortname": ""
+  },
+  "evmos": {
+    "cgPlatformId": "evmos",
+    "cgGasAssetId": "evmos",
+    "platformName": "Evmos",
+    "platformShortname": "evmos"
+  },
+  "beam": {
+    "cgPlatformId": "beam",
+    "cgGasAssetId": "beam",
+    "platformName": "Beam",
+    "platformShortname": ""
+  },
+  "mezo": {
+    "cgPlatformId": "mezo",
+    "cgGasAssetId": "wrapped-bitcoin",
+    "platformName": "Mezo",
+    "platformShortname": ""
+  },
+  "zora": {
+    "cgPlatformId": "zora-network",
+    "cgGasAssetId": "weth",
+    "platformName": "Zora",
+    "platformShortname": ""
+  },
+  "cronos_zkevm": {
+    "cgPlatformId": "cronos-zkevm",
+    "cgGasAssetId": "cronos-zkevm-cro",
+    "platformName": "Cronos zkEVM",
+    "platformShortname": ""
+  },
+  "wemix": {
+    "cgPlatformId": "wemix-network",
+    "cgGasAssetId": "wemix-token",
+    "platformName": "Wemix Network",
+    "platformShortname": ""
+  },
+  "x_layer": {
+    "cgPlatformId": "x-layer",
+    "cgGasAssetId": "okb",
+    "platformName": "X Layer",
+    "platformShortname": ""
+  }
+}
