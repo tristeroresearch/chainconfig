@@ -2464,8 +2464,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 2020,
         lzSrcId: 30178,
-        cgPlatformId: "ronin",
-        cgGasAssetId: "ronin",
+        cgPlatformId: "ronin", // coingecko platform
+        cgGasAssetId: "ronin", // coingecko gas coin id
         explorerUrls: [
             "https://app.roninchain.com",
             "https://app.roninchain.com/",
@@ -2480,8 +2480,8 @@ export const chainConfig = {
         defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4",
+            usdc: "0x0b7007c13325c48911f73a2dad5fa5dcbf808adc",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
