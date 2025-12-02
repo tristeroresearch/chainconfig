@@ -3156,7 +3156,7 @@ export const chainConfig = {
             relayRouter: "0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
-            create5: "0x0000000000000000000000000000000000000000",
+            create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
             multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
         },
     },
