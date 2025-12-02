@@ -3485,8 +3485,8 @@ export const chainConfig = {
         },
     },
 
-    b_network: {
-        key: "b_network",
+    bsquared_network: {
+        key: "bsquared_network",
         display: "undefined",
         currency: "BTC",
         vmType: "EVM",
