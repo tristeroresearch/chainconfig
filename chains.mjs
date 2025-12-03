@@ -3169,8 +3169,8 @@ export const chainConfig = {
         vmType: "EVM",
         chainId: 60808,
         lzSrcId: 30279,
-        cgPlatformId: null,
-        cgGasAssetId: null,
+        cgPlatformId: 'bob-network',
+        cgGasAssetId: 'ethereum',
         openOceanSupported: false,
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
@@ -3487,7 +3487,7 @@ export const chainConfig = {
 
     bsquared_network: {
         key: "bsquared_network",
-        display: "undefined",
+        display: "B2 Network",   
         currency: "BTC",
         vmType: "EVM",
         chainId: 223,
@@ -3528,7 +3528,7 @@ export const chainConfig = {
 
     silicon: {
         key: "silicon",
-        display: "undefined",
+        display: "Silicon",
         currency: "ETH",
         vmType: "EVM",
         chainId: 2355,
@@ -3564,7 +3564,7 @@ export const chainConfig = {
 
     hashkey: {
         key: "hashkey",
-        display: "undefined",
+        display: "Hashkey",
         currency: "HSK",
         vmType: "EVM",
         chainId: 177,
@@ -3602,7 +3602,7 @@ export const chainConfig = {
 
     derive: {
         key: "derive",
-        display: "undefined",
+        display: "Derive",
         currency: "ETH",
         vmType: "EVM",
         chainId: 957,
@@ -3637,7 +3637,7 @@ export const chainConfig = {
 
     zkcandy: {
         key: "zkcandy",
-        display: "undefined",
+        display: "ZK Candy",
         currency: "ETH",
         vmType: "EVM",
         chainId: 320,
@@ -3670,9 +3670,9 @@ export const chainConfig = {
         },
     },
 
-    injective_evm: {
-        key: "injective_evm",
-        display: "undefined",
+    inevm: {
+        key: "inevm",
+        display: "inevm",
         currency: "INJ",
         vmType: "EVM",
         chainId: 2525,
@@ -3708,7 +3708,7 @@ export const chainConfig = {
 
     mitosis: {
         key: "mitosis",
-        display: "undefined",
+        display: "Mitosis",
         currency: "MITO",
         vmType: "EVM",
         chainId: 124816,
@@ -3744,7 +3744,7 @@ export const chainConfig = {
 
     optopia: {
         key: "optopia",
-        display: "undefined",
+        display: "Optopia",
         currency: "ETH",
         vmType: "EVM",
         chainId: 62050,
@@ -3781,7 +3781,7 @@ export const chainConfig = {
 
     matchain: {
         key: "matchain",
-        display: "undefined",
+        display: "Matchain",
         currency: "BNB",
         vmType: "EVM",
         chainId: 698,
@@ -3820,7 +3820,7 @@ export const chainConfig = {
 
     coredao: {
         key: "coredao",
-        display: "undefined",
+        display: "Core DAO",
         currency: "CORE",
         vmType: "EVM",
         chainId: 1116,
@@ -3859,7 +3859,7 @@ export const chainConfig = {
 
     merlin: {
         key: "merlin",
-        display: "undefined",
+        display: "Merlin",
         currency: "BTC",
         vmType: "EVM",
         chainId: 4200,
@@ -3899,7 +3899,7 @@ export const chainConfig = {
 
     camp: {
         key: "camp",
-        display: "undefined",
+        display: "Camp",
         currency: "CAMP",
         vmType: "EVM",
         chainId: 484,
@@ -3934,7 +3934,7 @@ export const chainConfig = {
 
     vana: {
         key: "vana",
-        display: "undefined",
+        display: "Vana",
         currency: "VANA",
         vmType: "EVM",
         chainId: 1480,
@@ -3972,7 +3972,7 @@ export const chainConfig = {
 
     yominet_evm: {
         key: "yominet_evm",
-        display: "undefined",
+        display: "Yominet EVM",
         currency: "ETH",
         vmType: "EVM",
         chainId: 428962654539583,
@@ -4008,7 +4008,7 @@ export const chainConfig = {
 
     numbers: {
         key: "numbers",
-        display: "undefined",
+        display: "Numbers",
         currency: "NUM",
         vmType: "EVM",
         chainId: 10507,
@@ -4044,7 +4044,7 @@ export const chainConfig = {
 
     layeredge: {
         key: "layeredge",
-        display: "undefined",
+        display: "LayerEdge",
         currency: "EDGEN",
         vmType: "EVM",
         chainId: 4207,
@@ -4082,7 +4082,7 @@ export const chainConfig = {
 
     dogechain: {
         key: "dogechain",
-        display: "undefined",
+        display: "Dogechain",
         currency: "DOGE",
         vmType: "EVM",
         chainId: 2000,
@@ -4123,7 +4123,7 @@ export const chainConfig = {
 
     polynomial: {
         key: "polynomial",
-        display: "undefined",
+        display: "Polynomial",
         currency: "ETH",
         vmType: "EVM",
         chainId: 8008,
@@ -4159,7 +4159,7 @@ export const chainConfig = {
 
     swan: {
         key: "swan",
-        display: "undefined",
+        display: "Swan",
         currency: "ETH",
         vmType: "EVM",
         chainId: 254,
@@ -4198,7 +4198,7 @@ export const chainConfig = {
 
     fluence: {
         key: "fluence",
-        display: "undefined",
+        display: "Fluence",
         currency: "FLT",
         vmType: "EVM",
         chainId: 9999999,
@@ -4233,7 +4233,7 @@ export const chainConfig = {
 
     zklink_nova: {
         key: "zklink_nova",
-        display: "undefined",
+        display: "ZKLink Nova",
         currency: "ETH",
         vmType: "EVM",
         chainId: 810180,
@@ -4268,7 +4268,7 @@ export const chainConfig = {
 
     exsat: {
         key: "exsat",
-        display: "undefined",
+        display: "ExSat",
         currency: "BTC",
         vmType: "EVM",
         chainId: 7200,
@@ -4303,7 +4303,7 @@ export const chainConfig = {
 
     battle_for_blockchain: {
         key: "battle_for_blockchain",
-        display: "undefined",
+        display: "Battle for Blockchain",
         currency: "INIT",
         vmType: "EVM",
         chainId: 3920262608331171,
@@ -4338,7 +4338,7 @@ export const chainConfig = {
 
     ethw: {
         key: "ethw",
-        display: "undefined",
+        display: "EthW",
         currency: "ETHW",
         vmType: "EVM",
         chainId: 10001,
@@ -4374,7 +4374,7 @@ export const chainConfig = {
 
     unit0: {
         key: "unit0",
-        display: "undefined",
+        display: "Unit0",
         currency: "UNIT0",
         vmType: "EVM",
         chainId: 88811,
@@ -4409,7 +4409,7 @@ export const chainConfig = {
 
     ham: {
         key: "ham",
-        display: "undefined",
+        display: "Ham",
         currency: "ETH",
         vmType: "EVM",
         chainId: 5112,
@@ -4445,7 +4445,7 @@ export const chainConfig = {
 
     zero_g: {
         key: "zero_g",
-        display: "undefined",
+        display: "0G",
         currency: "0G",
         vmType: "EVM",
         chainId: 16661,
@@ -4480,7 +4480,7 @@ export const chainConfig = {
 
     goat: {
         key: "goat",
-        display: "undefined",
+        display: "GOAT",
         currency: "BTC",
         vmType: "EVM",
         chainId: 2345,
@@ -4517,7 +4517,7 @@ export const chainConfig = {
 
     humanode: {
         key: "humanode",
-        display: "undefined",
+        display: "Humanode",
         currency: "HMND",
         vmType: "EVM",
         chainId: 5234,
@@ -4587,7 +4587,7 @@ export const chainConfig = {
 
     saakuru: {
         key: "saakuru",
-        display: "undefined",
+        display: "Saakuru",
         currency: "OAS",
         vmType: "EVM",
         chainId: 7225878,
@@ -4624,7 +4624,7 @@ export const chainConfig = {
 
     r5_testnet: {
         key: "r5_testnet",
-        display: "undefined",
+        display: "R5 Testnet",
         currency: "R5",
         vmType: "EVM",
         chainId: 337,
@@ -4659,7 +4659,7 @@ export const chainConfig = {
 
     pulsechain: {
         key: "pulsechain",
-        display: "undefined",
+        display: "Pulsechain",
         currency: "PLS",
         vmType: "EVM",
         chainId: 369,
@@ -4701,7 +4701,7 @@ export const chainConfig = {
 
     dymension: {
         key: "dymension",
-        display: "undefined",
+        display: "Dymension",
         currency: "DYM",
         vmType: "EVM",
         chainId: 1100,
@@ -4744,7 +4744,7 @@ export const chainConfig = {
 
     callisto: {
         key: "callisto",
-        display: "undefined",
+        display: "Callisto",
         currency: "CLO",
         vmType: "EVM",
         chainId: 820,
@@ -4780,7 +4780,7 @@ export const chainConfig = {
 
     syndicate_frame: {
         key: "syndicate_frame",
-        display: "undefined",
+        display: "Syndicate Frame",
         currency: "ETH",
         vmType: "EVM",
         chainId: 5101,
@@ -4815,7 +4815,7 @@ export const chainConfig = {
 
     xrpl_evm: {
         key: "xrpl_evm",
-        display: "undefined",
+        display: "XRPL EVM",
         currency: "XRP",
         vmType: "EVM",
         chainId: 1440000,
@@ -4851,7 +4851,7 @@ export const chainConfig = {
 
     rave: {
         key: "rave",
-        display: "undefined",
+        display: "Rave",
         currency: "INIT",
         vmType: "EVM",
         chainId: 555110192329996,
@@ -4886,7 +4886,7 @@ export const chainConfig = {
 
     lukso: {
         key: "lukso",
-        display: "undefined",
+        display: "Lukso",
         currency: "LYX",
         vmType: "EVM",
         chainId: 42,
@@ -4923,7 +4923,7 @@ export const chainConfig = {
 
     phala: {
         key: "phala",
-        display: "undefined",
+        display: "Phala",
         currency: "ETH",
         vmType: "EVM",
         chainId: 2035,
@@ -4958,7 +4958,7 @@ export const chainConfig = {
 
     ing: {
         key: "ing",
-        display: "undefined",
+        display: "ING",
         currency: "INIT",
         vmType: "EVM",
         chainId: 2780922216980457,
@@ -4993,7 +4993,7 @@ export const chainConfig = {
 
     zaar: {
         key: "zaar",
-        display: "undefined",
+        display: "Zaar",
         currency: "INIT",
         vmType: "EVM",
         chainId: 1335097526422335,
@@ -5028,7 +5028,7 @@ export const chainConfig = {
 
     nibiru: {
         key: "nibiru",
-        display: "undefined",
+        display: "Nibiru",
         currency: "NIBI",
         vmType: "EVM",
         chainId: 6900,
@@ -5063,7 +5063,7 @@ export const chainConfig = {
 
     bevm: {
         key: "bevm",
-        display: "undefined",
+        display: "BEVM",
         currency: "BTC",
         vmType: "EVM",
         chainId: 11501,
@@ -5102,7 +5102,7 @@ export const chainConfig = {
 
     embr: {
         key: "embr",
-        display: "undefined",
+        display: "Embr",
         currency: "INIT",
         vmType: "EVM",
         chainId: 2598901095158506,
@@ -5172,7 +5172,7 @@ export const chainConfig = {
 
     evmos: {
         key: "evmos",
-        display: "undefined",
+        display: "Evmos",
         currency: "EVMOS",
         vmType: "EVM",
         chainId: 9001,
@@ -5234,7 +5234,7 @@ export const chainConfig = {
 
     beam: {
         key: "beam",
-        display: "undefined",
+        display: "Beam",
         currency: "BEAM",
         vmType: "EVM",
         chainId: 4337,
@@ -5270,7 +5270,7 @@ export const chainConfig = {
 
     prom: {
         key: "prom",
-        display: "undefined",
+        display: "Prom",
         currency: "PROM",
         vmType: "EVM",
         chainId: 227,
@@ -5307,7 +5307,7 @@ export const chainConfig = {
 
     onyx: {
         key: "onyx",
-        display: "undefined",
+        display: "Onyx",
         currency: "XCN",
         vmType: "EVM",
         chainId: 80888,
@@ -5343,7 +5343,7 @@ export const chainConfig = {
 
     river: {
         key: "river",
-        display: "undefined",
+        display: "River",
         currency: "ETH",
         vmType: "EVM",
         chainId: 550,
@@ -5381,7 +5381,7 @@ export const chainConfig = {
 
     skate: {
         key: "skate",
-        display: "undefined",
+        display: "Skate",
         currency: "ETH",
         vmType: "EVM",
         chainId: 5050,
@@ -5418,7 +5418,7 @@ export const chainConfig = {
 
     satoshivm: {
         key: "satoshivm",
-        display: "undefined",
+        display: "SatoshiVM",
         currency: "BTC",
         vmType: "EVM",
         chainId: 3109,
@@ -5454,7 +5454,7 @@ export const chainConfig = {
 
     jovay: {
         key: "jovay",
-        display: "undefined",
+        display: "Jovay",
         currency: "ETH",
         vmType: "EVM",
         chainId: 5734951,
@@ -5491,7 +5491,7 @@ export const chainConfig = {
 
     ethernity: {
         key: "ethernity",
-        display: "undefined",
+        display: "Eternity",
         currency: "ETH",
         vmType: "EVM",
         chainId: 183,
@@ -5526,7 +5526,7 @@ export const chainConfig = {
 
     mezo: {
         key: "mezo",
-        display: "undefined",
+        display: "Mozo",
         currency: "BTC",
         vmType: "EVM",
         chainId: 31612,
