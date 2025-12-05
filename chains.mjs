@@ -15,8 +15,9 @@ export const chainConfig = {
         lzSrcId: 30101,
         cgPlatformId: "ethereum",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "eth", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://etherscan.io",
             "https://eth.blockscout.com",
@@ -90,6 +91,7 @@ export const chainConfig = {
         cgPlatformId: "bittorrent",
         cgGasAssetId: "bittorrent",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://bttcscan.com/",
@@ -128,6 +130,7 @@ export const chainConfig = {
         cgPlatformId: "fraxtal",
         cgGasAssetId: "frax-share",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://fraxscan.com/",
@@ -166,8 +169,9 @@ export const chainConfig = {
         lzSrcId: 30202,
         cgPlatformId: "opbnb",
         cgGasAssetId: "binancecoin",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "opbnb", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://opbnb.bscscan.com/",
             "https://mainnet.opbnbscan.com",
@@ -209,6 +213,7 @@ export const chainConfig = {
         cgPlatformId: "taiko",
         cgGasAssetId: "taiko",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://taikoscan.io/",
@@ -253,6 +258,7 @@ export const chainConfig = {
         cgPlatformId: "xdc-network",
         cgGasAssetId: "xdce-crowd-sale",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://xdcscan.com/",
@@ -298,6 +304,7 @@ export const chainConfig = {
         cgPlatformId: "sophon",
         cgGasAssetId: "sophon",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://sophscan.xyz/",
@@ -334,7 +341,8 @@ export const chainConfig = {
         lzSrcId: 30390,
         cgPlatformId: "monad",
         cgGasAssetId: "monad",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "monad", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://monadscan.com",
@@ -373,7 +381,8 @@ export const chainConfig = {
         lzSrcId: 30370,
         cgPlatformId: "plume-network",
         cgGasAssetId: "plume",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "plume", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://phoenix-explorer.plumenetwork.xyz",
@@ -412,6 +421,7 @@ export const chainConfig = {
         cgPlatformId: "abstract",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://abscan.org/",
@@ -451,6 +461,7 @@ export const chainConfig = {
         cgPlatformId: "katana",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://katanascan.com/",
@@ -487,8 +498,9 @@ export const chainConfig = {
         lzSrcId: 30111,
         cgPlatformId: "optimistic-ethereum",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "optimism", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://optimistic.etherscan.io/",
             "https://optimistic.etherscan.io",
@@ -536,7 +548,8 @@ export const chainConfig = {
         lzSrcId: 30106,
         cgPlatformId: "avalanche",
         cgGasAssetId: "avalanche-2",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "avalanche", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://snowscan.xyz/",
@@ -583,8 +596,9 @@ export const chainConfig = {
         lzSrcId: 30110,
         cgPlatformId: "arbitrum-one",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "arbitrum", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://arbiscan.io",
             "https://explorer.arbitrum.io",
@@ -632,6 +646,7 @@ export const chainConfig = {
         cgPlatformId: "arbitrum-nova",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://nova.arbiscan.io/",
@@ -670,8 +685,9 @@ export const chainConfig = {
         lzSrcId: 30184,
         cgPlatformId: "base",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "base", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://basescan.org",
             "https://base.blockscout.com",
@@ -719,7 +735,8 @@ export const chainConfig = {
         lzSrcId: 30109,
         cgPlatformId: "polygon-pos",
         cgGasAssetId: "polygon-ecosystem-token",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "polygon", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://polygonscan.com",
@@ -767,8 +784,9 @@ export const chainConfig = {
         lzSrcId: 30183,
         cgPlatformId: "linea",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "linea", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://lineascan.build",
             "https://explorer.linea.build",
@@ -808,8 +826,9 @@ export const chainConfig = {
         lzSrcId: 30102,
         cgPlatformId: "binance-smart-chain",
         cgGasAssetId: "binancecoin",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "bsc", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://bscscan.com",
             "https://bnb.dex.guru",
@@ -873,8 +892,9 @@ export const chainConfig = {
         lzSrcId: 30320,
         cgPlatformId: "unichain",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "uni", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://uniscan.xyz",
             "https://unichain.blockscout.com",
@@ -913,7 +933,8 @@ export const chainConfig = {
         lzSrcId: 30332,
         cgPlatformId: "sonic",
         cgGasAssetId: "sonic-3",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "sonic", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://sonicscan.com",
@@ -953,7 +974,8 @@ export const chainConfig = {
         lzSrcId: 30280,
         cgPlatformId: "sei-v2",
         cgGasAssetId: "wrapped-sei",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "sei", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://seitrace.com",
@@ -992,6 +1014,7 @@ export const chainConfig = {
         cgPlatformId: "world-chain",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://worldscan.org",
@@ -1032,8 +1055,9 @@ export const chainConfig = {
         lzSrcId: 30165,
         cgPlatformId: "zksync",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "zksync", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://explorer.zksync.io",
         ],
@@ -1073,7 +1097,8 @@ export const chainConfig = {
         lzSrcId: 30112,
         cgPlatformId: "fantom",
         cgGasAssetId: "fantom",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "fantom", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.fantom.network",
@@ -1121,8 +1146,9 @@ export const chainConfig = {
         lzSrcId: 30167,
         cgPlatformId: "moonriver",
         cgGasAssetId: "moonriver",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "moonriver", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://moonriver.moonscan.io",
         ],
@@ -1159,8 +1185,9 @@ export const chainConfig = {
         lzSrcId: 30211,
         cgPlatformId: "aurora",
         cgGasAssetId: "aurora-near",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "aurora", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://explorer.aurora.dev",
         ],
@@ -1199,6 +1226,7 @@ export const chainConfig = {
         cgPlatformId: "boba",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://bobascan.com/",
@@ -1238,7 +1266,8 @@ export const chainConfig = {
         lzSrcId: 30359,
         cgPlatformId: "cronos",
         cgGasAssetId: "crypto-com-chain",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "cronos", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.cronos.org",
@@ -1282,7 +1311,8 @@ export const chainConfig = {
         lzSrcId: 30116,
         cgPlatformId: "harmony-shard-0",
         cgGasAssetId: "harmony",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "harmony", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.harmony.one",
@@ -1326,6 +1356,7 @@ export const chainConfig = {
         cgPlatformId: "kava",
         cgGasAssetId: "kava",
         openOceanSupported: true,
+        openOceanChainCode: "kava", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://kavascan.com",
@@ -1340,7 +1371,7 @@ export const chainConfig = {
             "https://kava-rpc.gateway.pokt.network",
             "https://kava-evm.rpc.thirdweb.com",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 2,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b",
@@ -1367,6 +1398,7 @@ export const chainConfig = {
         cgPlatformId: "fuse",
         cgGasAssetId: "fuse-network-token",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.fuse.io",
@@ -1404,7 +1436,8 @@ export const chainConfig = {
         lzSrcId: 30294,
         cgPlatformId: "gravity-alpha",
         cgGasAssetId: "g-token",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "gravity", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.gravity.xyz",
@@ -1434,6 +1467,44 @@ export const chainConfig = {
         },
     },
 
+    tac: {
+        key: "tac",
+        display: "TAC",
+        currency: "TAC",
+        vmType: "EVM",
+        chainId: 239,
+        lzSrcId: null,
+        cgPlatformId: "",
+        cgGasAssetId: "",
+        openOceanSupported: true,
+        openOceanChainCode: "tac", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+           "https://explorer.tac.build"
+        ],
+        defaultExplorerUrlIndex: 0,
+        explorerApiUrl: "",
+        rpcUrls: [
+            "https://rpc.ankr.com/tac",
+            "https://rpc.tac.build"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xB63B9f0eb4A6E6f191529D71d4D88cc8900Df2C9",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0xAF988C3f7CB2AceAbB15f96b19388a259b6C438f",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
     mode: {
         key: "mode",
         display: "Mode",
@@ -1443,8 +1514,9 @@ export const chainConfig = {
         lzSrcId: 30260,
         cgPlatformId: "mode",
         cgGasAssetId: "mode",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "mode", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://explorer.mode.network",
             "https://modescan.io",
@@ -1482,8 +1554,9 @@ export const chainConfig = {
         lzSrcId: 30151,
         cgPlatformId: "metis-andromeda",
         cgGasAssetId: "metis-token",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "metis", 
+        openOceanNativeAddress: "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000",
         explorerUrls: [
             "https://explorer.metis.io",
             "https://andromeda-explorer.metis.io",
@@ -1524,6 +1597,7 @@ export const chainConfig = {
         cgPlatformId: "soneium",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.soneium.org",
@@ -1563,7 +1637,8 @@ export const chainConfig = {
         lzSrcId: 30312,
         cgPlatformId: "apechain",
         cgGasAssetId: "apecoin",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "ape", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://apescan.io",
@@ -1600,7 +1675,8 @@ export const chainConfig = {
         lzSrcId: 30362,
         cgPlatformId: "berachain",
         cgGasAssetId: "berachain-bera",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "bera", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://berascan.com",
@@ -1618,8 +1694,8 @@ export const chainConfig = {
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x6969696969696969696969696969696969696969",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdc: "0x549943e04f40284185054145c6E4e9568C1D3241",
+            usdt: "0x779Ded0c9e1022225f8E0630b35a9b54bE713736",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1640,7 +1716,8 @@ export const chainConfig = {
         lzSrcId: 0,
         cgPlatformId: "plasma",
         cgGasAssetId: "plasma",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "plasma", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://plasmascan.to",
@@ -1677,7 +1754,8 @@ export const chainConfig = {
         lzSrcId: 0,
         cgPlatformId: "telos",
         cgGasAssetId: "telos",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "telos", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://teloscan.io",
@@ -1717,6 +1795,7 @@ export const chainConfig = {
         cgPlatformId: "flow-evm",
         cgGasAssetId: "flow",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://flowscan.io",
@@ -1754,7 +1833,8 @@ export const chainConfig = {
         lzSrcId: 0,
         cgPlatformId: "flare-network",
         cgGasAssetId: "flare-networks",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "flare", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://flare-explorer.flare.network",
@@ -1797,8 +1877,9 @@ export const chainConfig = {
         lzSrcId: 30335,
         cgPlatformId: "swellchain",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "swell", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://swellchainscan.io/",
             "https://explorer.swellnetwork.io",
@@ -1835,7 +1916,8 @@ export const chainConfig = {
         lzSrcId: 30367,
         cgPlatformId: "hyperevm",
         cgGasAssetId: "hyperliquid",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "hyperevm", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://hyperevmscan.io",
@@ -1879,6 +1961,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://blockscout.injective.network/",
@@ -1918,6 +2001,7 @@ export const chainConfig = {
         cgPlatformId: "ancient8",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.ancient8.gg",
@@ -1953,8 +2037,9 @@ export const chainConfig = {
         lzSrcId: 30125,
         cgPlatformId: "celo",
         cgGasAssetId: "celo",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "celo", 
+        openOceanNativeAddress: "0x471EcE3750Da237f93B8E339c536989b8978a438",
         explorerUrls: [
             "https://celoscan.io",
             "https://celo.blockscout.com",
@@ -1969,8 +2054,8 @@ export const chainConfig = {
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
-            gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            gasToken: "0x471EcE3750Da237f93B8E339c536989b8978a438",
+            wrappedGasToken: "0x471EcE3750Da237f93B8E339c536989b8978a438",
             usdc: "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -1993,8 +2078,9 @@ export const chainConfig = {
         lzSrcId: 30158,
         cgPlatformId: "polygon-zkevm",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "polygon_zkevm", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://zkevm.polygonscan.com",
         ],
@@ -2033,8 +2119,9 @@ export const chainConfig = {
         lzSrcId: 30214,
         cgPlatformId: "scroll",
         cgGasAssetId: "weth",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "scroll", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://scrollscan.com",
         ],
@@ -2076,7 +2163,8 @@ export const chainConfig = {
         lzSrcId: 30181,
         cgPlatformId: "mantle",
         cgGasAssetId: "mantle",
-        openOceanSupported: false,
+        openOceanSupported: true,
+        openOceanChainCode: "mantle", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mantlescan.xyz",
@@ -2118,8 +2206,9 @@ export const chainConfig = {
         lzSrcId: 30243,
         cgPlatformId: "blast",
         cgGasAssetId: "ethereum",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "blast", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://blastscan.io",
             "https://blastexplorer.io",
@@ -2164,8 +2253,9 @@ export const chainConfig = {
         lzSrcId: 0,
         cgPlatformId: "rootstock",
         cgGasAssetId: "rootstock",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "rootstock", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://explorer.rsk.co",
             "https://rootstock.blockscout.com",
@@ -2203,6 +2293,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.codex.xyz",
@@ -2238,6 +2329,7 @@ export const chainConfig = {
         cgPlatformId: "xdai",
         cgGasAssetId: "xdai",
         openOceanSupported: true,
+        openOceanChainCode: "xdai", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://gnosisscan.io",
@@ -2286,8 +2378,9 @@ export const chainConfig = {
         lzSrcId: 30217,
         cgPlatformId: "manta-pacific",
         cgGasAssetId: "weth",
-        openOceanSupported: false,
-        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        openOceanSupported: true,
+        openOceanChainCode: "manta", 
+        openOceanNativeAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
         explorerUrls: [
             "https://pacific-explorer.manta.network",
         ],
@@ -2330,6 +2423,7 @@ export const chainConfig = {
         cgPlatformId: "mint",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.mintchain.io",
@@ -2367,6 +2461,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://shapescan.xyz",
@@ -2403,6 +2498,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.appchain.xyz",
@@ -2438,6 +2534,7 @@ export const chainConfig = {
         cgPlatformId: "redstone",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.redstone.xyz",
@@ -2473,6 +2570,7 @@ export const chainConfig = {
         cgPlatformId: "lisk",
         cgGasAssetId: "lisk",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://blockscout.lisk.com",
@@ -2509,6 +2607,7 @@ export const chainConfig = {
         cgPlatformId: "story",
         cgGasAssetId: "story-2",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mainnet.storyscan.xyz",
@@ -2557,6 +2656,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.perennial.xyz",
@@ -2594,6 +2694,7 @@ export const chainConfig = {
         cgPlatformId: "sanko",
         cgGasAssetId: "dream-machine-token",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.sanko.xyz",
@@ -2666,6 +2767,7 @@ export const chainConfig = {
         cgPlatformId: "morph-l2",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.morphl2.io",
@@ -2702,6 +2804,7 @@ export const chainConfig = {
         cgPlatformId: "somnia",
         cgGasAssetId: "somnia",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.somnia.network",
@@ -2740,6 +2843,7 @@ export const chainConfig = {
         cgPlatformId: "superseed",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer-superseed-mainnet-0.t.conduit.xyz",
@@ -2777,6 +2881,7 @@ export const chainConfig = {
         cgPlatformId: "cyber",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://cyberscan.co",
@@ -2813,6 +2918,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer-v2.powerloom.network",
@@ -2848,6 +2954,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.arena-z.gg",
@@ -2883,6 +2990,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.b3.fun",
@@ -2919,6 +3027,7 @@ export const chainConfig = {
         cgPlatformId: "corn",
         cgGasAssetId: "bitcorn-3",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://cornscan.io",
@@ -2957,6 +3066,7 @@ export const chainConfig = {
         cgPlatformId: "funki",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://funkiscan.io",
@@ -2993,6 +3103,7 @@ export const chainConfig = {
         cgPlatformId: "gunz",
         cgGasAssetId: "gunz",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://gunzscan.io",
@@ -3028,6 +3139,7 @@ export const chainConfig = {
         cgPlatformId: "hemi",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.hemi.xyz",
@@ -3064,6 +3176,7 @@ export const chainConfig = {
         cgPlatformId: "zircuit",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zircuit.com",
@@ -3100,6 +3213,7 @@ export const chainConfig = {
         cgPlatformId: "Superposition",
         cgGasAssetId: "superposition-bridged-weth-superposition",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.superposition.so",
@@ -3135,6 +3249,7 @@ export const chainConfig = {
         cgPlatformId: "ink",
         cgGasAssetId: "ethereum",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.inkonchain.com",
@@ -3172,6 +3287,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.gobob.xyz",
@@ -3209,6 +3325,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer-animechain-39xf6m45e3.t.conduit.xyz",
@@ -3245,6 +3362,7 @@ export const chainConfig = {
         cgPlatformId: "xai",
         cgGasAssetId: "xai-blockchain",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://xaiscan.io",
@@ -3282,6 +3400,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zero.network",
@@ -3318,6 +3437,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://commons.explorer.syndicate.io",
@@ -3354,6 +3474,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.forma.art",
@@ -3389,6 +3510,7 @@ export const chainConfig = {
         cgPlatformId: "rari",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mainnet.explorer.rarichain.org",
@@ -3425,6 +3547,7 @@ export const chainConfig = {
         cgPlatformId: "degen",
         cgGasAssetId: "degen-base",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.degen.tips",
@@ -3460,6 +3583,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.ethereal.trade",
@@ -3495,6 +3619,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.bsquared.network/",
@@ -3536,6 +3661,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scope.silicon.network",
@@ -3572,6 +3698,7 @@ export const chainConfig = {
         cgPlatformId: "hashkey-chain",
         cgGasAssetId: "hashkey-ecopoints",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.hsk.xyz",
@@ -3610,6 +3737,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.lyra.finance",
@@ -3645,6 +3773,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zkcandy.io",
@@ -3680,6 +3809,7 @@ export const chainConfig = {
         cgPlatformId: "inevm",
         cgGasAssetId: "injective-protocol",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://inevm.calderaexplorer.xyz",
@@ -3716,6 +3846,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mitoscan.io",
@@ -3752,6 +3883,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.optopia.ai/",
@@ -3789,6 +3921,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://www.matchscan.io/",
@@ -3828,6 +3961,7 @@ export const chainConfig = {
         cgPlatformId: "core",
         cgGasAssetId: "coredaoorg",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.coredao.org",
@@ -3867,6 +4001,7 @@ export const chainConfig = {
         cgPlatformId: "merlin-chain",
         cgGasAssetId: "wrapped-bitcoin",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://merlin.l2scan.co",
@@ -3907,6 +4042,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://camp.cloud.blockscout.com",
@@ -3942,6 +4078,7 @@ export const chainConfig = {
         cgPlatformId: "vana",
         cgGasAssetId: "vana",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://vanascan.io",
@@ -3980,6 +4117,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/yominet-1",
@@ -4016,6 +4154,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mainnet.num.network/",
@@ -4052,6 +4191,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://edgenscan.io",
@@ -4090,6 +4230,7 @@ export const chainConfig = {
         cgPlatformId: "dogechain",
         cgGasAssetId: "dogechain",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.dogechain.dog",
@@ -4131,6 +4272,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer-polynomial-mainnet-0.t.conduit.xyz",
@@ -4167,6 +4309,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://swanscan.io",
@@ -4206,6 +4349,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://blockscout.mainnet.fluence.dev",
@@ -4241,6 +4385,7 @@ export const chainConfig = {
         cgPlatformId: "zklink-nova",
         cgGasAssetId: "zklink",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zklink.io",
@@ -4276,6 +4421,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.exsat.network",
@@ -4311,6 +4457,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/bfb-1",
@@ -4346,6 +4493,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://www.oklink.com/ethw",
@@ -4382,6 +4530,7 @@ export const chainConfig = {
         cgPlatformId: "units-network",
         cgGasAssetId: "unit0",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.unit0.dev",
@@ -4417,6 +4566,7 @@ export const chainConfig = {
         cgPlatformId: "ham",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.ham.fun",
@@ -4453,6 +4603,7 @@ export const chainConfig = {
         cgPlatformId: "0g",
         cgGasAssetId: "zero-gravity",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://chainscan.0g.ai",
@@ -4488,6 +4639,7 @@ export const chainConfig = {
         cgPlatformId: "goat",
         cgGasAssetId: "wrapped-bitcoin",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.goat.network",
@@ -4525,6 +4677,7 @@ export const chainConfig = {
         cgPlatformId: "humanode",
         cgGasAssetId: "wrapped-ehmnd",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://humanode.subscan.io",
@@ -4560,6 +4713,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.dbkchain.io",
@@ -4595,6 +4749,7 @@ export const chainConfig = {
         cgPlatformId: "saakuru",
         cgGasAssetId: "wrapped-oasys",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.saakuru.network/",
@@ -4632,6 +4787,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.r5.network",
@@ -4667,6 +4823,7 @@ export const chainConfig = {
         cgPlatformId: "pulsechain",
         cgGasAssetId: "pulsechain",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://otter.pulsechain.com/",
@@ -4709,6 +4866,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://dym.fyi",
@@ -4752,6 +4910,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.callisto.network",
@@ -4788,6 +4947,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer-frame.syndicate.io",
@@ -4823,6 +4983,7 @@ export const chainConfig = {
         cgPlatformId: "xrpl-evm",
         cgGasAssetId: "ripple",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "explorer.xrplevm.org",
@@ -4859,6 +5020,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/rave-1",
@@ -4894,6 +5056,7 @@ export const chainConfig = {
         cgPlatformId: "lukso",
         cgGasAssetId: "lukso-token-2",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.execution.mainnet.lukso.network",
@@ -4931,6 +5094,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.phala.network",
@@ -4966,6 +5130,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/ingnetwork-1",
@@ -5001,6 +5166,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/zaar-mainnet-1",
@@ -5036,6 +5202,7 @@ export const chainConfig = {
         cgPlatformId: "nibiru",
         cgGasAssetId: "nibiru",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://nibiscan.io",
@@ -5071,6 +5238,7 @@ export const chainConfig = {
         cgPlatformId: "bevm",
         cgGasAssetId: "bitcoin",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan-mainnet.bevm.io",
@@ -5110,6 +5278,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.initia.xyz/embrmainnet-1",
@@ -5145,6 +5314,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://mainnet-explorer.ailayer.xyz",
@@ -5180,6 +5350,7 @@ export const chainConfig = {
         cgPlatformId: "evmos",
         cgGasAssetId: "evmos",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://escan.live",
@@ -5242,6 +5413,7 @@ export const chainConfig = {
         cgPlatformId: "beam",
         cgGasAssetId: "beam",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://subnets.avax.network/beam",
@@ -5278,6 +5450,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://promscan.io",
@@ -5315,6 +5488,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.onyx.org/",
@@ -5351,6 +5525,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.river.build",
@@ -5389,6 +5564,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://scan.skatechain.org",
@@ -5426,6 +5602,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://svmscan.io",
@@ -5462,6 +5639,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.jovay.io",
@@ -5499,6 +5677,7 @@ export const chainConfig = {
         cgPlatformId: null,
         cgGasAssetId: null,
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://ernscan.io",
@@ -5534,6 +5713,7 @@ export const chainConfig = {
         cgPlatformId: "mezo",
         cgGasAssetId: "wrapped-bitcoin",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.mezo.org",
@@ -5572,6 +5752,7 @@ export const chainConfig = {
         cgPlatformId: "zora-network",
         cgGasAssetId: "weth",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zora.energy",
@@ -5608,6 +5789,7 @@ export const chainConfig = {
         cgPlatformId: "cronos-zkevm",
         cgGasAssetId: "cronos-zkevm-cro",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.zkevm.cronos.org",
@@ -5646,6 +5828,7 @@ export const chainConfig = {
         cgPlatformId: "wemix-network",
         cgGasAssetId: "wemix-token",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://explorer.wemix.com",
@@ -5682,6 +5865,7 @@ export const chainConfig = {
         cgPlatformId: "x-layer",
         cgGasAssetId: "okb",
         openOceanSupported: false,
+        openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
             "https://www.oklink.com/xlayer",
