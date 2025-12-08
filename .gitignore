@@ -14,3 +14,6 @@ npm-debug.log*
 
 # Auto-generated files
 contract-verification-log.json
+
+aggregated_chains.mjs
+chains-incomplete.json
