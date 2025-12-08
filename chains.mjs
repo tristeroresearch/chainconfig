@@ -1155,8 +1155,11 @@ export const chainConfig = {
         explorerApiUrl: "https://api.etherscan.io/v2/api",
         rpcUrls: [
             "https://moonriver.drpc.org",
+            "https://moonriver.api.onfinality.io/public",
             "https://moonriver-rpc.publicnode.com",
             "https://moonriver.public.blastapi.io",
+            "https://moonriver.unitedbloc.com",
+            "https://moonriver.drpc.org",
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
@@ -6249,9 +6252,86 @@ export const chainConfig = {
             multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
         },
     },
-    
-    moonbeam: {}, // TODO
-    peaq: {}, // TODO
+
+    moonbeam: {
+        key: "moonbeam",
+        display: "Moonbeam",
+        currency: "GLMR",
+        vmType: "EVM",
+        chainId: 1284,
+        lzSrcId: 0,
+        cgPlatformId: "moonbeam",
+        cgGasAssetId: "moonbeam",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://moonscan.io/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://rpc.api.moonbeam.network",
+            "https://moonbeam-rpc.publicnode.com",
+            "https://moonbeam.api.onfinality.io/public",
+            "https://1rpc.io/glmr",
+            "https://moonbeam.drpc.org",
+            "https://moonbeam.public.blastapi.io"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    peaq: {
+        key: "peaq",
+        display: "Peaq",
+        currency: "PEAQ",
+        vmType: "EVM",
+        chainId: 3338,
+        lzSrcId: 0,
+        cgPlatformId: "peaq",
+        cgGasAssetId: "peaq-2",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://peaq.subscan.io/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://peaq-rpc.publicnode.com",
+            "https://quicknode1.peaq.xyz",
+            "https://quicknode2.peaq.xyz",
+            "https://quicknode3.peaq.xyz",
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
     r5_network: {}, // TODO
     thundercore: {}, // TODO
     zeta: {}, // TODO
