@@ -6488,9 +6488,41 @@ export const chainConfig = {
         },
     },
     
-    eclipse: {}, // TODO
-    
-    stable: {}, // TODO
+    stable: {
+        key: "stable",
+        display: "Stable",
+        currency: "gUSDT",
+        vmType: "EVM",
+        chainId: 988,
+        lzSrcId: 0,
+        cgPlatformId: "stable",
+        cgGasAssetId: "tether",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://stablescan.xyz/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://rpc.stable.xyz"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
 };
 
 // All chains as an array
