@@ -1488,7 +1488,7 @@ export const chainConfig = {
             "https://rpc.ankr.com/tac",
             "https://rpc.tac.build"
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xB63B9f0eb4A6E6f191529D71d4D88cc8900Df2C9",
@@ -4992,6 +4992,8 @@ export const chainConfig = {
         defaultExplorerUrlIndex: 0,
         rpcUrls: [
             "https://rpc.xrplevm.org",
+            "https://xrplevm.buildintheshade.com",
+            "https://rpc.xrplevm.org",
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
@@ -5386,7 +5388,7 @@ export const chainConfig = {
             "https://evmos-jsonrpc.kalia.network",
             "https://jsonrpc-evmos.mzonder.com",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x0000000000000000000000000000000000000000",
