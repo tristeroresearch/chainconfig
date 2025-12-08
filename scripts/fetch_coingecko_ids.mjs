@@ -10,6 +10,51 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/**
+ * Validates and completes a chain object with all required schema fields
+ */
+function validateAndCompleteChain(chain) {
+    const zeroAddr = '0x0000000000000000000000000000000000000000';
+    
+    return {
+        key: chain.key || 'unknown',
+        display: chain.display || chain.name || 'Unknown',
+        currency: chain.currency || 'ETH',
+        vmType: chain.vmType || 'EVM',
+        chainId: chain.chainId,
+        lzSrcId: chain.lzSrcId || 0,
+        cgPlatformId: chain.cgPlatformId || null,
+        cgGasAssetId: chain.cgGasAssetId || null,
+        openOceanSupported: chain.openOceanSupported || false,
+        openOceanChainCode: chain.openOceanChainCode || '',
+        openOceanNativeAddress: chain.openOceanNativeAddress || zeroAddr,
+        explorerUrls: Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
+            ? chain.explorerUrls
+            : (chain.explorerUrl ? [chain.explorerUrl] : ['']),
+        defaultExplorerUrlIndex: chain.defaultExplorerUrlIndex || 0,
+        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0
+            ? chain.rpcUrls
+            : [],
+        defaultRpcUrlIndex: chain.defaultRpcUrlIndex || 0,
+        explorerApiUrl: chain.explorerApiUrl || undefined,
+        addresses: {
+            gasToken: chain.addresses?.gasToken || zeroAddr,
+            wrappedGasToken: chain.addresses?.wrappedGasToken || zeroAddr,
+            usdc: chain.addresses?.usdc || zeroAddr,
+            usdt: chain.addresses?.usdt || zeroAddr,
+            permit2: chain.addresses?.permit2 || zeroAddr,
+            entryPoint: chain.addresses?.entryPoint || zeroAddr,
+            trustedForwarder: chain.addresses?.trustedForwarder || zeroAddr,
+            relayRouter: chain.addresses?.relayRouter || zeroAddr,
+            messageTransmitter: chain.addresses?.messageTransmitter || zeroAddr,
+            tokenMessenger: chain.addresses?.tokenMessenger || zeroAddr,
+            create5: chain.addresses?.create5 || zeroAddr,
+            multicall3: chain.addresses?.multicall3 || zeroAddr,
+            ...(chain.addresses || {}),
+        },
+    };
+}
+
 // Load chain config
 const loadChainConfig = async () => {
     const configPath = path.join(__dirname, '..', 'chains.mjs');
@@ -354,6 +399,9 @@ async function main() {
                 console.log(`✓ ${chain.display?.padEnd(30)} → Updated to Etherscan v2 API (chainId: ${chain.chainId})`);
                 etherscanUpdated++;
             }
+            
+            // Validate and complete the schema
+            extendedConfig[key] = validateAndCompleteChain(extendedConfig[key]);
         }
         
         console.log(`\nUpdated ${etherscanUpdated} chains to use Etherscan v2 API`);
