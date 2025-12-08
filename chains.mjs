@@ -6038,7 +6038,8 @@ export const chainConfig = {
         ],
         defaultExplorerUrlIndex: 0,
         rpcUrls: [
-            "node.mainnet.etherlink.com",
+            "https://node.mainnet.etherlink.com",
+            "https://rpc.ankr.com/etherlink_mainnet"
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
@@ -6057,11 +6058,198 @@ export const chainConfig = {
         },
     },
 
-    humanity: {}, // TODO
-    immutable_zkevm: {}, // TODO
-    kaia: {}, // TODO
-    lens: {}, // TODO
-    metal: {}, // TODO
+    humanity: {
+        key: "humanity",
+        display: "Humanity",
+        currency: "H",
+        vmType: "EVM",
+        chainId: 6985385,
+        lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://humanity-mainnet.explorer.alchemy.com/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://humanity-mainnet.g.alchemy.com/public"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+    
+    immutable_zkevm: {
+        key: "immutable_zkevm",
+        display: "Immutable ZKEVM",
+        currency: "IMX",
+        vmType: "EVM",
+        chainId: 13371,
+        lzSrcId: 0,
+        cgPlatformId: "immutable",
+        cgGasAssetId: "immutable-x",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://explorer.immutable.com/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://rpc.immutable.com",
+            "https://immutable.gateway.tenderly.co",
+            "https://immutable-zkevm.drpc.org",
+
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    kaia: {
+        key: "kaia",
+        display: "Kaia",
+        currency: "KAIA",
+        vmType: "EVM",
+        chainId: 8217,
+        lzSrcId: 0,
+        cgPlatformId: "klay-token",
+        cgGasAssetId: "kaia",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://kaiascan.io/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://public-en.node.kaia.io/",
+            "https://go.getblock.io/d7094dbd80ab474ba7042603fe912332",
+            "https://kaia-public.nodies.app",
+            "https://klaytn.drpc.org",
+            "https://1rpc.io/klay"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    }, 
+    
+    lens: {
+        key: "lens",
+        display: "Lens",
+        currency: "GHO",
+        vmType: "EVM",
+        chainId: 232,
+        lzSrcId: 0,
+        cgPlatformId: "lens",
+        cgGasAssetId: "gho",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://explorer.lens.xyz/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://lens-mainnet.g.alchemy.com/v2/yBgmC33Xy4ZwVdDnGXgga",
+            "https://rpc.lens.xyz",
+            "https://lens.drpc.org",
+            "https://light-icy-dinghy.lens-mainnet.quiknode.pro"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+    
+    metall2: {
+        key: "metall2",
+        display: "Metal L2",
+        currency: "M",
+        vmType: "EVM",
+        chainId: 1750,
+        lzSrcId: 0,
+        cgPlatformId: "metal-l2",
+        cgGasAssetId: "metal",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://explorer.metall2.com/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://l2-metal-mainnet-0.t.conduit.xyz",
+            "https://rpc.metall2.com",
+            "https://metall2.drpc.org",
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+    
     moonbeam: {}, // TODO
     peaq: {}, // TODO
     r5_network: {}, // TODO
