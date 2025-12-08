@@ -5936,15 +5936,15 @@ export const chainConfig = {
         },
     }, 
         
-    astar_zkevm: {
-        key: "astar_zkevm",
-        display: "Astar ZKEVM",
-        currency: "ETH",
-        vmType: "EVM",
-        chainId: 3776,
-        cgPlatformId: "astar-zkevm",
-        cgGasAssetId: "weth",
-    },
+    // astar_zkevm: {
+    //     key: "astar_zkevm",
+    //     display: "Astar ZKEVM",
+    //     currency: "ETH",
+    //     vmType: "EVM",
+    //     chainId: 3776,
+    //     cgPlatformId: "astar-zkevm",
+    //     cgGasAssetId: "weth",
+    // },
     
     
     bitlayer:  {

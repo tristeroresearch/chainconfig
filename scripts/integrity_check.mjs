@@ -117,6 +117,7 @@ async function verifyRpcs(chainConfig) {
     for (const [key, chain] of Object.entries(chainConfig)) {
         console.log(`\nChecking ${chain.display} (${key})...`);
         const rpcResults = [];
+        const rpcUrlsToRemove = []; // Track RPCs with wrong chainId
 
         for (let i = 0; i < chain.rpcUrls.length; i++) {
             const rpcUrl = chain.rpcUrls[i];
@@ -127,12 +128,13 @@ async function verifyRpcs(chainConfig) {
 
             if (result.success) {
                 if (result.chainId !== chain.chainId) {
-                    console.log(`✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId})`);
+                    console.log(`✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId}) - WILL REMOVE`);
+                    rpcUrlsToRemove.push(rpcUrl);
                 } else {
                     console.log('✓ OK');
                 }
             } else {
-                console.log(`✗ FAILED (${result.error?.substring(0, 60)})`);
+                console.log(`✗ FAILED (${result.error?.substring(0, 60)}) - KEEPING (might be temporary)`);
             }
         }
 
@@ -152,6 +154,12 @@ async function verifyRpcs(chainConfig) {
 
         if (!anyWorkingRpc) {
             console.log(`  ✗ ERROR: No working RPC URLs found for ${key}`);
+        }
+
+        // Store RPCs to remove in corrections if any
+        if (rpcUrlsToRemove.length > 0) {
+            corrections[key] = { ...corrections[key], removeRpcUrls: rpcUrlsToRemove };
+            console.log(`  ⚠ Will remove ${rpcUrlsToRemove.length} misconfigured RPC(s)`);
         }
 
         results[key] = { rpcResults, workingRpc, anyWorkingRpc };
@@ -538,6 +546,24 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
         // Apply corrections from checks
         const corrections = allCorrections[key];
         if (corrections) {
+            // Remove misconfigured RPCs (wrong chainId)
+            if (corrections.removeRpcUrls && Array.isArray(corrections.removeRpcUrls)) {
+                const originalRpcs = [...corrected[key].rpcUrls];
+                const urlsToRemove = new Set(corrections.removeRpcUrls);
+                corrected[key].rpcUrls = originalRpcs.filter(url => !urlsToRemove.has(url));
+                
+                const removedCount = originalRpcs.length - corrected[key].rpcUrls.length;
+                if (removedCount > 0) {
+                    chainChanges.push(`Removed ${removedCount} misconfigured RPC(s) with wrong chainId`);
+                    
+                    // Adjust defaultRpcUrlIndex if needed
+                    if (corrected[key].defaultRpcUrlIndex >= corrected[key].rpcUrls.length) {
+                        corrected[key].defaultRpcUrlIndex = Math.max(0, corrected[key].rpcUrls.length - 1);
+                        chainChanges.push(`Adjusted defaultRpcUrlIndex to ${corrected[key].defaultRpcUrlIndex}`);
+                    }
+                }
+            }
+
             if (corrections.defaultRpcUrlIndex !== undefined) {
                 corrected[key].defaultRpcUrlIndex = corrections.defaultRpcUrlIndex;
                 chainChanges.push(`Updated defaultRpcUrlIndex to ${corrections.defaultRpcUrlIndex}`);
