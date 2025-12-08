@@ -6332,11 +6332,164 @@ export const chainConfig = {
             multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
         },
     },
-    r5_network: {}, // TODO
-    thundercore: {}, // TODO
-    zeta: {}, // TODO
-    viction: {}, // TODO
+
+    r5_network: {
+        key: "r5_network",
+        display: "R5 Network",
+        currency: "R5",
+        vmType: "EVM",
+        chainId: 337,
+        lzSrcId: 0,
+        cgPlatformId: null,
+        cgGasAssetId: null,
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://explorer.r5.network/?network=R5",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://rpc.r5.network",
+            "https://rpc.r5.network",
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    thundercore: {
+        key: "thundercore",
+        display: "ThunderCore",
+        currency: "TT",
+        vmType: "EVM",
+        chainId: 108,
+        lzSrcId: 0,
+        cgPlatformId: "thundercore",
+        cgGasAssetId: "thunder-token",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://explorer-mainnet.thundercore.com",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://mainnet-rpc.thundertoken.net",
+            "https://thundercore.drpc.org",
+            "https://mainnet-rpc.thundercore.com",
+            "https://mainnet-rpc.thundercore.io"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    zeta: {
+        key: "zeta",
+        display: "Zeta",
+        currency: "ZETA",
+        vmType: "EVM",
+        chainId: 7000,
+        lzSrcId: 0,
+        cgPlatformId: "zetachain",
+        cgGasAssetId: "zetachain",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://zetascan.com/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://zetachain-evm.blockpi.network/v1/rpc/public",
+            "https://zeta-chain.drpc.org",
+            "https://zetachain-mainnet.public.blastapi.io",
+            "https://zetachain-mainnet-evm.reliableninjas.com",
+            "https://zeta-mainnet.publicnode.com",
+            "https://zetachain-mainnet.g.allthatnode.com/archive/evm"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+    
+    viction: {
+        key: "viction",
+        display: "Viction",
+        currency: "VIC",
+        vmType: "EVM",
+        chainId: 88,
+        lzSrcId: 0,
+        cgPlatformId: "tomochain",
+        cgGasAssetId: "tomochain",
+        openOceanSupported: false,
+        openOceanChainCode: "", 
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+            "https://tomoscan.io/",
+        ],
+        defaultExplorerUrlIndex: 0,
+        rpcUrls: [
+            "https://viction.blockpi.network/v1/rpc/public",
+            "https://viction.drpc.org",
+            "https://rpc.viction.xyz"
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x0000000000000000000000000000000000000000",
+            multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+    
     eclipse: {}, // TODO
+    
     stable: {}, // TODO
 };
 
