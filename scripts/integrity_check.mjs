@@ -537,7 +537,7 @@ const REQUIRED_ADDRESSES = [
 
 // Generate corrected config
 function generateCorrectedConfig(chainConfig, allCorrections) {
-    const corrected = JSON.parse(JSON.stringify(chainConfig)); // Deep clone
+    const corrected = JSON.parse(JSON.stringify(chainConfig)); // Deep clone - preserves ALL fields
     const changesSummary = {};
 
     for (const [key, chain] of Object.entries(corrected)) {
@@ -583,6 +583,24 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
             }
         }
 
+        // Ensure all required fields are present with defaults if missing
+        // But NEVER delete existing fields
+        if (!corrected[key].cgPlatformId && corrected[key].cgPlatformId !== null) {
+            corrected[key].cgPlatformId = null;
+        }
+        if (!corrected[key].cgGasAssetId && corrected[key].cgGasAssetId !== null) {
+            corrected[key].cgGasAssetId = null;
+        }
+        if (corrected[key].openOceanSupported === undefined) {
+            corrected[key].openOceanSupported = false;
+        }
+        if (!corrected[key].openOceanChainCode && corrected[key].openOceanChainCode !== "") {
+            corrected[key].openOceanChainCode = "";
+        }
+        if (!corrected[key].openOceanNativeAddress) {
+            corrected[key].openOceanNativeAddress = ZERO_ADDRESS;
+        }
+
         // Ensure all required addresses are present
         if (!corrected[key].addresses) corrected[key].addresses = {};
         for (const addrKey of REQUIRED_ADDRESSES) {
@@ -620,6 +638,25 @@ function formatChainObject(key, chain, indent = '    ') {
     lines.push(`${indent}    vmType: "${chain.vmType || 'EVM'}",`);
     lines.push(`${indent}    chainId: ${chain.chainId},`);
     lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
+
+    // Add CoinGecko fields
+    if (chain.cgPlatformId !== undefined) {
+        lines.push(`${indent}    cgPlatformId: ${chain.cgPlatformId === null ? 'null' : `"${chain.cgPlatformId}"`},`);
+    }
+    if (chain.cgGasAssetId !== undefined) {
+        lines.push(`${indent}    cgGasAssetId: ${chain.cgGasAssetId === null ? 'null' : `"${chain.cgGasAssetId}"`},`);
+    }
+
+    // Add OpenOcean fields
+    if (chain.openOceanSupported !== undefined) {
+        lines.push(`${indent}    openOceanSupported: ${chain.openOceanSupported},`);
+    }
+    if (chain.openOceanChainCode !== undefined) {
+        lines.push(`${indent}    openOceanChainCode: "${chain.openOceanChainCode}",`);
+    }
+    if (chain.openOceanNativeAddress !== undefined) {
+        lines.push(`${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress}",`);
+    }
 
     // Add explorerUrls
     if (chain.explorerUrls && Array.isArray(chain.explorerUrls)) {
@@ -690,9 +727,11 @@ function saveCorrectedConfig(correctedConfig) {
     const outputLines = [
         '// Auto-generated corrected chain configuration',
         `// Generated on ${new Date().toISOString()}`,
+        '// ALL original fields are preserved - only corrections applied',
         '// Centralized chain configuration for scripts',
         '// Each chain has a stable key usable as chainConfig[key].variable',
         '// rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one',
+        '',
         '',
         'export const chainConfig = {',
     ];
@@ -701,7 +740,10 @@ function saveCorrectedConfig(correctedConfig) {
         outputLines.push(formatChainObject(key, chain));
     }
 
-    outputLines.push('}');
+    outputLines.push('};');
+    outputLines.push('');
+    outputLines.push('// All chains as an array');
+    outputLines.push('export const configuredChains = Object.values(chainConfig);');
     outputLines.push('');
 
     // Add helper functions
