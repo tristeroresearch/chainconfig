@@ -64,6 +64,7 @@ function checkBasicIntegrity(chainConfig) {
     const keys = new Set();
     const chainIds = new Set();
     const lzIds = new Set();
+    const missingProperties = {};
 
     for (const [key, chain] of Object.entries(chainConfig)) {
         // Check duplicate keys
@@ -85,6 +86,30 @@ function checkBasicIntegrity(chainConfig) {
             }
             lzIds.add(chain.lzSrcId);
         }
+
+        // Check for missing required properties
+        const missing = [];
+        for (const prop of REQUIRED_CHAIN_PROPERTIES) {
+            if (!(prop.key in chain)) {
+                missing.push(prop.key);
+            }
+        }
+
+        // Check for missing required addresses
+        const missingAddresses = [];
+        if (chain.addresses) {
+            for (const addr of REQUIRED_ADDRESSES) {
+                if (!(addr in chain.addresses)) {
+                    missingAddresses.push(addr);
+                }
+            }
+        } else {
+            missingAddresses.push('ALL (addresses object missing)');
+        }
+
+        if (missing.length > 0 || missingAddresses.length > 0) {
+            missingProperties[key] = { properties: missing, addresses: missingAddresses };
+        }
     }
 
     if (issues.length === 0) {
@@ -92,6 +117,23 @@ function checkBasicIntegrity(chainConfig) {
     } else {
         console.log('✗ Issues found:');
         issues.forEach(issue => console.log(`  - ${issue}`));
+    }
+
+    if (Object.keys(missingProperties).length > 0) {
+        console.log('\n⚠ Chains with missing required properties:');
+        for (const [chainKey, missing] of Object.entries(missingProperties)) {
+            const chain = chainConfig[chainKey];
+            const displayName = chain?.display || chainKey;
+            console.log(`  ${displayName} (${chainKey}):`);
+            if (missing.properties.length > 0) {
+                console.log(`    Missing properties: ${missing.properties.join(', ')}`);
+            }
+            if (missing.addresses.length > 0) {
+                console.log(`    Missing addresses: ${missing.addresses.join(', ')}`);
+            }
+        }
+    } else {
+        console.log('✓ All chains have required properties');
     }
 
     return issues;
@@ -511,6 +553,27 @@ async function verifyContracts(chainConfig, rpcResults) {
     return { results, corrections };
 }
 
+// Required properties that every chain must have
+const REQUIRED_CHAIN_PROPERTIES = [
+    { key: 'key', type: 'string', default: null }, // Must match object key
+    { key: 'display', type: 'string', default: 'N/A' },
+    { key: 'currency', type: 'string', default: 'N/A' },
+    { key: 'vmType', type: 'string', default: 'EVM' },
+    { key: 'chainId', type: 'number', default: 0 },
+    { key: 'lzSrcId', type: 'number', default: null }, // null or 0 for no LayerZero
+    { key: 'cgPlatformId', type: 'string', default: null }, // null or "" for unknown
+    { key: 'cgGasAssetId', type: 'string', default: null }, // null or "" for unknown
+    { key: 'openOceanSupported', type: 'boolean', default: false },
+    { key: 'openOceanChainCode', type: 'string', default: '' },
+    { key: 'openOceanNativeAddress', type: 'string', default: ZERO_ADDRESS },
+    { key: 'explorerUrls', type: 'array', default: [] },
+    { key: 'defaultExplorerUrlIndex', type: 'number', default: 0 },
+    { key: 'explorerApiUrl', type: 'string', default: '' }, // Empty string if not available
+    { key: 'rpcUrls', type: 'array', default: [] },
+    { key: 'defaultRpcUrlIndex', type: 'number', default: 0 },
+    { key: 'addresses', type: 'object', default: {} },
+];
+
 // Required addresses that every chain should have
 const REQUIRED_ADDRESSES = [
     'gasToken',
@@ -557,10 +620,26 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
             }
         }
 
+        // Ensure all required top-level properties are present
+        for (const prop of REQUIRED_CHAIN_PROPERTIES) {
+            if (!(prop.key in corrected[key])) {
+                let defaultValue = prop.default;
+                // Special case: key must match object key
+                if (prop.key === 'key') {
+                    defaultValue = key;
+                }
+                corrected[key][prop.key] = defaultValue;
+                chainChanges.push(`Added missing property ${prop.key} with default value: ${JSON.stringify(defaultValue)}`);
+            }
+        }
+
         // Ensure all required addresses are present
-        if (!corrected[key].addresses) corrected[key].addresses = {};
+        if (!corrected[key].addresses) {
+            corrected[key].addresses = {};
+            chainChanges.push('Created missing addresses object');
+        }
         for (const addrKey of REQUIRED_ADDRESSES) {
-            if (!corrected[key].addresses[addrKey]) {
+            if (!(addrKey in corrected[key].addresses)) {
                 corrected[key].addresses[addrKey] = ZERO_ADDRESS;
                 chainChanges.push(`Added missing address ${addrKey} as zero address`);
             }
@@ -582,41 +661,44 @@ function formatChainObject(key, chain, indent = '    ') {
         `${indent}    key: "${chain.key}",`,
     ];
 
-    // Add display/name field
-    if (chain.display !== undefined) {
-        lines.push(`${indent}    display: "${chain.display}",`);
-    }
-    if (chain.name !== undefined) {
-        lines.push(`${indent}    name: "${chain.name}",`);
-    }
+    // Add display field
+    lines.push(`${indent}    display: "${chain.display}",`);
 
     lines.push(`${indent}    currency: "${chain.currency}",`);
-    lines.push(`${indent}    vmType: "${chain.vmType || 'EVM'}",`);
+    lines.push(`${indent}    vmType: "${chain.vmType}",`);
     lines.push(`${indent}    chainId: ${chain.chainId},`);
-    lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
+    lines.push(`${indent}    lzSrcId: ${chain.lzSrcId === null ? 'null' : chain.lzSrcId},`);
+    
+    // CoinGecko properties
+    const cgPlatformId = chain.cgPlatformId === null ? 'null' : `"${chain.cgPlatformId}"`;
+    const cgGasAssetId = chain.cgGasAssetId === null ? 'null' : `"${chain.cgGasAssetId}"`;
+    lines.push(`${indent}    cgPlatformId: ${cgPlatformId},`);
+    lines.push(`${indent}    cgGasAssetId: ${cgGasAssetId},`);
+    
+    // OpenOcean properties
+    lines.push(`${indent}    openOceanSupported: ${chain.openOceanSupported},`);
+    lines.push(`${indent}    openOceanChainCode: "${chain.openOceanChainCode}",`);
+    lines.push(`${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress}",`);
 
     // Add explorerUrls
+    lines.push(`${indent}    explorerUrls: [`);
     if (chain.explorerUrls && Array.isArray(chain.explorerUrls)) {
-        lines.push(`${indent}    explorerUrls: [`);
         for (const url of chain.explorerUrls) {
             lines.push(`${indent}        "${url}",`);
         }
-        lines.push(`${indent}    ],`);
-        lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex || 0},`);
     }
+    lines.push(`${indent}    ],`);
+    lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex},`);
 
-    // Add explorerApiUrl/apiUrl if exists
-    if (chain.explorerApiUrl) {
-        lines.push(`${indent}    explorerApiUrl: "${chain.explorerApiUrl}",`);
-    }
-    if (chain.apiUrl) {
-        lines.push(`${indent}    apiUrl: "${chain.apiUrl}",`);
-    }
+    // Add explorerApiUrl
+    lines.push(`${indent}    explorerApiUrl: "${chain.explorerApiUrl}",`);
 
     // Add rpcUrls
     lines.push(`${indent}    rpcUrls: [`);
-    for (const url of chain.rpcUrls) {
-        lines.push(`${indent}        "${url}",`);
+    if (chain.rpcUrls && Array.isArray(chain.rpcUrls)) {
+        for (const url of chain.rpcUrls) {
+            lines.push(`${indent}        "${url}",`);
+        }
     }
     lines.push(`${indent}    ],`);
     lines.push(`${indent}    defaultRpcUrlIndex: ${chain.defaultRpcUrlIndex},`);
@@ -801,6 +883,67 @@ async function cmdFix(argv) {
     }
 }
 
+// Config problems command - list chains with missing/invalid config values
+async function cmdConfigProblems() {
+    const chainConfig = await loadChainConfig();
+    const problems = [];
+
+    for (const [key, chain] of Object.entries(chainConfig)) {
+        const chainProblems = [];
+        const displayName = chain.display || chain.name || key;
+
+        // Check wrappedGasToken
+        if (!chain.addresses?.wrappedGasToken || chain.addresses.wrappedGasToken === ZERO_ADDRESS) {
+            chainProblems.push('wrappedGasToken is null/zero address');
+        }
+
+        // Check usdc
+        if (!chain.addresses?.usdc || chain.addresses.usdc === ZERO_ADDRESS) {
+            chainProblems.push('usdc is null/zero address');
+        }
+
+        // Check usdt
+        if (!chain.addresses?.usdt || chain.addresses.usdt === ZERO_ADDRESS) {
+            chainProblems.push('usdt is null/zero address');
+        }
+
+        // Check cgPlatformId
+        if (!chain.cgPlatformId || chain.cgPlatformId === '' || chain.cgPlatformId === null) {
+            chainProblems.push('cgPlatformId is missing/empty');
+        }
+
+        // Check cgGasAssetId
+        if (!chain.cgGasAssetId || chain.cgGasAssetId === '' || chain.cgGasAssetId === null) {
+            chainProblems.push('cgGasAssetId is missing/empty');
+        }
+
+        if (chainProblems.length > 0) {
+            const explorerUrl = getExplorerUrl(chain);
+            problems.push({ key, displayName, issues: chainProblems, explorerUrl });
+        }
+    }
+
+    console.log('\n=== Chain Configuration Problems ===\n');
+
+    if (problems.length === 0) {
+        console.log('✓ No configuration problems found');
+        return;
+    }
+
+    for (const { key, displayName, issues, explorerUrl } of problems) {
+        console.log(`${displayName} (${key}):`);
+        if (explorerUrl) {
+            console.log(`  Explorer: ${explorerUrl}`);
+        }
+        for (const issue of issues) {
+            console.log(`  ✗ ${issue}`);
+        }
+        console.log('');
+    }
+
+    console.log(`Total: ${problems.length} chains with problems`);
+}
+
 // Info command - list all chains
 async function cmdInfo() {
     const chainConfig = await loadChainConfig();
@@ -879,7 +1022,13 @@ async function main() {
             {},
             async () => await cmdInfo()
         )
-        .demandCommand(1, 'You must specify a command: check, verify-rpcs, verify-contracts, fix, or info')
+        .command(
+            'config-problems',
+            'List chains with missing/invalid config values (wrappedGasToken, usdc, usdt, cgPlatformId, cgGasAssetId)',
+            {},
+            async () => await cmdConfigProblems()
+        )
+        .demandCommand(1, 'You must specify a command: check, verify-rpcs, verify-contracts, fix, info, or config-problems')
         .alias('h', 'help')
         .help()
         .wrap(Math.min(120, process.stdout.columns || 100))
