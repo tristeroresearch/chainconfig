@@ -117,6 +117,7 @@ async function verifyRpcs(chainConfig) {
     for (const [key, chain] of Object.entries(chainConfig)) {
         console.log(`\nChecking ${chain.display} (${key})...`);
         const rpcResults = [];
+        const rpcUrlsToRemove = []; // Track RPCs with wrong chainId
 
         for (let i = 0; i < chain.rpcUrls.length; i++) {
             const rpcUrl = chain.rpcUrls[i];
@@ -127,12 +128,13 @@ async function verifyRpcs(chainConfig) {
 
             if (result.success) {
                 if (result.chainId !== chain.chainId) {
-                    console.log(`✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId})`);
+                    console.log(`✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId}) - WILL REMOVE`);
+                    rpcUrlsToRemove.push(rpcUrl);
                 } else {
                     console.log('✓ OK');
                 }
             } else {
-                console.log(`✗ FAILED (${result.error?.substring(0, 60)})`);
+                console.log(`✗ FAILED (${result.error?.substring(0, 60)}) - KEEPING (might be temporary)`);
             }
         }
 
@@ -152,6 +154,12 @@ async function verifyRpcs(chainConfig) {
 
         if (!anyWorkingRpc) {
             console.log(`  ✗ ERROR: No working RPC URLs found for ${key}`);
+        }
+
+        // Store RPCs to remove in corrections if any
+        if (rpcUrlsToRemove.length > 0) {
+            corrections[key] = { ...corrections[key], removeRpcUrls: rpcUrlsToRemove };
+            console.log(`  ⚠ Will remove ${rpcUrlsToRemove.length} misconfigured RPC(s)`);
         }
 
         results[key] = { rpcResults, workingRpc, anyWorkingRpc };
@@ -529,7 +537,7 @@ const REQUIRED_ADDRESSES = [
 
 // Generate corrected config
 function generateCorrectedConfig(chainConfig, allCorrections) {
-    const corrected = JSON.parse(JSON.stringify(chainConfig)); // Deep clone
+    const corrected = JSON.parse(JSON.stringify(chainConfig)); // Deep clone - preserves ALL fields
     const changesSummary = {};
 
     for (const [key, chain] of Object.entries(corrected)) {
@@ -538,6 +546,24 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
         // Apply corrections from checks
         const corrections = allCorrections[key];
         if (corrections) {
+            // Remove misconfigured RPCs (wrong chainId)
+            if (corrections.removeRpcUrls && Array.isArray(corrections.removeRpcUrls)) {
+                const originalRpcs = [...corrected[key].rpcUrls];
+                const urlsToRemove = new Set(corrections.removeRpcUrls);
+                corrected[key].rpcUrls = originalRpcs.filter(url => !urlsToRemove.has(url));
+                
+                const removedCount = originalRpcs.length - corrected[key].rpcUrls.length;
+                if (removedCount > 0) {
+                    chainChanges.push(`Removed ${removedCount} misconfigured RPC(s) with wrong chainId`);
+                    
+                    // Adjust defaultRpcUrlIndex if needed
+                    if (corrected[key].defaultRpcUrlIndex >= corrected[key].rpcUrls.length) {
+                        corrected[key].defaultRpcUrlIndex = Math.max(0, corrected[key].rpcUrls.length - 1);
+                        chainChanges.push(`Adjusted defaultRpcUrlIndex to ${corrected[key].defaultRpcUrlIndex}`);
+                    }
+                }
+            }
+
             if (corrections.defaultRpcUrlIndex !== undefined) {
                 corrected[key].defaultRpcUrlIndex = corrections.defaultRpcUrlIndex;
                 chainChanges.push(`Updated defaultRpcUrlIndex to ${corrections.defaultRpcUrlIndex}`);
@@ -555,6 +581,24 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
                     chainChanges.push(`Updated address ${addrKey} to ${addrValue}`);
                 }
             }
+        }
+
+        // Ensure all required fields are present with defaults if missing
+        // But NEVER delete existing fields
+        if (!corrected[key].cgPlatformId && corrected[key].cgPlatformId !== null) {
+            corrected[key].cgPlatformId = null;
+        }
+        if (!corrected[key].cgGasAssetId && corrected[key].cgGasAssetId !== null) {
+            corrected[key].cgGasAssetId = null;
+        }
+        if (corrected[key].openOceanSupported === undefined) {
+            corrected[key].openOceanSupported = false;
+        }
+        if (!corrected[key].openOceanChainCode && corrected[key].openOceanChainCode !== "") {
+            corrected[key].openOceanChainCode = "";
+        }
+        if (!corrected[key].openOceanNativeAddress) {
+            corrected[key].openOceanNativeAddress = ZERO_ADDRESS;
         }
 
         // Ensure all required addresses are present
@@ -594,6 +638,25 @@ function formatChainObject(key, chain, indent = '    ') {
     lines.push(`${indent}    vmType: "${chain.vmType || 'EVM'}",`);
     lines.push(`${indent}    chainId: ${chain.chainId},`);
     lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
+
+    // Add CoinGecko fields
+    if (chain.cgPlatformId !== undefined) {
+        lines.push(`${indent}    cgPlatformId: ${chain.cgPlatformId === null ? 'null' : `"${chain.cgPlatformId}"`},`);
+    }
+    if (chain.cgGasAssetId !== undefined) {
+        lines.push(`${indent}    cgGasAssetId: ${chain.cgGasAssetId === null ? 'null' : `"${chain.cgGasAssetId}"`},`);
+    }
+
+    // Add OpenOcean fields
+    if (chain.openOceanSupported !== undefined) {
+        lines.push(`${indent}    openOceanSupported: ${chain.openOceanSupported},`);
+    }
+    if (chain.openOceanChainCode !== undefined) {
+        lines.push(`${indent}    openOceanChainCode: "${chain.openOceanChainCode}",`);
+    }
+    if (chain.openOceanNativeAddress !== undefined) {
+        lines.push(`${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress}",`);
+    }
 
     // Add explorerUrls
     if (chain.explorerUrls && Array.isArray(chain.explorerUrls)) {
@@ -664,9 +727,11 @@ function saveCorrectedConfig(correctedConfig) {
     const outputLines = [
         '// Auto-generated corrected chain configuration',
         `// Generated on ${new Date().toISOString()}`,
+        '// ALL original fields are preserved - only corrections applied',
         '// Centralized chain configuration for scripts',
         '// Each chain has a stable key usable as chainConfig[key].variable',
         '// rpcUrls is an array, with defaultRpcUrlIndex selecting the preferred one',
+        '',
         '',
         'export const chainConfig = {',
     ];
@@ -675,7 +740,10 @@ function saveCorrectedConfig(correctedConfig) {
         outputLines.push(formatChainObject(key, chain));
     }
 
-    outputLines.push('}');
+    outputLines.push('};');
+    outputLines.push('');
+    outputLines.push('// All chains as an array');
+    outputLines.push('export const configuredChains = Object.values(chainConfig);');
     outputLines.push('');
 
     // Add helper functions
