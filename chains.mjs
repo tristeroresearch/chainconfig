@@ -68,7 +68,7 @@ export const chainConfig = {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
             usdc: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0xB2b5841DBeF766d4b521221732F9B618fCf34A87",
@@ -104,10 +104,10 @@ export const chainConfig = {
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
-            gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            gasToken: "0x0000000000000000000000000000000000001010",
+            wrappedGasToken: "0x23181F21DEa5936e24163FFABa4Ea3B316B57f3C",
+            usdc: "0xCa424b845497f7204D9301bd13Ff87C0E2e86FCF",
+            usdt: "0x9B5F27f6ea9bBD753ce3793a07CbA3C74644330d",
             permit2: "0x0000000000000000000000000000000000000000",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -145,9 +145,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xFc00000000000000000000000000000000000002",
+            usdc: "0xDcc0F2D8F90FDe85b10aC1c8Ab57dc0AE946A543",
+            usdt: "0x4d15EA9C2573ADDAeD814e48C148b5262694646A",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -188,9 +188,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x9e5AAC1Ba1a2e6aEd6b32689DFcF62A509Ca96f3",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -233,9 +233,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xA51894664A773981C6C112C43ce576f315d5b1B6",
+            usdc: "0x07d83526730c7438048D55A4fc0b850e2aaB6f0b",
+            usdt: "0x9c2dc7377717603eB92b2655c5f2E7997a4945BD",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -279,8 +279,8 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x951857744785E80e2De051c32EE7b25f9c458C42",
+            usdc: "0xfA2958CB79b0491CC627c1557F441eF849Ca8eb1",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
@@ -317,9 +317,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x2b1A859dE6A55c553520D7780Bc5805712B128F9",
+            usdc: "0x9Aa0F72392B5784Ad86c6f3E899bCc053D00Db4F",
+            usdt: "0x6386dA73545ae4E2B2E0393688fA8B65Bb9a7169",
             permit2: "0x0000000000000000000000000000000000000000",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -384,8 +384,8 @@ export const chainConfig = {
         openOceanChainCode: "plume", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://phoenix-explorer.plumenetwork.xyz",
             "https://explorer.plume.org",
+            "https://phoenix-explorer.plumenetwork.xyz",
         ],
         defaultExplorerUrlIndex: 0,
         rpcUrls: [
@@ -475,8 +475,8 @@ export const chainConfig = {
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdc: "0x203A662b0BD271A6ed5a60EdFbd04bFce608FD36",
+            usdt: "0x2DCa96907fde857dd3D816880A0df407eeB2D2F2",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -521,12 +521,12 @@ export const chainConfig = {
             "https://optimism.rpc.subquery.network/public",
             "https://0xrpc.io/op",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 2,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0xB2b5841DBeF766d4b521221732F9B618fCf34A87",
@@ -574,7 +574,7 @@ export const chainConfig = {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
             usdc: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -623,7 +623,7 @@ export const chainConfig = {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
             usdc: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0xB2b5841DBeF766d4b521221732F9B618fCf34A87",
@@ -661,7 +661,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x765277EebeCA2e31912C9946eAe1021199B39C61",
             usdc: "0x750ba8b76187092B0D1E87E28daaf484d1b5273b",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -911,7 +911,7 @@ export const chainConfig = {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x078D782b760474a361dDA0AF3839290b0EF57AD6",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x9151434b16b9763660705744891fA906F660EcC5",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -991,7 +991,7 @@ export const chainConfig = {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7",
             usdc: "0xe15fC38F6D8c56aF07bbCBe3BAf5708A2Bf42392",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x9151434b16b9763660705744891fA906F660EcC5",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1164,9 +1164,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x98878B06940aE243284CA214f92Bb71a2b032B8A",
+            usdc: "0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D",
+            usdt: "0xB44a9B6905aF7c801311e8F4E76932ee959c663C",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1204,7 +1204,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -1245,9 +1245,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000",
             usdc: "0x66a2A913e447d6b4BF33EFbec43aAeF87890FBbc",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0x5DE1677344D3Cb0D7D465c10b72A8f60699C062d",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1334,7 +1334,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xcF664087a5bB0237a0BAd6742852ec6c8d69A27a",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -1534,8 +1534,8 @@ export const chainConfig = {
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x4200000000000000000000000000000000000006",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdc: "0xd988097fb8612cc24eeC14542bC03424c656005f",
+            usdt: "0xf0F161fDA2712DB8b566946122a5af183995e2eD",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1575,9 +1575,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x75cb093E4D61d2A2e65D8e0BBb01DE8d89b53481",
+            usdc: "0xEA32A96608495e54156Ae48931A7c20f0dcc1a21",
+            usdt: "0xbB06DCA3AE6887fAbF931640f67cab3e3a16F4dC",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1602,7 +1602,6 @@ export const chainConfig = {
         openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://explorer.soneium.org",
             "https://soneium.blockscout.com",
             "https://www.okx.com/web3/explorer/soneium",
             "https://soneium.slam.vision",
@@ -1616,7 +1615,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -1651,7 +1650,7 @@ export const chainConfig = {
             "https://apechain.drpc.org",
             "https://rpc.apechain.com",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x48b62137EdfA95a428D35C09E44256a739F6B557",
@@ -1773,9 +1772,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
+            usdc: "0x8D97Cea50351Fb4329d591682b148D43a0C3611b",
+            usdt: "0x975Ed13fa16857E83e7C493C7741D556eaaD4A3f",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -1895,7 +1894,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2016,7 +2015,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2142,9 +2141,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
-            usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x5300000000000000000000000000000000000004",
+            usdc: "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4",
+            usdt: "0xf55BEC9cafDbE8730f096Aa55dad6D22d44099Df",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -2401,9 +2400,9 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x0Dc808adcE2099A9F62AA87D9670745AbA741746",
             usdc: "0x0000000000000000000000000000000000000000",
-            usdt: "0x0000000000000000000000000000000000000000",
+            usdt: "0xf417F5A458eC102B90352F697D6e2Ac3A3d2851f",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
@@ -2439,7 +2438,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2476,7 +2475,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2548,7 +2547,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -4765,7 +4764,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x557a526472372f1F222EcC6af8818C1e6e78A85f",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -5000,7 +4999,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x7C21a90E3eCD3215d16c3BBe76a491f8f792d4Bf",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -5110,7 +5109,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -5245,8 +5244,8 @@ export const chainConfig = {
         openOceanChainCode: "", 
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://scan-mainnet.bevm.io",
             "https://scan.geb.network",
+            "https://scan-mainnet.bevm.io",
             "https://www.oklink.com/bevm",
         ],
         defaultExplorerUrlIndex: 0,
@@ -5258,7 +5257,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xB5136FEba197f5fF4B765E5b50c74db717796dcD",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -5673,7 +5672,7 @@ export const chainConfig = {
 
     ethernity: {
         key: "ethernity",
-        display: "Eternity",
+        display: "Ethernity",
         currency: "ETH",
         vmType: "EVM",
         chainId: 183,
@@ -5769,7 +5768,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -5808,7 +5807,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 3,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xC1bF55EE54E16229d9b369a5502Bfe5fC9F20b6d",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -5845,7 +5844,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x7D72b22a74A216Af4a002a1095C8C707d6eC1C5f",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -5883,7 +5882,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x5a77f1443d16ee5761d310e38b62f77f726bc71c",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -6550,4 +6549,14 @@ export function getExplorerUrl(chainKeyOrObject) {
     if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;
     const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;
     return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];
+}
+
+// Get chain by key
+export function getChainByKey(key) {
+    return chainConfig[key] || null;
+}
+
+// Get chain by chain ID
+export function getChainByChainId(chainId) {
+    return configuredChains.find(c => c.chainId === chainId) || null;
 }
