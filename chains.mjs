@@ -2909,10 +2909,10 @@ export const chainConfig = {
         },
     },
 
-    powerloom: {
-        key: "powerloom",
+    powerloomv2: {
+        key: "powerloomv2",
         display: "Powerloom V2",
-        currency: "ETH",
+        currency: "POWER",
         vmType: "EVM",
         chainId: 7869,
         lzSrcId: 0,
