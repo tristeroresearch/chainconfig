@@ -7,6 +7,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Import official stablecoin deployments
+import { usdc as officialUsdcDeployments } from '../usdc.mjs';
+import { tether as officialTetherDeployments, usdt0 as officialUsdt0Deployments } from '../tether.mjs';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -23,6 +27,28 @@ const DEFAULT_ADDRESSES = {
 };
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+
+// Helper to safely checksum an address (handles non-checksummed or incorrectly checksummed addresses)
+function safeChecksum(address) {
+    if (!address || address === ZERO_ADDRESS) return ZERO_ADDRESS;
+    try {
+        return ethers.utils.getAddress(address.toLowerCase());
+    } catch (e) {
+        console.warn(`Warning: Could not checksum address ${address}: ${e.message}`);
+        return address;
+    }
+}
+
+// Build lookup maps for official USDC and USDT addresses (case-insensitive)
+// Key: chain key, Value: checksummed address
+const OFFICIAL_USDC_BY_CHAIN = new Map(
+    officialUsdcDeployments.map(({ key, address }) => [key, safeChecksum(address)])
+);
+
+// Combine tether (native USDT) and usdt0 deployments for USDT validation
+const OFFICIAL_USDT_BY_CHAIN = new Map(
+    [...officialTetherDeployments, ...officialUsdt0Deployments].map(({ key, address }) => [key, safeChecksum(address)])
+);
 
 // Load ABIs
 const loadAbi = (name) => {
@@ -463,28 +489,51 @@ async function verifyContracts(chainConfig, rpcResults) {
             }
         }
 
-        // Check all other non-zero addresses for deployed bytecode
-        // Specifically verify usdc and usdt have bytecode
+        // Check USDC and USDT addresses for official deployments only (security check)
+        // Bridged tokens are NOT allowed - only official Circle USDC and Tether/USDT0 deployments
         if (chain.addresses) {
             const otherChecksumIssues = [];
-            const tokensToVerify = ['usdc', 'usdt'];
+            const stablecoinChecks = [
+                { key: 'usdc', officialMap: OFFICIAL_USDC_BY_CHAIN, name: 'USDC' },
+                { key: 'usdt', officialMap: OFFICIAL_USDT_BY_CHAIN, name: 'USDT' },
+            ];
             
-            for (const [addrKey, addrValue] of Object.entries(chain.addresses)) {
-                // Skip already checked addresses and zero addresses
-                if (checkedAddressKeys.has(addrKey) || !addrValue || addrValue === ZERO_ADDRESS) {
+            for (const { key: addrKey, officialMap, name } of stablecoinChecks) {
+                const addrValue = chain.addresses[addrKey];
+                
+                // Skip if already checked or zero address (zero is allowed - means not available)
+                if (checkedAddressKeys.has(addrKey)) {
                     continue;
                 }
                 
-                // Only verify bytecode for tokens (usdc, usdt) or show minimal info for others
-                const shouldVerifyBytecode = tokensToVerify.includes(addrKey);
-                if (!shouldVerifyBytecode) {
-                    continue;
-                }
-
                 process.stdout.write(`  ${addrKey.padEnd(20)} `);
                 
+                // Zero address is always valid (means stablecoin not available on this chain)
+                if (!addrValue || addrValue === ZERO_ADDRESS) {
+                    const officialAddr = officialMap.get(key);
+                    if (officialAddr) {
+                        // Official deployment exists but config has zero - suggest correction
+                        console.log(`○ Zero address (official deployment available: ${officialAddr.substring(0, 10)}...)`);
+                        if (!corrections[key]) corrections[key] = { addresses: {} };
+                        if (!corrections[key].addresses) corrections[key].addresses = {};
+                        corrections[key].addresses[addrKey] = officialAddr;
+                    } else {
+                        console.log(`○ Zero address (no official deployment)`);
+                    }
+                    chainResults[addrKey] = { 
+                        exists: false, 
+                        verified: true, 
+                        reason: 'Zero address (valid)',
+                        address: ZERO_ADDRESS,
+                        configAddress: addrValue || ZERO_ADDRESS,
+                        usedDefault: false,
+                        needsChecksumFix: false
+                    };
+                    continue;
+                }
+                
+                // Non-zero address - must match official deployment
                 try {
-                    // Convert to checksummed address
                     let checksummedAddr = addrValue;
                     let needsChecksumFix = false;
                     try {
@@ -492,9 +541,59 @@ async function verifyContracts(chainConfig, rpcResults) {
                         needsChecksumFix = addrValue !== checksummedAddr;
                     } catch (e) {
                         console.log(`✗ Invalid address format`);
+                        chainResults[addrKey] = { 
+                            exists: false, 
+                            verified: false, 
+                            reason: 'Invalid address format',
+                            address: addrValue,
+                            configAddress: addrValue,
+                            usedDefault: false,
+                            needsChecksumFix: false
+                        };
                         continue;
                     }
-
+                    
+                    // Check if this address matches the official deployment for this chain
+                    const officialAddr = officialMap.get(key);
+                    
+                    if (!officialAddr) {
+                        // No official deployment for this chain - address must be zero
+                        console.log(`✗ SECURITY: No official ${name} deployment for ${key} - bridged tokens not allowed`);
+                        if (!corrections[key]) corrections[key] = { addresses: {} };
+                        if (!corrections[key].addresses) corrections[key].addresses = {};
+                        corrections[key].addresses[addrKey] = ZERO_ADDRESS;
+                        chainResults[addrKey] = { 
+                            exists: true, 
+                            verified: false, 
+                            reason: `No official ${name} deployment - bridged token not allowed`,
+                            address: checksummedAddr,
+                            configAddress: addrValue,
+                            usedDefault: false,
+                            needsChecksumFix
+                        };
+                        continue;
+                    }
+                    
+                    if (checksummedAddr.toLowerCase() !== officialAddr.toLowerCase()) {
+                        // Address doesn't match official deployment
+                        console.log(`✗ SECURITY: Address mismatch - expected ${officialAddr.substring(0, 10)}... (official), got ${checksummedAddr.substring(0, 10)}... (bridged token not allowed)`);
+                        if (!corrections[key]) corrections[key] = { addresses: {} };
+                        if (!corrections[key].addresses) corrections[key].addresses = {};
+                        corrections[key].addresses[addrKey] = officialAddr;
+                        chainResults[addrKey] = { 
+                            exists: true, 
+                            verified: false, 
+                            reason: `Address mismatch - bridged token not allowed`,
+                            address: checksummedAddr,
+                            configAddress: addrValue,
+                            officialAddress: officialAddr,
+                            usedDefault: false,
+                            needsChecksumFix
+                        };
+                        continue;
+                    }
+                    
+                    // Address matches official deployment - verify bytecode exists
                     const code = await provider.getCode(checksummedAddr);
                     const hasCode = code !== '0x';
                     
@@ -505,7 +604,7 @@ async function verifyContracts(chainConfig, rpcResults) {
                     chainResults[addrKey] = { 
                         exists: hasCode, 
                         verified: hasCode, 
-                        reason: hasCode ? 'Has code' : 'No code at address',
+                        reason: hasCode ? 'Official deployment verified' : 'No code at address',
                         address: checksummedAddr,
                         configAddress: addrValue,
                         usedDefault: false,
@@ -516,11 +615,9 @@ async function verifyContracts(chainConfig, rpcResults) {
                         const baseExplorerUrl = getExplorerUrl(chain);
                         const explorerUrl = baseExplorerUrl ? `${baseExplorerUrl}/address/${checksummedAddr}#code` : '';
                         const checksumNote = needsChecksumFix ? ' (needs checksum fix)' : '';
-                        console.log(`✓ ${checksummedAddr.substring(0, 10)}...${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
+                        console.log(`✓ ${checksummedAddr.substring(0, 10)}... (official)${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
                     } else {
-                        // No bytecode at address - this is a problem for tokens
-                        console.log(`✗ No code at address - invalid token address`);
-                        // Set to zero address in corrections
+                        console.log(`✗ No code at official address - deployment may be pending`);
                         if (!corrections[key]) corrections[key] = { addresses: {} };
                         if (!corrections[key].addresses) corrections[key].addresses = {};
                         corrections[key].addresses[addrKey] = ZERO_ADDRESS;
@@ -656,6 +753,26 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
                 corrected[key].addresses[addrKey] = ZERO_ADDRESS;
                 chainChanges.push(`Added missing address ${addrKey} as zero address`);
             }
+        }
+        
+        // SECURITY: Always enforce official USDC/USDT addresses
+        // Set to official address if available, otherwise zero address (removes bridged tokens)
+        const officialUsdc = OFFICIAL_USDC_BY_CHAIN.get(key) || ZERO_ADDRESS;
+        const currentUsdc = corrected[key].addresses.usdc || ZERO_ADDRESS;
+        if (currentUsdc.toLowerCase() !== officialUsdc.toLowerCase()) {
+            const oldAddr = currentUsdc === ZERO_ADDRESS ? 'zero' : currentUsdc.substring(0, 10) + '...';
+            const newAddr = officialUsdc === ZERO_ADDRESS ? 'zero (no official deployment)' : officialUsdc.substring(0, 10) + '... (official)';
+            corrected[key].addresses.usdc = officialUsdc;
+            chainChanges.push(`SECURITY: Set usdc from ${oldAddr} to ${newAddr}`);
+        }
+        
+        const officialUsdt = OFFICIAL_USDT_BY_CHAIN.get(key) || ZERO_ADDRESS;
+        const currentUsdt = corrected[key].addresses.usdt || ZERO_ADDRESS;
+        if (currentUsdt.toLowerCase() !== officialUsdt.toLowerCase()) {
+            const oldAddr = currentUsdt === ZERO_ADDRESS ? 'zero' : currentUsdt.substring(0, 10) + '...';
+            const newAddr = officialUsdt === ZERO_ADDRESS ? 'zero (no official deployment)' : officialUsdt.substring(0, 10) + '... (official)';
+            corrected[key].addresses.usdt = officialUsdt;
+            chainChanges.push(`SECURITY: Set usdt from ${oldAddr} to ${newAddr}`);
         }
 
         if (chainChanges.length > 0) {
