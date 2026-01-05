@@ -1799,9 +1799,9 @@ export const chainConfig = {
         },
     },
 
-    flowEVM: {
-        key: "flowEVM",
-        display: "Flow EVM",
+    flow: {
+        key: "flow",
+        display: "Flow",
         currency: "FLOW",
         vmType: "EVM",
         chainId: 747,
@@ -2327,7 +2327,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
             tokenMessenger: "0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -2928,7 +2928,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3611,7 +3611,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xEb54dACB4C2ccb64F8074eceEa33b5eBb38E5387",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -4695,7 +4695,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x1Cd0690fF9a693f5EF2dD976660a8dAFc81A109c",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -4808,13 +4808,13 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xF298158CAdb14B8B549c8135ebFDCa629A59526a",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
