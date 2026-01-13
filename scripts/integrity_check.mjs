@@ -14,6 +14,12 @@ import { tether as officialTetherDeployments, usdt0 as officialUsdt0Deployments 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Default relay router options (primary + secondary)
+const DEFAULT_RELAY_ROUTER_ADDRESSES = {
+    secondary: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+    primary: '0x33333381c18a6C046b6510322195ca046BA7DA2d',
+};
+
 // Default contract addresses
 const DEFAULT_ADDRESSES = {
     tokenMessenger: '0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d',
@@ -21,7 +27,7 @@ const DEFAULT_ADDRESSES = {
     permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
     entryPoint: '0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108',
     trustedForwarder: '0xB2b5841DBeF766d4b521221732F9B618fCf34A87',
-    relayRouter: '0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222',
+    relayRouter: DEFAULT_RELAY_ROUTER_ADDRESSES.primary,
     create5: '0x7000000db505d50f077492Efa36a8968ff7493dD',
     multicall3: '0xcA11bde05977b3631167028862bE2a173976CA11',
 };
@@ -334,7 +340,15 @@ async function verifyContracts(chainConfig, rpcResults) {
             { key: 'permit2', abi: ABIS.PERMIT2, name: 'PERMIT2', default: DEFAULT_ADDRESSES.permit2 },
             { key: 'entryPoint', abi: ABIS.ENTRY_POINT, name: 'ENTRY_POINT', default: DEFAULT_ADDRESSES.entryPoint },
             { key: 'trustedForwarder', abi: ABIS.TRUSTED_FORWARDER, name: 'TRUSTED_FORWARDER', default: DEFAULT_ADDRESSES.trustedForwarder },
-            { key: 'relayRouter', abi: ABIS.RELAY_ROUTER, name: 'RELAY_ROUTER', default: DEFAULT_ADDRESSES.relayRouter },
+            { 
+                key: 'relayRouter', 
+                abi: ABIS.RELAY_ROUTER, 
+                name: 'RELAY_ROUTER', 
+                default: [
+                    DEFAULT_RELAY_ROUTER_ADDRESSES.primary, 
+                    DEFAULT_RELAY_ROUTER_ADDRESSES.secondary
+                ].filter(Boolean),
+            },
             { key: 'messageTransmitter', abi: ABIS.MESSAGE_TRANSMITTER, name: 'MESSAGE_TRANSMITTER', default: DEFAULT_ADDRESSES.messageTransmitter },
             { key: 'tokenMessenger', abi: ABIS.TOKEN_MESSENGER, name: 'TOKEN_MESSENGER', default: DEFAULT_ADDRESSES.tokenMessenger },
             { key: 'create5', abi: ABIS.CREATE5, name: 'CREATE5', default: DEFAULT_ADDRESSES.create5 },
@@ -356,6 +370,39 @@ async function verifyContracts(chainConfig, rpcResults) {
             let defaultCodeLength = 0;
             let checksummedAddr = configAddress;
             let needsChecksumFix = false;
+            const defaultAddresses = Array.isArray(check.default)
+                ? check.default.filter(addr => addr && addr !== ZERO_ADDRESS)
+                : (check.default && check.default !== ZERO_ADDRESS ? [check.default] : []);
+
+            const describeDefaultAddress = (address) => {
+                if (!Array.isArray(check.default)) return 'default';
+                const idx = defaultAddresses.findIndex(
+                    addr => addr.toLowerCase() === address.toLowerCase()
+                );
+                if (idx === 0) return 'primary default';
+                if (idx === 1) return 'secondary default';
+                return `default #${idx + 1}`;
+            };
+
+            const selectDefaultWithBytecode = async (reasonBase) => {
+                for (const defaultAddr of defaultAddresses) {
+                    try {
+                        const defaultCode = await provider.getCode(defaultAddr);
+                        const len = defaultCode === '0x' ? 0 : (defaultCode.length - 2) / 2;
+                        if (len > 0) {
+                            finalAddress = defaultAddr;
+                            defaultCodeLength = len;
+                            correctionNeeded = true;
+                            const descriptor = describeDefaultAddress(defaultAddr);
+                            correctionReason = reasonBase ? `${reasonBase} (${descriptor})` : `Found bytecode at ${descriptor}`;
+                            return true;
+                        }
+                    } catch (e) {
+                        correctionReason = `RPC error checking default: ${e.message}`;
+                    }
+                }
+                return false;
+            };
 
             try {
                 // Checksum the configured address
@@ -387,27 +434,15 @@ async function verifyContracts(chainConfig, rpcResults) {
                             }
                         }
                     } else {
-                        // No bytecode at configured address - check default
-                        if (check.default) {
-                            const defaultCode = await provider.getCode(check.default);
-                            defaultCodeLength = defaultCode === '0x' ? 0 : (defaultCode.length - 2) / 2;
-                            
-                            if (defaultCodeLength > 0) {
-                                // Bytecode at default - correct to default
-                                finalAddress = check.default;
-                                correctionNeeded = true;
-                                correctionReason = 'No bytecode at configured, using default';
-                            } else {
-                                // Neither has bytecode - correct to zero
-                                finalAddress = ZERO_ADDRESS;
-                                correctionNeeded = true;
-                                correctionReason = 'No bytecode at configured or default';
-                            }
-                        } else {
-                            // No default, no bytecode - correct to zero
+                        // No bytecode at configured address - check defaults
+                        const foundDefault = await selectDefaultWithBytecode('No bytecode at configured, using default');
+                        if (!foundDefault) {
+                            // No defaults had bytecode - correct to zero
                             finalAddress = ZERO_ADDRESS;
                             correctionNeeded = true;
-                            correctionReason = 'No bytecode at configured';
+                            correctionReason = defaultAddresses.length > 0
+                                ? 'No bytecode at configured or defaults'
+                                : 'No bytecode at configured (no defaults available)';
                         }
                     }
                 } catch (e) {
@@ -416,23 +451,12 @@ async function verifyContracts(chainConfig, rpcResults) {
                 }
             } else {
                 // Case 2: configured address == zero_address
-                if (check.default) {
-                    try {
-                        const defaultCode = await provider.getCode(check.default);
-                        defaultCodeLength = defaultCode === '0x' ? 0 : (defaultCode.length - 2) / 2;
-                        
-                        if (defaultCodeLength > 0) {
-                            // Bytecode at default - correct to default
-                            finalAddress = check.default;
-                            correctionNeeded = true;
-                            correctionReason = 'Found bytecode at default';
-                        } else {
-                            // No bytecode at default - zero is correct
-                            finalAddress = ZERO_ADDRESS;
-                            correctionReason = 'Zero address correct (default not deployed)';
-                        }
-                    } catch (e) {
-                        correctionReason = `RPC error checking default: ${e.message}`;
+                if (defaultAddresses.length > 0) {
+                    const foundDefault = await selectDefaultWithBytecode('Found bytecode at default');
+                    if (!foundDefault) {
+                        // No bytecode at any default - keep zero
+                        finalAddress = ZERO_ADDRESS;
+                        correctionReason = 'Zero address correct (defaults not deployed)';
                     }
                 } else {
                     correctionReason = 'Zero address (no default)';
@@ -443,7 +467,7 @@ async function verifyContracts(chainConfig, rpcResults) {
             detailedLog[key].contracts[check.key] = {
                 name: check.name,
                 configuredAddress: configAddress || ZERO_ADDRESS,
-                defaultAddress: check.default || 'N/A',
+                defaultAddress: defaultAddresses.length > 0 ? defaultAddresses.join(', ') : 'N/A',
                 finalAddress: finalAddress,
                 configuredBytecodeLength: configCodeLength,
                 defaultBytecodeLength: defaultCodeLength,
