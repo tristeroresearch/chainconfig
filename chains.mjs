@@ -432,7 +432,6 @@ export const chainConfig = {
         openOceanChainCode: "",
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://abscan.org/",
             "https://abscan.org",
             "https://explorer.mainnet.abs.xyz",
         ],
@@ -457,6 +456,44 @@ export const chainConfig = {
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
             multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11",
+        },
+    },
+
+    megaeth: {
+        key: "megaeth",
+        display: "MegaETH",
+        currency: "ETH",
+        vmType: "EVM",
+        chainId: 4326,
+        lzSrcId: 0,
+        cgPlatformId: "megaeth",
+        cgGasAssetId: "ethereum",
+        openOceanSupported: false,
+        openOceanChainCode: "",
+        openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
+        explorerUrls: [
+           "https://mega.etherscan.io"
+        ],
+        defaultExplorerUrlIndex: 0,
+        explorerApiUrl: "",
+        rpcUrls: [
+            "mainnet.megaeth.com/rpc",
+            "https://rpc-megaeth-mainnet.globalstake.io",
+        ],
+        defaultRpcUrlIndex: 0,
+        addresses: {
+            gasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
+            usdc: "0x0000000000000000000000000000000000000000",
+            usdt: "0x0000000000000000000000000000000000000000",
+            permit2: "0x0000000000000000000000000000000000000000",
+            entryPoint: "0x0000000000000000000000000000000000000000",
+            trustedForwarder: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x0000000000000000000000000000000000000000",
+            messageTransmitter: "0x0000000000000000000000000000000000000000",
+            tokenMessenger: "0x0000000000000000000000000000000000000000",
+            create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
+            multicall3: "0x0000000000000000000000000000000000000000",
         },
     },
 
