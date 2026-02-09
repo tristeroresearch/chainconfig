@@ -1086,7 +1086,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x5AEa5775959FbC2557Cc8789bC1bf90A239D9A91",
+            wrappedGasToken: "0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -1434,7 +1434,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -1751,7 +1751,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -1791,7 +1791,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -2241,7 +2241,7 @@ export const chainConfig = {
             "https://endpoints.omniatech.io/v1/blast/mainnet/public",
             "https://blast.blockpi.network/v1/rpc/public",
         ],
-        defaultRpcUrlIndex: 0,
+        defaultRpcUrlIndex: 1,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
             wrappedGasToken: "0x4300000000000000000000000000000000000004",
@@ -2531,7 +2531,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x8990E08C932353De68FdeeA7bCC58462d18b8Ca9",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2656,7 +2656,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x1514000000000000000000000000000000000000",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2683,8 +2683,8 @@ export const chainConfig = {
         openOceanChainCode: "",
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://explorer.perennial.xyz",
             "https://explorer.perennial.foundation",
+            "https://explorer.perennial.xyz",
         ],
         defaultExplorerUrlIndex: 0,
         explorerApiUrl: "",
@@ -2732,7 +2732,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x754cDAd6f5821077d6915004Be2cE05f93d176f8",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2811,7 +2811,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x5300000000000000000000000000000000000011",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2851,7 +2851,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x046EDe9564A72571df6F5e44d0405360c0f4dCab",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2878,8 +2878,8 @@ export const chainConfig = {
         openOceanChainCode: "",
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://explorer-superseed-mainnet-0.t.conduit.xyz",
             "https://explorer.superseed.xyz",
+            "https://explorer-superseed-mainnet-0.t.conduit.xyz",  
         ],
         defaultExplorerUrlIndex: 0,
         explorerApiUrl: "",
@@ -2890,7 +2890,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -2965,7 +2965,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x57d5e1cDab878e66D8bed998D6C1C86c6668329F",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3002,7 +3002,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3040,7 +3040,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3080,7 +3080,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xda5dDd7270381A7C2717aD10D1c0ecB19e3CDFb2",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3193,7 +3193,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3231,7 +3231,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4200000000000000000000000000000000000006",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3268,7 +3268,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x1fB719f10b56d7a85DCD32f27f897375fB21cfdd",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3373,8 +3373,8 @@ export const chainConfig = {
         openOceanChainCode: "",
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "https://explorer-animechain-39xf6m45e3.t.conduit.xyz",
             "https://explorer.anime.xyz",
+            "https://explorer-animechain-39xf6m45e3.t.conduit.xyz",
         ],
         defaultExplorerUrlIndex: 0,
         explorerApiUrl: "",
@@ -3384,7 +3384,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x164906a76f1A2Ea933366c446AE0Ec6a37062c42",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3414,7 +3414,7 @@ export const chainConfig = {
             "https://xaiscan.io",
             "https://explorer.xai-chain.net",
         ],
-        defaultExplorerUrlIndex: 0,
+        defaultExplorerUrlIndex: 1,
         explorerApiUrl: "",
         rpcUrls: [
             "https://xai-chain.net/rpc",
@@ -3423,7 +3423,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x3fB787101DC6Be47cfe18aeEe15404dcC842e6AF",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3461,7 +3461,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xAc98B49576B1C892ba6BFae08fE1BB0d80Cf599c",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3536,7 +3536,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xD5eacE1274dBF70960714F513db207433615a263",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3574,7 +3574,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xf037540e51D71b2D2B1120e8432bA49F29EDFBD0",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -3648,7 +3648,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xB6fC4B1BFF391e5F6b4a3D2C7Bda1FeE3524692D",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
@@ -4318,7 +4318,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xB7ddC6414bf4F5515b52D8BdD69973Ae205ff101",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -4701,7 +4701,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -5164,7 +5164,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0x4028E0bE9E663a705Be70521856a60f8b58D5783",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -5529,7 +5529,7 @@ export const chainConfig = {
         defaultRpcUrlIndex: 0,
         addresses: {
             gasToken: "0x0000000000000000000000000000000000000000",
-            wrappedGasToken: "0x0000000000000000000000000000000000000000",
+            wrappedGasToken: "0xD51BFa777609213A653a2CD067c9A0132a2D316A",
             usdc: "0x0000000000000000000000000000000000000000",
             usdt: "0x0000000000000000000000000000000000000000",
             permit2: "0x0000000000000000000000000000000000000000",
@@ -6000,7 +6000,7 @@ export const chainConfig = {
             permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
             entryPoint: "0x0000000000000000000000000000000000000000",
             trustedForwarder: "0x0000000000000000000000000000000000000000",
-            relayRouter: "0x0000000000000000000000000000000000000000",
+            relayRouter: "0x33333381c18a6C046b6510322195ca046BA7DA2d",
             messageTransmitter: "0x0000000000000000000000000000000000000000",
             tokenMessenger: "0x0000000000000000000000000000000000000000",
             create5: "0x7000000db505d50f077492Efa36a8968ff7493dD",
@@ -6053,7 +6053,7 @@ export const chainConfig = {
         display: "Mythos",
         currency: "ETH",
         vmType: "EVM",
-        chainId: null,
+        chainId: 42018,
         lzSrcId: 0,
         cgPlatformId: null,
         cgGasAssetId: null,
@@ -6061,12 +6061,12 @@ export const chainConfig = {
         openOceanChainCode: "",
         openOceanNativeAddress: "0x0000000000000000000000000000000000000000",
         explorerUrls: [
-            "",
+            "https://mythos-mainnet.explorer.alchemy.com/",
         ],
         defaultExplorerUrlIndex: 0,
         explorerApiUrl: "",
         rpcUrls: [
-            "",
+            "https://mythos-mainnet.g.alchemy.com/public",
         ],
         defaultRpcUrlIndex: 0,
         addresses: {
