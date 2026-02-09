@@ -477,7 +477,7 @@ export const chainConfig = {
         defaultExplorerUrlIndex: 0,
         explorerApiUrl: "",
         rpcUrls: [
-            "mainnet.megaeth.com/rpc",
+            "https://mainnet.megaeth.com/rpc",
             "https://rpc-megaeth-mainnet.globalstake.io",
         ],
         defaultRpcUrlIndex: 0,
