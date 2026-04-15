@@ -17,7 +17,7 @@ const CHAINS_PATH = join(__dirname, '..', 'chains.mjs');
  */
 function validateAndCompleteChain(chain) {
     const zeroAddr = '0x0000000000000000000000000000000000000000';
-    
+
     return {
         key: chain.key || 'unknown',
         display: chain.display || chain.name || 'Unknown',
@@ -30,13 +30,14 @@ function validateAndCompleteChain(chain) {
         openOceanSupported: chain.openOceanSupported || false,
         openOceanChainCode: chain.openOceanChainCode || '',
         openOceanNativeAddress: chain.openOceanNativeAddress || zeroAddr,
-        explorerUrls: Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
-            ? chain.explorerUrls
-            : (chain.explorerUrl ? [chain.explorerUrl] : ['']),
+        explorerUrls:
+            Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
+                ? chain.explorerUrls
+                : chain.explorerUrl
+                  ? [chain.explorerUrl]
+                  : [''],
         defaultExplorerUrlIndex: chain.defaultExplorerUrlIndex || 0,
-        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0
-            ? chain.rpcUrls
-            : [],
+        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0 ? chain.rpcUrls : [],
         defaultRpcUrlIndex: chain.defaultRpcUrlIndex || 0,
         explorerApiUrl: chain.explorerApiUrl || undefined,
         addresses: {
@@ -62,17 +63,21 @@ function validateAndCompleteChain(chain) {
  */
 function fetchJson(url) {
     return new Promise((resolve, reject) => {
-        https.get(url, (res) => {
-            let data = '';
-            res.on('data', (chunk) => { data += chunk; });
-            res.on('end', () => {
-                try {
-                    resolve(JSON.parse(data));
-                } catch (e) {
-                    reject(new Error(`Failed to parse JSON: ${e.message}`));
-                }
-            });
-        }).on('error', reject);
+        https
+            .get(url, (res) => {
+                let data = '';
+                res.on('data', (chunk) => {
+                    data += chunk;
+                });
+                res.on('end', () => {
+                    try {
+                        resolve(JSON.parse(data));
+                    } catch (e) {
+                        reject(new Error(`Failed to parse JSON: ${e.message}`));
+                    }
+                });
+            })
+            .on('error', reject);
     });
 }
 
@@ -97,17 +102,17 @@ function extractRpcUrls(chainlistRpcs) {
     for (const rpc of chainlistRpcs) {
         const url = typeof rpc === 'string' ? rpc : rpc.url;
         const tracking = typeof rpc === 'object' ? rpc.tracking : undefined;
-        
+
         // Only include HTTPS URLs
         if (!url || !url.startsWith('https://')) {
             continue;
         }
-        
+
         // Skip URLs with tracking: "yes" or "limited"
         if (tracking === 'yes' || tracking === 'limited') {
             continue;
         }
-        
+
         urls.push(url);
     }
     return urls;
@@ -120,10 +125,10 @@ function extractExplorerUrls(chainlistExplorers) {
     if (!chainlistExplorers || !Array.isArray(chainlistExplorers)) {
         return [];
     }
-    
+
     return chainlistExplorers
-        .map(explorer => explorer.url)
-        .filter(url => url && url.startsWith('https://'));
+        .map((explorer) => explorer.url)
+        .filter((url) => url && url.startsWith('https://'));
 }
 
 /**
@@ -133,25 +138,27 @@ function mergeChainData(existingChain, chainlistChain) {
     // Extract new RPCs
     const chainlistRpcs = extractRpcUrls(chainlistChain.rpc || []);
     const existingRpcs = new Set(existingChain.rpcUrls || []);
-    const newRpcs = chainlistRpcs.filter(url => !existingRpcs.has(url));
-    
+    const newRpcs = chainlistRpcs.filter((url) => !existingRpcs.has(url));
+
     // Extract new explorers
     const chainlistExplorers = extractExplorerUrls(chainlistChain.explorers || []);
-    const existingExplorerUrls = Array.isArray(existingChain.explorerUrls) 
-        ? existingChain.explorerUrls 
-        : (existingChain.explorerUrl ? [existingChain.explorerUrl] : []);
-    
+    const existingExplorerUrls = Array.isArray(existingChain.explorerUrls)
+        ? existingChain.explorerUrls
+        : existingChain.explorerUrl
+          ? [existingChain.explorerUrl]
+          : [];
+
     // Create list of all explorer URLs (existing + new ones)
     const allExplorerUrls = [...existingExplorerUrls];
     const existingExplorerSet = new Set(existingExplorerUrls);
-    
+
     for (const url of chainlistExplorers) {
         if (!existingExplorerSet.has(url)) {
             allExplorerUrls.push(url);
             existingExplorerSet.add(url);
         }
     }
-    
+
     // Merge and validate complete schema
     const merged = {
         ...existingChain,
@@ -159,7 +166,7 @@ function mergeChainData(existingChain, chainlistChain) {
         explorerUrls: allExplorerUrls,
         defaultExplorerUrlIndex: existingChain.defaultExplorerUrlIndex || 0,
     };
-    
+
     return validateAndCompleteChain(merged);
 }
 
@@ -181,7 +188,7 @@ function formatChainObject(key, chain, indent = '    ') {
         `${indent}    openOceanChainCode: "${chain.openOceanChainCode}",`,
         `${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress}",`,
     ];
-    
+
     // Add explorerUrls array
     lines.push(`${indent}    explorerUrls: [`);
     for (const url of chain.explorerUrls) {
@@ -189,12 +196,12 @@ function formatChainObject(key, chain, indent = '    ') {
     }
     lines.push(`${indent}    ],`);
     lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex},`);
-    
+
     // Add explorerApiUrl if exists
     if (chain.explorerApiUrl) {
         lines.push(`${indent}    explorerApiUrl: "${chain.explorerApiUrl}",`);
     }
-    
+
     // Add rpcUrls
     lines.push(`${indent}    rpcUrls: [`);
     for (const url of chain.rpcUrls) {
@@ -202,34 +209,43 @@ function formatChainObject(key, chain, indent = '    ') {
     }
     lines.push(`${indent}    ],`);
     lines.push(`${indent}    defaultRpcUrlIndex: ${chain.defaultRpcUrlIndex},`);
-    
+
     // Add addresses - ensure proper ordering
     lines.push(`${indent}    addresses: {`);
-    
+
     // Standard address fields in order
     const standardFields = [
-        'gasToken', 'wrappedGasToken', 'usdc', 'usdt',
-        'permit2', 'entryPoint', 'trustedForwarder', 'relayRouter',
-        'messageTransmitter', 'tokenMessenger', 'create5', 'multicall3'
+        'gasToken',
+        'wrappedGasToken',
+        'usdc',
+        'usdt',
+        'permit2',
+        'entryPoint',
+        'trustedForwarder',
+        'relayRouter',
+        'messageTransmitter',
+        'tokenMessenger',
+        'create5',
+        'multicall3',
     ];
-    
+
     for (const field of standardFields) {
         if (chain.addresses[field]) {
             lines.push(`${indent}        ${field}: "${chain.addresses[field]}",`);
         }
     }
-    
+
     // Add any custom address fields
     for (const [addrKey, value] of Object.entries(chain.addresses)) {
         if (!standardFields.includes(addrKey)) {
             lines.push(`${indent}        ${addrKey}: "${value}",`);
         }
     }
-    
+
     lines.push(`${indent}    },`);
     lines.push(`${indent}},`);
     lines.push('');
-    
+
     return lines.join('\n');
 }
 
@@ -251,8 +267,7 @@ async function main() {
             default: false,
         })
         .help()
-        .alias('help', 'h')
-        .argv;
+        .alias('help', 'h').argv;
 
     console.log('='.repeat(80));
     console.log('CHAINLIST.ORG RPC FETCHER');
@@ -261,14 +276,14 @@ async function main() {
 
     console.log('Fetching chainlist.org RPC data...');
     const chainlistData = await fetchJson(CHAINLIST_API_URL);
-    
+
     console.log(`Found ${chainlistData.length} chains from chainlist.org`);
-    
+
     console.log('Loading existing chains from config...');
     const existingChains = await loadExistingChains();
-    const existingChainIds = Object.values(existingChains).map(c => c.chainId);
+    const existingChainIds = Object.values(existingChains).map((c) => c.chainId);
     console.log(`Found ${existingChainIds.length} existing chains in config\n`);
-    
+
     // Build chainId -> chainlist data map
     const chainlistMap = new Map();
     for (const chain of chainlistData) {
@@ -276,13 +291,13 @@ async function main() {
             chainlistMap.set(chain.chainId, chain);
         }
     }
-    
+
     // Validate or merge data
     if (argv.validateOnly) {
         console.log('Validating chain schema...');
         let validCount = 0;
         let invalidCount = 0;
-        
+
         for (const [key, chain] of Object.entries(existingChains)) {
             try {
                 validateAndCompleteChain(chain);
@@ -292,51 +307,55 @@ async function main() {
                 invalidCount++;
             }
         }
-        
+
         console.log(`\n✓ Validation complete: ${validCount} valid, ${invalidCount} invalid\n`);
         return;
     }
-    
+
     // Merge data
     console.log('Merging RPC and explorer data...');
     const updatedChains = {};
     let mergedCount = 0;
     let totalNewRpcs = 0;
     let totalNewExplorers = 0;
-    
+
     for (const [key, chain] of Object.entries(existingChains)) {
         const chainlistChain = chainlistMap.get(chain.chainId);
-        
+
         if (chainlistChain) {
             const originalRpcCount = (chain.rpcUrls || []).length;
-            const originalExplorerUrls = Array.isArray(chain.explorerUrls) 
-                ? chain.explorerUrls 
-                : (chain.explorerUrl ? [chain.explorerUrl] : []);
+            const originalExplorerUrls = Array.isArray(chain.explorerUrls)
+                ? chain.explorerUrls
+                : chain.explorerUrl
+                  ? [chain.explorerUrl]
+                  : [];
             const originalExplorerCount = originalExplorerUrls.length;
-            
+
             const merged = mergeChainData(chain, chainlistChain);
-            
+
             const newRpcCount = merged.rpcUrls.length - originalRpcCount;
             const newExplorerCount = merged.explorerUrls.length - originalExplorerCount;
-            
+
             if (newRpcCount > 0 || newExplorerCount > 0) {
-                console.log(`  ${chain.display} (${chain.chainId}): +${newRpcCount} RPCs, +${newExplorerCount} explorers`);
+                console.log(
+                    `  ${chain.display} (${chain.chainId}): +${newRpcCount} RPCs, +${newExplorerCount} explorers`,
+                );
                 mergedCount++;
                 totalNewRpcs += newRpcCount;
                 totalNewExplorers += newExplorerCount;
             }
-            
+
             updatedChains[key] = merged;
         } else {
             // No chainlist data, validate and complete with schema
             updatedChains[key] = validateAndCompleteChain(chain);
         }
     }
-    
+
     console.log(`\n✓ Merged data for ${mergedCount} chains`);
     console.log(`  Total new RPCs: ${totalNewRpcs}`);
     console.log(`  Total new explorers: ${totalNewExplorers}`);
-    
+
     // Generate output file
     console.log('\nGenerating updated chains file...');
     const outputPath = join(__dirname, '..', argv.output);
@@ -351,11 +370,11 @@ async function main() {
         '',
         'export const chainConfig = {',
     ];
-    
+
     for (const [key, chain] of Object.entries(updatedChains)) {
         outputLines.push(formatChainObject(key, chain));
     }
-    
+
     outputLines.push('};');
     outputLines.push('');
     outputLines.push('// All chains as an array');
@@ -369,7 +388,9 @@ async function main() {
     outputLines.push('');
     outputLines.push('// Get RPC URL for a chain');
     outputLines.push('export function getRpcUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
     outputLines.push('    if (!chain.rpcUrls || chain.rpcUrls.length === 0) return null;');
     outputLines.push('    const index = chain.defaultRpcUrlIndex || 0;');
@@ -378,18 +399,26 @@ async function main() {
     outputLines.push('');
     outputLines.push('// Get explorer URL for a chain');
     outputLines.push('export function getExplorerUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
-    outputLines.push('    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;');
-    outputLines.push('    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;');
-    outputLines.push('    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];');
+    outputLines.push(
+        '    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;',
+    );
+    outputLines.push(
+        '    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;',
+    );
+    outputLines.push(
+        '    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];',
+    );
     outputLines.push('}');
     outputLines.push('');
-    
+
     await fs.writeFile(outputPath, outputLines.join('\n'), 'utf-8');
     console.log(`\n✓ Updated chains saved to ${outputPath}`);
     console.log('\nReview the file and replace chains.mjs if everything looks good.');
-    
+
     console.log('');
     console.log('='.repeat(80));
     console.log('✓ Complete!');

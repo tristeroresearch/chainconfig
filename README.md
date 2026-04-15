@@ -81,6 +81,7 @@ This will create three separate files based on EVM compatibility verification:
 Each file exports an object keyed by chain key, making it easy to merge into your main `chainConfig`.
 
 The script:
+
 - Fetches chain definitions from the gas.zip API (mainnet only)
 - Tests each chain's RPC endpoint for EVM compatibility
 - Converts them to your config format
@@ -105,11 +106,12 @@ This will create `chains-updated.mjs` with enhanced chain configurations:
 - **Additional RPC URLs** - Privacy-friendly HTTPS endpoints (no tracking or tracking: "none")
 - **Multiple Explorer URLs** - All available block explorers from chainlist.org
 - **New Fields**:
-  - `explorerUrls` - Array of all explorer URLs
-  - `defaultExplorerUrlIndex` - Index of the preferred explorer (default: 0)
-  - `explorerUrl` - Kept for backwards compatibility
+    - `explorerUrls` - Array of all explorer URLs
+    - `defaultExplorerUrlIndex` - Index of the preferred explorer (default: 0)
+    - `explorerUrl` - Kept for backwards compatibility
 
 The script:
+
 - Fetches chain data from chainlist.org API
 - Matches chains by `chainId` with your existing config
 - Adds new RPC URLs (only HTTPS, no tracking)
@@ -118,6 +120,7 @@ The script:
 - Generates `chains-updated.mjs` with enhanced configurations
 
 **Usage:**
+
 1. Run the script to generate `chains-updated.mjs`
 2. Review the changes
 3. If satisfied, replace `chains.mjs` with `chains-updated.mjs`
@@ -127,34 +130,38 @@ The script:
 ## Features
 
 ### RPC Verification
+
 - Tests all configured RPC URLs for connectivity
 - Verifies chainId matches configuration
 - Suggests optimal `defaultRpcUrlIndex` based on working RPCs
 - Detects chainId mismatches
 
 ### Contract Verification
+
 - Verifies contract interfaces match expected ABIs:
-  - **WETH** - Wrapped gas token
-  - **Permit2** - Universal permit contract
-  - **Entry Point** - ERC-4337 account abstraction
-  - **Trusted Forwarder** - Meta-transaction forwarder
-  - **Relay Router** - Cross-chain relay router
-  - **Message Transmitter** - CCTP message transmitter
-  - **Token Messenger** - CCTP token messenger
+    - **WETH** - Wrapped gas token
+    - **Permit2** - Universal permit contract
+    - **Entry Point** - ERC-4337 account abstraction
+    - **Trusted Forwarder** - Meta-transaction forwarder
+    - **Relay Router** - Cross-chain relay router
+    - **Message Transmitter** - CCTP message transmitter
+    - **Token Messenger** - CCTP token messenger
 
 ### Smart Defaults
+
 - If a contract is set to zero address but the default address is deployed, it will suggest using the default
 - Default addresses:
-  - Permit2: `0x000000000022D473030F116dDEE9F6B43aC78BA3`
-  - Entry Point: `0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108`
-  - Trusted Forwarder: `0xB2b5841DBeF766d4b521221732F9B618fCf34A87`
-  - Relay Router: `0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222`
-  - Message Transmitter: `0x81D40F21F12A8F0E3252Bccb954D722d4c464B64`
-  - Token Messenger: `0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d`
+    - Permit2: `0x000000000022D473030F116dDEE9F6B43aC78BA3`
+    - Entry Point: `0x4337084D9E255Ff0702461CF8895CE9E3b5Ff108`
+    - Trusted Forwarder: `0xB2b5841DBeF766d4b521221732F9B618fCf34A87`
+    - Relay Router: `0xF5042e6ffaC5a625D4E7848e0b01373D8eB9e222`
+    - Message Transmitter: `0x81D40F21F12A8F0E3252Bccb954D722d4c464B64`
+    - Token Messenger: `0x28b5a0e9C621a5BadaA536219b3a228C8168cf5d`
 
 ## Output
 
 The tool provides:
+
 - ✓ Success indicators for passing checks
 - ✗ Error indicators for failures
 - ℹ Informational suggestions for improvements

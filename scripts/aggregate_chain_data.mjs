@@ -35,7 +35,7 @@ const COINGECKO_PLATFORMS_URL_PRO = 'https://pro-api.coingecko.com/api/v3/asset_
  */
 function validateAndCompleteChain(chain) {
     const zeroAddr = '0x0000000000000000000000000000000000000000';
-    
+
     // Check for critical missing fields
     const errors = [];
     if (!chain.chainId) {
@@ -44,7 +44,7 @@ function validateAndCompleteChain(chain) {
     if (!chain.key) {
         errors.push('missing key');
     }
-    
+
     // If critical fields are missing, return invalid
     if (errors.length > 0) {
         return {
@@ -53,7 +53,7 @@ function validateAndCompleteChain(chain) {
             chain: chain,
         };
     }
-    
+
     const validated = {
         key: chain.key || 'unknown',
         display: chain.display || chain.name || 'Unknown',
@@ -66,13 +66,14 @@ function validateAndCompleteChain(chain) {
         openOceanSupported: chain.openOceanSupported || false,
         openOceanChainCode: chain.openOceanChainCode || '',
         openOceanNativeAddress: chain.openOceanNativeAddress || zeroAddr,
-        explorerUrls: Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
-            ? chain.explorerUrls
-            : (chain.explorerUrl ? [chain.explorerUrl] : ['']),
+        explorerUrls:
+            Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
+                ? chain.explorerUrls
+                : chain.explorerUrl
+                  ? [chain.explorerUrl]
+                  : [''],
         defaultExplorerUrlIndex: chain.defaultExplorerUrlIndex || 0,
-        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0
-            ? chain.rpcUrls
-            : [],
+        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0 ? chain.rpcUrls : [],
         defaultRpcUrlIndex: chain.defaultRpcUrlIndex || 0,
         explorerApiUrl: chain.explorerApiUrl || undefined,
         addresses: {
@@ -91,7 +92,7 @@ function validateAndCompleteChain(chain) {
             ...(chain.addresses || {}),
         },
     };
-    
+
     return {
         valid: true,
         chain: validated,
@@ -103,17 +104,21 @@ function validateAndCompleteChain(chain) {
  */
 function fetchHttpsJson(url, headers = {}) {
     return new Promise((resolve, reject) => {
-        https.get(url, { headers }, (res) => {
-            let data = '';
-            res.on('data', (chunk) => { data += chunk; });
-            res.on('end', () => {
-                try {
-                    resolve(JSON.parse(data));
-                } catch (e) {
-                    reject(new Error(`Failed to parse JSON from ${url}: ${e.message}`));
-                }
-            });
-        }).on('error', reject);
+        https
+            .get(url, { headers }, (res) => {
+                let data = '';
+                res.on('data', (chunk) => {
+                    data += chunk;
+                });
+                res.on('end', () => {
+                    try {
+                        resolve(JSON.parse(data));
+                    } catch (e) {
+                        reject(new Error(`Failed to parse JSON from ${url}: ${e.message}`));
+                    }
+                });
+            })
+            .on('error', reject);
     });
 }
 
@@ -174,9 +179,9 @@ async function fetchChainlistData() {
  */
 async function fetchCoinGeckoPlatforms(useProApi = false) {
     const apiKey = process.env.COINGECKO_API_KEY || process.env.CG_API_KEY;
-    const url = (useProApi || apiKey) ? COINGECKO_PLATFORMS_URL_PRO : COINGECKO_PLATFORMS_URL_FREE;
+    const url = useProApi || apiKey ? COINGECKO_PLATFORMS_URL_PRO : COINGECKO_PLATFORMS_URL_FREE;
     const headers = apiKey ? { 'x-cg-pro-api-key': apiKey } : {};
-    
+
     try {
         const data = await fetchJson(url, { headers });
         return data;
@@ -207,10 +212,10 @@ function extractRpcUrls(chainlistRpcs) {
     for (const rpc of chainlistRpcs) {
         const url = typeof rpc === 'string' ? rpc : rpc.url;
         const tracking = typeof rpc === 'object' ? rpc.tracking : undefined;
-        
+
         if (!url || !url.startsWith('https://')) continue;
         if (tracking === 'yes' || tracking === 'limited') continue;
-        
+
         urls.push(url);
     }
     return urls;
@@ -224,8 +229,8 @@ function extractExplorerUrls(chainlistExplorers) {
         return [];
     }
     return chainlistExplorers
-        .map(explorer => explorer.url)
-        .filter(url => url && url.startsWith('https://'));
+        .map((explorer) => explorer.url)
+        .filter((url) => url && url.startsWith('https://'));
 }
 
 /**
@@ -234,41 +239,43 @@ function extractExplorerUrls(chainlistExplorers) {
  */
 function mergeChainData(existing, gaszip, chainlist, coingecko) {
     const merged = { ...existing };
-    
+
     // Merge RPCs from chainlist
     if (chainlist) {
         const chainlistRpcs = extractRpcUrls(chainlist.rpc || []);
         const existingRpcs = new Set(merged.rpcUrls || []);
-        const newRpcs = chainlistRpcs.filter(url => !existingRpcs.has(url));
-        
+        const newRpcs = chainlistRpcs.filter((url) => !existingRpcs.has(url));
+
         if (newRpcs.length > 0) {
             merged.rpcUrls = [...(merged.rpcUrls || []), ...newRpcs];
         }
-        
+
         // Merge explorers from chainlist
         const chainlistExplorers = extractExplorerUrls(chainlist.explorers || []);
-        const existingExplorerUrls = Array.isArray(merged.explorerUrls) 
-            ? merged.explorerUrls 
-            : (merged.explorerUrl ? [merged.explorerUrl] : []);
+        const existingExplorerUrls = Array.isArray(merged.explorerUrls)
+            ? merged.explorerUrls
+            : merged.explorerUrl
+              ? [merged.explorerUrl]
+              : [];
         const existingExplorerSet = new Set(existingExplorerUrls);
-        const newExplorers = chainlistExplorers.filter(url => !existingExplorerSet.has(url));
-        
+        const newExplorers = chainlistExplorers.filter((url) => !existingExplorerSet.has(url));
+
         if (newExplorers.length > 0) {
             merged.explorerUrls = [...existingExplorerUrls, ...newExplorers];
         }
     }
-    
+
     // Add CoinGecko data
     if (coingecko) {
         merged.cgPlatformId = coingecko.id;
         merged.cgGasAssetId = coingecko.native_coin_id;
     }
-    
+
     // Ensure explorerUrls is array
     if (!Array.isArray(merged.explorerUrls) && merged.explorerUrl) {
         merged.explorerUrls = [merged.explorerUrl];
     }
-    
+
     return validateAndCompleteChain(merged);
 }
 
@@ -280,13 +287,13 @@ async function saveIncompleteChains(incompleteChains, outputDir) {
     const output = {
         generatedAt: new Date().toISOString(),
         totalIncomplete: incompleteChains.length,
-        chains: incompleteChains.map(item => ({
+        chains: incompleteChains.map((item) => ({
             key: item.key,
             error: item.error,
             data: item.chain,
         })),
     };
-    
+
     await fs.writeFile(outputPath, JSON.stringify(output, null, 2), 'utf-8');
     return outputPath;
 }
@@ -309,7 +316,7 @@ function formatChainObject(key, chain, indent = '    ') {
         `${indent}    openOceanChainCode: "${chain.openOceanChainCode}",`,
         `${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress}",`,
     ];
-    
+
     // Add explorerUrls
     lines.push(`${indent}    explorerUrls: [`);
     for (const url of chain.explorerUrls) {
@@ -317,12 +324,12 @@ function formatChainObject(key, chain, indent = '    ') {
     }
     lines.push(`${indent}    ],`);
     lines.push(`${indent}    defaultExplorerUrlIndex: ${chain.defaultExplorerUrlIndex},`);
-    
+
     // Add explorerApiUrl if exists
     if (chain.explorerApiUrl) {
         lines.push(`${indent}    explorerApiUrl: "${chain.explorerApiUrl}",`);
     }
-    
+
     // Add rpcUrls
     lines.push(`${indent}    rpcUrls: [`);
     for (const url of chain.rpcUrls) {
@@ -330,32 +337,41 @@ function formatChainObject(key, chain, indent = '    ') {
     }
     lines.push(`${indent}    ],`);
     lines.push(`${indent}    defaultRpcUrlIndex: ${chain.defaultRpcUrlIndex},`);
-    
+
     // Add addresses
     lines.push(`${indent}    addresses: {`);
-    
+
     const standardFields = [
-        'gasToken', 'wrappedGasToken', 'usdc', 'usdt',
-        'permit2', 'entryPoint', 'trustedForwarder', 'relayRouter',
-        'messageTransmitter', 'tokenMessenger', 'create5', 'multicall3'
+        'gasToken',
+        'wrappedGasToken',
+        'usdc',
+        'usdt',
+        'permit2',
+        'entryPoint',
+        'trustedForwarder',
+        'relayRouter',
+        'messageTransmitter',
+        'tokenMessenger',
+        'create5',
+        'multicall3',
     ];
-    
+
     for (const field of standardFields) {
         if (chain.addresses[field]) {
             lines.push(`${indent}        ${field}: "${chain.addresses[field]}",`);
         }
     }
-    
+
     for (const [addrKey, value] of Object.entries(chain.addresses)) {
         if (!standardFields.includes(addrKey)) {
             lines.push(`${indent}        ${addrKey}: "${value}",`);
         }
     }
-    
+
     lines.push(`${indent}    },`);
     lines.push(`${indent}},`);
     lines.push('');
-    
+
     return lines.join('\n');
 }
 
@@ -392,8 +408,7 @@ async function main() {
             default: false,
         })
         .help()
-        .alias('help', 'h')
-        .argv;
+        .alias('help', 'h').argv;
 
     console.log('='.repeat(80));
     console.log('MASTER CHAIN DATA AGGREGATOR');
@@ -403,7 +418,7 @@ async function main() {
     // Load existing chains
     console.log('1. Loading existing chain configuration...');
     const existingChains = await loadExistingChains();
-    const existingChainIds = new Set(Object.values(existingChains).map(c => c.chainId));
+    const existingChainIds = new Set(Object.values(existingChains).map((c) => c.chainId));
     console.log(`   ✓ Loaded ${Object.keys(existingChains).length} existing chains\n`);
 
     // Fetch gas.zip data
@@ -413,11 +428,11 @@ async function main() {
         console.log('2. Fetching chains from gas.zip...');
         gaszipChains = await fetchGasZipChains();
         console.log(`   ✓ Fetched ${gaszipChains.length} chains from gas.zip\n`);
-        
+
         // Filter and map
         gaszipChains
-            .filter(c => argv.includeTestnets ? true : !!c.mainnet)
-            .forEach(c => {
+            .filter((c) => (argv.includeTestnets ? true : !!c.mainnet))
+            .forEach((c) => {
                 if (c.chain) {
                     gaszipMap.set(c.chain, c);
                 }
@@ -433,8 +448,8 @@ async function main() {
         console.log('3. Fetching RPCs from chainlist.org...');
         chainlistData = await fetchChainlistData();
         console.log(`   ✓ Fetched ${chainlistData.length} chains from chainlist.org\n`);
-        
-        chainlistData.forEach(c => {
+
+        chainlistData.forEach((c) => {
             if (c.chainId) {
                 chainlistMap.set(c.chainId, c);
             }
@@ -450,8 +465,8 @@ async function main() {
         console.log('4. Fetching CoinGecko platform IDs...');
         coingeckoPlatforms = await fetchCoinGeckoPlatforms();
         console.log(`   ✓ Fetched ${coingeckoPlatforms.length} platforms from CoinGecko\n`);
-        
-        coingeckoPlatforms.forEach(p => {
+
+        coingeckoPlatforms.forEach((p) => {
             if (p.chain_identifier !== null && p.chain_identifier !== undefined) {
                 coingeckoMap.set(p.chain_identifier, p);
             }
@@ -474,15 +489,17 @@ async function main() {
     for (const [key, chain] of Object.entries(existingChains)) {
         const chainlist = chainlistMap.get(chain.chainId);
         const coingecko = coingeckoMap.get(chain.chainId);
-        
+
         const originalRpcCount = (chain.rpcUrls || []).length;
-        const originalExplorerUrls = Array.isArray(chain.explorerUrls) 
-            ? chain.explorerUrls 
-            : (chain.explorerUrl ? [chain.explorerUrl] : []);
+        const originalExplorerUrls = Array.isArray(chain.explorerUrls)
+            ? chain.explorerUrls
+            : chain.explorerUrl
+              ? [chain.explorerUrl]
+              : [];
         const originalExplorerCount = originalExplorerUrls.length;
-        
+
         const result = mergeChainData(chain, null, chainlist, coingecko);
-        
+
         if (!result.valid) {
             // Chain has validation errors - save for manual fixing
             console.log(`   ✗ ${(chain.display || key).padEnd(30)} → INVALID: ${result.error}`);
@@ -494,11 +511,11 @@ async function main() {
             invalidCount++;
             continue;
         }
-        
+
         const merged = result.chain;
         const newRpcs = merged.rpcUrls.length - originalRpcCount;
         const newExplorers = merged.explorerUrls.length - originalExplorerCount;
-        
+
         if (newRpcs > 0 || newExplorers > 0 || coingecko) {
             const updates = [];
             if (newRpcs > 0) updates.push(`+${newRpcs} RPCs`);
@@ -512,7 +529,7 @@ async function main() {
             newRpcsTotal += newRpcs;
             newExplorersTotal += newExplorers;
         }
-        
+
         mergedChains[key] = merged;
     }
 
@@ -531,7 +548,10 @@ async function main() {
     // Save incomplete chains if any
     if (incompleteChains.length > 0) {
         console.log('\n   ⚠ Saving incomplete chains for manual fixing...');
-        const incompletePath = await saveIncompleteChains(incompleteChains, path.dirname(outputPath));
+        const incompletePath = await saveIncompleteChains(
+            incompleteChains,
+            path.dirname(outputPath),
+        );
         console.log(`   ✓ Incomplete chains saved to: ${path.basename(incompletePath)}`);
     }
 
@@ -566,7 +586,9 @@ async function main() {
     outputLines.push('');
     outputLines.push('// Get RPC URL for a chain');
     outputLines.push('export function getRpcUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
     outputLines.push('    if (!chain.rpcUrls || chain.rpcUrls.length === 0) return null;');
     outputLines.push('    const index = chain.defaultRpcUrlIndex || 0;');
@@ -575,16 +597,24 @@ async function main() {
     outputLines.push('');
     outputLines.push('// Get explorer URL for a chain');
     outputLines.push('export function getExplorerUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
-    outputLines.push('    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;');
-    outputLines.push('    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;');
-    outputLines.push('    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];');
+    outputLines.push(
+        '    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;',
+    );
+    outputLines.push(
+        '    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;',
+    );
+    outputLines.push(
+        '    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];',
+    );
     outputLines.push('}');
     outputLines.push('');
 
     await fs.writeFile(outputPath, outputLines.join('\n'), 'utf-8');
-    
+
     console.log(`   ✓ Output saved to: ${outputPath}`);
     console.log('');
     console.log('='.repeat(80));
@@ -594,13 +624,15 @@ async function main() {
     console.log('Summary:');
     console.log(`  • Total chains processed: ${Object.keys(existingChains).length}`);
     console.log(`  • Valid chains: ${Object.keys(mergedChains).length}`);
-    console.log(`  • Invalid chains: ${invalidCount}${invalidCount > 0 ? ' (see chains-incomplete.json)' : ''}`);
+    console.log(
+        `  • Invalid chains: ${invalidCount}${invalidCount > 0 ? ' (see chains-incomplete.json)' : ''}`,
+    );
     console.log(`  • Updated chains: ${updatedCount}`);
     console.log(`  • New RPCs added: ${newRpcsTotal}`);
     console.log(`  • New explorers added: ${newExplorersTotal}`);
     console.log(`  • CoinGecko matches: ${cgMatchedCount}`);
     console.log('');
-    
+
     if (invalidCount > 0) {
         console.log('⚠ WARNING: Some chains have validation errors.');
         console.log('  Review chains-incomplete.json and fix manually.');
@@ -608,7 +640,7 @@ async function main() {
     }
 }
 
-main().catch(error => {
+main().catch((error) => {
     console.error('\n✗ Fatal error:', error.message);
     console.error(error.stack);
     process.exit(1);

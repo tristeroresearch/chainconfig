@@ -32,9 +32,37 @@ function parseArgs(argv) {
 
 function normalizeFormat(format) {
     if (format === 'raw' || format === 'key') return 'raw';
-    if (format === 'single' || format === "'key'" || format === 'single-quote' || format === 'single-quoted') return 'single';
-    if (format === 'double' || format === '"key"' || format === 'double-quote' || format === 'double-quoted') return 'double';
-    throw new Error(`Invalid --format value: ${format}. Use one of: raw, single, double`);
+    if (
+        format === 'single' ||
+        format === "'key'" ||
+        format === 'single-quote' ||
+        format === 'single-quoted'
+    )
+        return 'single';
+    if (
+        format === 'double' ||
+        format === '"key"' ||
+        format === 'double-quote' ||
+        format === 'double-quoted'
+    )
+        return 'double';
+    if (
+        format === 'single-array' ||
+        format === 'array-single' ||
+        format === "['key']" ||
+        format === 'list-single'
+    )
+        return 'single-array';
+    if (
+        format === 'double-array' ||
+        format === 'array-double' ||
+        format === '["key"]' ||
+        format === 'list-double'
+    )
+        return 'double-array';
+    throw new Error(
+        `Invalid --format value: ${format}. Use one of: raw, single, double, single-array, double-array`,
+    );
 }
 
 function renderKey(key, format) {
@@ -43,13 +71,25 @@ function renderKey(key, format) {
     return key;
 }
 
+function renderArray(keys, quote) {
+    const lines = keys.map((k) => `    ${quote}${k}${quote},`);
+    return `[
+${lines.join('\n')}
+]
+`;
+}
+
 async function main() {
     const { format: formatInput, output } = parseArgs(process.argv.slice(2));
     const format = normalizeFormat(formatInput);
 
     const keys = Object.keys(chainConfig).sort((a, b) => a.localeCompare(b));
-    const lines = keys.map((k) => renderKey(k, format));
-    const content = `${lines.join('\n')}\n`;
+    const content =
+        format === 'single-array'
+            ? renderArray(keys, "'")
+            : format === 'double-array'
+              ? renderArray(keys, '"')
+              : `${keys.map((k) => renderKey(k, format)).join('\n')}\n`;
 
     if (output) {
         const outputPath = path.isAbsolute(output) ? output : path.resolve(process.cwd(), output);

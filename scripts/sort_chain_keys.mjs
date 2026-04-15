@@ -228,7 +228,13 @@ function splitTopLevelEntries(body) {
         else if (c === '(') parenDepth++;
         else if (c === ')') parenDepth--;
 
-        if (entryStart !== -1 && c === ',' && braceDepth === 0 && bracketDepth === 0 && parenDepth === 0) {
+        if (
+            entryStart !== -1 &&
+            c === ',' &&
+            braceDepth === 0 &&
+            bracketDepth === 0 &&
+            parenDepth === 0
+        ) {
             entries.push(body.slice(entryStart, i + 1));
             entryStart = -1;
         }
@@ -239,9 +245,7 @@ function splitTopLevelEntries(body) {
         if (tail) entries.push(body.slice(entryStart));
     }
 
-    return entries
-        .map((entry) => entry.trim())
-        .filter(Boolean);
+    return entries.map((entry) => entry.trim()).filter(Boolean);
 }
 
 function extractEntryKey(entry) {
@@ -252,7 +256,8 @@ function extractEntryKey(entry) {
         const quote = entry[i++];
         const start = i;
         while (i < entry.length && entry[i] !== quote) i++;
-        if (i >= entry.length) throw new Error(`Could not parse key in entry: ${entry.slice(0, 80)}...`);
+        if (i >= entry.length)
+            throw new Error(`Could not parse key in entry: ${entry.slice(0, 80)}...`);
         return entry.slice(start, i);
     }
 

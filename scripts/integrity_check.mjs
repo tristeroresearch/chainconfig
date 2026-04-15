@@ -9,7 +9,10 @@ import { fileURLToPath } from 'url';
 
 // Import official stablecoin deployments
 import { usdc as officialUsdcDeployments } from '../usdc.mjs';
-import { tether as officialTetherDeployments, usdt0 as officialUsdt0Deployments } from '../tether.mjs';
+import {
+    tether as officialTetherDeployments,
+    usdt0 as officialUsdt0Deployments,
+} from '../tether.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,12 +51,15 @@ function safeChecksum(address) {
 // Build lookup maps for official USDC and USDT addresses (case-insensitive)
 // Key: chain key, Value: checksummed address
 const OFFICIAL_USDC_BY_CHAIN = new Map(
-    officialUsdcDeployments.map(({ key, address }) => [key, safeChecksum(address)])
+    officialUsdcDeployments.map(({ key, address }) => [key, safeChecksum(address)]),
 );
 
 // Combine tether (native USDT) and usdt0 deployments for USDT validation
 const OFFICIAL_USDT_BY_CHAIN = new Map(
-    [...officialTetherDeployments, ...officialUsdt0Deployments].map(({ key, address }) => [key, safeChecksum(address)])
+    [...officialTetherDeployments, ...officialUsdt0Deployments].map(({ key, address }) => [
+        key,
+        safeChecksum(address),
+    ]),
 );
 
 // Load ABIs
@@ -148,7 +154,7 @@ function checkBasicIntegrity(chainConfig) {
         console.log('✓ No duplicate keys, chainIds, or LayerZero IDs found');
     } else {
         console.log('✗ Issues found:');
-        issues.forEach(issue => console.log(`  - ${issue}`));
+        issues.forEach((issue) => console.log(`  - ${issue}`));
     }
 
     if (Object.keys(missingProperties).length > 0) {
@@ -196,25 +202,29 @@ async function verifyRpcs(chainConfig) {
         for (let i = 0; i < chain.rpcUrls.length; i++) {
             const rpcUrl = chain.rpcUrls[i];
             process.stdout.write(`  [${i}] ${rpcUrl.substring(0, 50)}... `);
-            
+
             const result = await testRpc(rpcUrl);
             rpcResults.push({ index: i, url: rpcUrl, ...result });
 
             if (result.success) {
                 if (result.chainId !== chain.chainId) {
-                    console.log(`✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId}) - WILL REMOVE`);
+                    console.log(
+                        `✗ CHAINID MISMATCH (expected ${chain.chainId}, got ${result.chainId}) - WILL REMOVE`,
+                    );
                     rpcUrlsToRemove.push(rpcUrl);
                 } else {
                     console.log('✓ OK');
                 }
             } else {
-                console.log(`✗ FAILED (${result.error?.substring(0, 60)}) - KEEPING (might be temporary)`);
+                console.log(
+                    `✗ FAILED (${result.error?.substring(0, 60)}) - KEEPING (might be temporary)`,
+                );
             }
         }
 
         // Find first working RPC
-        const workingRpc = rpcResults.find(r => r.success && r.chainId === chain.chainId);
-        const anyWorkingRpc = rpcResults.find(r => r.success);
+        const workingRpc = rpcResults.find((r) => r.success && r.chainId === chain.chainId);
+        const anyWorkingRpc = rpcResults.find((r) => r.success);
 
         if (workingRpc && workingRpc.index !== chain.defaultRpcUrlIndex) {
             console.log(`  ℹ Suggestion: Set defaultRpcUrlIndex to ${workingRpc.index}`);
@@ -222,7 +232,9 @@ async function verifyRpcs(chainConfig) {
         }
 
         if (!workingRpc && anyWorkingRpc) {
-            console.log(`  ⚠ Warning: No RPC with correct chainId. RPC at index ${anyWorkingRpc.index} returned chainId ${anyWorkingRpc.chainId}`);
+            console.log(
+                `  ⚠ Warning: No RPC with correct chainId. RPC at index ${anyWorkingRpc.index} returned chainId ${anyWorkingRpc.chainId}`,
+            );
             corrections[key] = { ...corrections[key], chainId: anyWorkingRpc.chainId };
         }
 
@@ -261,11 +273,17 @@ async function verifyContract(provider, address, abi, interfaceName) {
     try {
         const code = await provider.getCode(checksummedAddress);
         if (code === '0x') {
-            return { exists: false, verified: false, reason: 'No code at address', checksummedAddress, needsChecksumFix };
+            return {
+                exists: false,
+                verified: false,
+                reason: 'No code at address',
+                checksummedAddress,
+                needsChecksumFix,
+            };
         }
 
         const contract = new ethers.Contract(checksummedAddress, abi, provider);
-        
+
         // Try to call a view function to verify interface
         // Different interfaces have different verifiable functions
         let verified = false;
@@ -283,7 +301,10 @@ async function verifyContract(provider, address, abi, interfaceName) {
             } else if (interfaceName === 'TRUSTED_FORWARDER') {
                 await contract.getNonce(ZERO_ADDRESS);
                 verified = true;
-            } else if (interfaceName === 'MESSAGE_TRANSMITTER' || interfaceName === 'TOKEN_MESSENGER') {
+            } else if (
+                interfaceName === 'MESSAGE_TRANSMITTER' ||
+                interfaceName === 'TOKEN_MESSENGER'
+            ) {
                 // These are proxy contracts - verify proxy interface
                 await contract.implementation();
                 verified = true;
@@ -293,7 +314,10 @@ async function verifyContract(provider, address, abi, interfaceName) {
                 verified = true;
             } else if (interfaceName === 'CREATE5') {
                 // Verify CREATE5 by calling computeAddress
-                await contract.computeAddress(ethers.utils.formatBytes32String('test'), ethers.utils.formatBytes32String('salt'));
+                await contract.computeAddress(
+                    ethers.utils.formatBytes32String('test'),
+                    ethers.utils.formatBytes32String('salt'),
+                );
                 verified = true;
             } else if (interfaceName === 'MULTICALL3') {
                 // Verify MULTICALL3 by calling getBlockNumber
@@ -306,9 +330,21 @@ async function verifyContract(provider, address, abi, interfaceName) {
             verificationReason = 'Has bytecode (interface not verified)';
         }
 
-        return { exists: true, verified, reason: verified ? verificationReason : 'Unknown', checksummedAddress, needsChecksumFix };
+        return {
+            exists: true,
+            verified,
+            reason: verified ? verificationReason : 'Unknown',
+            checksummedAddress,
+            needsChecksumFix,
+        };
     } catch (error) {
-        return { exists: false, verified: false, reason: error.message, checksummedAddress, needsChecksumFix };
+        return {
+            exists: false,
+            verified: false,
+            reason: error.message,
+            checksummedAddress,
+            needsChecksumFix,
+        };
     }
 }
 
@@ -332,27 +368,66 @@ async function verifyContracts(chainConfig, rpcResults) {
 
         console.log(`\nVerifying contracts for ${chain.display} (${key})...`);
         const chainResults = {};
-        detailedLog[key] = { chainName: chain.display || chain.name, chainId: chain.chainId, contracts: {} };
+        detailedLog[key] = {
+            chainName: chain.display || chain.name,
+            chainId: chain.chainId,
+            contracts: {},
+        };
 
         // Check each contract type
         const contractChecks = [
             { key: 'wrappedGasToken', abi: ABIS.WETH, name: 'WETH', default: null },
-            { key: 'permit2', abi: ABIS.PERMIT2, name: 'PERMIT2', default: DEFAULT_ADDRESSES.permit2 },
-            { key: 'entryPoint', abi: ABIS.ENTRY_POINT, name: 'ENTRY_POINT', default: DEFAULT_ADDRESSES.entryPoint },
-            { key: 'trustedForwarder', abi: ABIS.TRUSTED_FORWARDER, name: 'TRUSTED_FORWARDER', default: DEFAULT_ADDRESSES.trustedForwarder },
-            { 
-                key: 'relayRouter', 
-                abi: ABIS.RELAY_ROUTER, 
-                name: 'RELAY_ROUTER', 
+            {
+                key: 'permit2',
+                abi: ABIS.PERMIT2,
+                name: 'PERMIT2',
+                default: DEFAULT_ADDRESSES.permit2,
+            },
+            {
+                key: 'entryPoint',
+                abi: ABIS.ENTRY_POINT,
+                name: 'ENTRY_POINT',
+                default: DEFAULT_ADDRESSES.entryPoint,
+            },
+            {
+                key: 'trustedForwarder',
+                abi: ABIS.TRUSTED_FORWARDER,
+                name: 'TRUSTED_FORWARDER',
+                default: DEFAULT_ADDRESSES.trustedForwarder,
+            },
+            {
+                key: 'relayRouter',
+                abi: ABIS.RELAY_ROUTER,
+                name: 'RELAY_ROUTER',
                 default: [
-                    DEFAULT_RELAY_ROUTER_ADDRESSES.primary, 
-                    DEFAULT_RELAY_ROUTER_ADDRESSES.secondary
+                    DEFAULT_RELAY_ROUTER_ADDRESSES.primary,
+                    DEFAULT_RELAY_ROUTER_ADDRESSES.secondary,
                 ].filter(Boolean),
             },
-            { key: 'messageTransmitter', abi: ABIS.MESSAGE_TRANSMITTER, name: 'MESSAGE_TRANSMITTER', default: DEFAULT_ADDRESSES.messageTransmitter },
-            { key: 'tokenMessenger', abi: ABIS.TOKEN_MESSENGER, name: 'TOKEN_MESSENGER', default: DEFAULT_ADDRESSES.tokenMessenger },
-            { key: 'create5', abi: ABIS.CREATE5, name: 'CREATE5', default: DEFAULT_ADDRESSES.create5 },
-            { key: 'multicall3', abi: ABIS.MULTICALL3, name: 'MULTICALL3', default: DEFAULT_ADDRESSES.multicall3 },
+            {
+                key: 'messageTransmitter',
+                abi: ABIS.MESSAGE_TRANSMITTER,
+                name: 'MESSAGE_TRANSMITTER',
+                default: DEFAULT_ADDRESSES.messageTransmitter,
+            },
+            {
+                key: 'tokenMessenger',
+                abi: ABIS.TOKEN_MESSENGER,
+                name: 'TOKEN_MESSENGER',
+                default: DEFAULT_ADDRESSES.tokenMessenger,
+            },
+            {
+                key: 'create5',
+                abi: ABIS.CREATE5,
+                name: 'CREATE5',
+                default: DEFAULT_ADDRESSES.create5,
+            },
+            {
+                key: 'multicall3',
+                abi: ABIS.MULTICALL3,
+                name: 'MULTICALL3',
+                default: DEFAULT_ADDRESSES.multicall3,
+            },
         ];
 
         const checkedAddressKeys = new Set();
@@ -371,13 +446,15 @@ async function verifyContracts(chainConfig, rpcResults) {
             let checksummedAddr = configAddress;
             let needsChecksumFix = false;
             const defaultAddresses = Array.isArray(check.default)
-                ? check.default.filter(addr => addr && addr !== ZERO_ADDRESS)
-                : (check.default && check.default !== ZERO_ADDRESS ? [check.default] : []);
+                ? check.default.filter((addr) => addr && addr !== ZERO_ADDRESS)
+                : check.default && check.default !== ZERO_ADDRESS
+                  ? [check.default]
+                  : [];
 
             const describeDefaultAddress = (address) => {
                 if (!Array.isArray(check.default)) return 'default';
                 const idx = defaultAddresses.findIndex(
-                    addr => addr.toLowerCase() === address.toLowerCase()
+                    (addr) => addr.toLowerCase() === address.toLowerCase(),
                 );
                 if (idx === 0) return 'primary default';
                 if (idx === 1) return 'secondary default';
@@ -394,7 +471,9 @@ async function verifyContracts(chainConfig, rpcResults) {
                             defaultCodeLength = len;
                             correctionNeeded = true;
                             const descriptor = describeDefaultAddress(defaultAddr);
-                            correctionReason = reasonBase ? `${reasonBase} (${descriptor})` : `Found bytecode at ${descriptor}`;
+                            correctionReason = reasonBase
+                                ? `${reasonBase} (${descriptor})`
+                                : `Found bytecode at ${descriptor}`;
                             return true;
                         }
                     } catch (e) {
@@ -420,29 +499,41 @@ async function verifyContracts(chainConfig, rpcResults) {
                 try {
                     const configCode = await provider.getCode(checksummedAddr);
                     configCodeLength = configCode === '0x' ? 0 : (configCode.length - 2) / 2;
-                    
+
                     if (configCodeLength > 0) {
                         // Bytecode exists at configured address
-                        const interfaceCheck = await verifyContract(provider, checksummedAddr, check.abi, check.name);
+                        const interfaceCheck = await verifyContract(
+                            provider,
+                            checksummedAddr,
+                            check.abi,
+                            check.name,
+                        );
                         if (interfaceCheck.verified || configCodeLength > 0) {
                             // Either interface works or bytecode exists - configured address is OK
                             finalAddress = checksummedAddr;
                             if (needsChecksumFix) {
-                                checksumIssues.push({ key: check.key, original: configAddress, checksummed: checksummedAddr });
+                                checksumIssues.push({
+                                    key: check.key,
+                                    original: configAddress,
+                                    checksummed: checksummedAddr,
+                                });
                                 correctionNeeded = true;
                                 correctionReason = 'Checksum fix';
                             }
                         }
                     } else {
                         // No bytecode at configured address - check defaults
-                        const foundDefault = await selectDefaultWithBytecode('No bytecode at configured, using default');
+                        const foundDefault = await selectDefaultWithBytecode(
+                            'No bytecode at configured, using default',
+                        );
                         if (!foundDefault) {
                             // No defaults had bytecode - correct to zero
                             finalAddress = ZERO_ADDRESS;
                             correctionNeeded = true;
-                            correctionReason = defaultAddresses.length > 0
-                                ? 'No bytecode at configured or defaults'
-                                : 'No bytecode at configured (no defaults available)';
+                            correctionReason =
+                                defaultAddresses.length > 0
+                                    ? 'No bytecode at configured or defaults'
+                                    : 'No bytecode at configured (no defaults available)';
                         }
                     }
                 } catch (e) {
@@ -452,7 +543,9 @@ async function verifyContracts(chainConfig, rpcResults) {
             } else {
                 // Case 2: configured address == zero_address
                 if (defaultAddresses.length > 0) {
-                    const foundDefault = await selectDefaultWithBytecode('Found bytecode at default');
+                    const foundDefault = await selectDefaultWithBytecode(
+                        'Found bytecode at default',
+                    );
                     if (!foundDefault) {
                         // No bytecode at any default - keep zero
                         finalAddress = ZERO_ADDRESS;
@@ -472,7 +565,7 @@ async function verifyContracts(chainConfig, rpcResults) {
                 configuredBytecodeLength: configCodeLength,
                 defaultBytecodeLength: defaultCodeLength,
                 correctionNeeded: correctionNeeded,
-                correctionReason: correctionReason
+                correctionReason: correctionReason,
             };
 
             // Apply correction if needed
@@ -482,12 +575,12 @@ async function verifyContracts(chainConfig, rpcResults) {
                 corrections[key].addresses[check.key] = finalAddress;
             }
 
-            chainResults[check.key] = { 
-                address: finalAddress, 
-                configAddress, 
-                correctionNeeded, 
+            chainResults[check.key] = {
+                address: finalAddress,
+                configAddress,
+                correctionNeeded,
                 reason: correctionReason,
-                bytecodeLength: configCodeLength || defaultCodeLength
+                bytecodeLength: configCodeLength || defaultCodeLength,
             };
 
             // Console output
@@ -495,10 +588,19 @@ async function verifyContracts(chainConfig, rpcResults) {
                 console.log(`○ Zero address (${correctionReason})`);
             } else {
                 const baseExplorerUrl = getExplorerUrl(chain);
-                const explorerUrl = baseExplorerUrl ? `${baseExplorerUrl}/address/${finalAddress}#code` : '';
-                const bytecodeNote = configCodeLength > 0 ? `${configCodeLength}B` : defaultCodeLength > 0 ? `${defaultCodeLength}B` : '0B';
+                const explorerUrl = baseExplorerUrl
+                    ? `${baseExplorerUrl}/address/${finalAddress}#code`
+                    : '';
+                const bytecodeNote =
+                    configCodeLength > 0
+                        ? `${configCodeLength}B`
+                        : defaultCodeLength > 0
+                          ? `${defaultCodeLength}B`
+                          : '0B';
                 const correctionNote = correctionNeeded ? ` [${correctionReason}]` : '';
-                console.log(`✓ ${finalAddress.substring(0, 10)}... (${bytecodeNote})${correctionNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
+                console.log(
+                    `✓ ${finalAddress.substring(0, 10)}... (${bytecodeNote})${correctionNote}${explorerUrl ? ' ' + explorerUrl : ''}`,
+                );
             }
         }
 
@@ -521,41 +623,43 @@ async function verifyContracts(chainConfig, rpcResults) {
                 { key: 'usdc', officialMap: OFFICIAL_USDC_BY_CHAIN, name: 'USDC' },
                 { key: 'usdt', officialMap: OFFICIAL_USDT_BY_CHAIN, name: 'USDT' },
             ];
-            
+
             for (const { key: addrKey, officialMap, name } of stablecoinChecks) {
                 const addrValue = chain.addresses[addrKey];
-                
+
                 // Skip if already checked or zero address (zero is allowed - means not available)
                 if (checkedAddressKeys.has(addrKey)) {
                     continue;
                 }
-                
+
                 process.stdout.write(`  ${addrKey.padEnd(20)} `);
-                
+
                 // Zero address is always valid (means stablecoin not available on this chain)
                 if (!addrValue || addrValue === ZERO_ADDRESS) {
                     const officialAddr = officialMap.get(key);
                     if (officialAddr) {
                         // Official deployment exists but config has zero - suggest correction
-                        console.log(`○ Zero address (official deployment available: ${officialAddr.substring(0, 10)}...)`);
+                        console.log(
+                            `○ Zero address (official deployment available: ${officialAddr.substring(0, 10)}...)`,
+                        );
                         if (!corrections[key]) corrections[key] = { addresses: {} };
                         if (!corrections[key].addresses) corrections[key].addresses = {};
                         corrections[key].addresses[addrKey] = officialAddr;
                     } else {
                         console.log(`○ Zero address (no official deployment)`);
                     }
-                    chainResults[addrKey] = { 
-                        exists: false, 
-                        verified: true, 
+                    chainResults[addrKey] = {
+                        exists: false,
+                        verified: true,
                         reason: 'Zero address (valid)',
                         address: ZERO_ADDRESS,
                         configAddress: addrValue || ZERO_ADDRESS,
                         usedDefault: false,
-                        needsChecksumFix: false
+                        needsChecksumFix: false,
                     };
                     continue;
                 }
-                
+
                 // Non-zero address - must match official deployment
                 try {
                     let checksummedAddr = addrValue;
@@ -565,81 +669,93 @@ async function verifyContracts(chainConfig, rpcResults) {
                         needsChecksumFix = addrValue !== checksummedAddr;
                     } catch (e) {
                         console.log(`✗ Invalid address format`);
-                        chainResults[addrKey] = { 
-                            exists: false, 
-                            verified: false, 
+                        chainResults[addrKey] = {
+                            exists: false,
+                            verified: false,
                             reason: 'Invalid address format',
                             address: addrValue,
                             configAddress: addrValue,
                             usedDefault: false,
-                            needsChecksumFix: false
+                            needsChecksumFix: false,
                         };
                         continue;
                     }
-                    
+
                     // Check if this address matches the official deployment for this chain
                     const officialAddr = officialMap.get(key);
-                    
+
                     if (!officialAddr) {
                         // No official deployment for this chain - address must be zero
-                        console.log(`✗ SECURITY: No official ${name} deployment for ${key} - bridged tokens not allowed`);
+                        console.log(
+                            `✗ SECURITY: No official ${name} deployment for ${key} - bridged tokens not allowed`,
+                        );
                         if (!corrections[key]) corrections[key] = { addresses: {} };
                         if (!corrections[key].addresses) corrections[key].addresses = {};
                         corrections[key].addresses[addrKey] = ZERO_ADDRESS;
-                        chainResults[addrKey] = { 
-                            exists: true, 
-                            verified: false, 
+                        chainResults[addrKey] = {
+                            exists: true,
+                            verified: false,
                             reason: `No official ${name} deployment - bridged token not allowed`,
                             address: checksummedAddr,
                             configAddress: addrValue,
                             usedDefault: false,
-                            needsChecksumFix
+                            needsChecksumFix,
                         };
                         continue;
                     }
-                    
+
                     if (checksummedAddr.toLowerCase() !== officialAddr.toLowerCase()) {
                         // Address doesn't match official deployment
-                        console.log(`✗ SECURITY: Address mismatch - expected ${officialAddr.substring(0, 10)}... (official), got ${checksummedAddr.substring(0, 10)}... (bridged token not allowed)`);
+                        console.log(
+                            `✗ SECURITY: Address mismatch - expected ${officialAddr.substring(0, 10)}... (official), got ${checksummedAddr.substring(0, 10)}... (bridged token not allowed)`,
+                        );
                         if (!corrections[key]) corrections[key] = { addresses: {} };
                         if (!corrections[key].addresses) corrections[key].addresses = {};
                         corrections[key].addresses[addrKey] = officialAddr;
-                        chainResults[addrKey] = { 
-                            exists: true, 
-                            verified: false, 
+                        chainResults[addrKey] = {
+                            exists: true,
+                            verified: false,
                             reason: `Address mismatch - bridged token not allowed`,
                             address: checksummedAddr,
                             configAddress: addrValue,
                             officialAddress: officialAddr,
                             usedDefault: false,
-                            needsChecksumFix
+                            needsChecksumFix,
                         };
                         continue;
                     }
-                    
+
                     // Address matches official deployment - verify bytecode exists
                     const code = await provider.getCode(checksummedAddr);
                     const hasCode = code !== '0x';
-                    
+
                     if (needsChecksumFix) {
-                        otherChecksumIssues.push({ key: addrKey, original: addrValue, checksummed: checksummedAddr });
+                        otherChecksumIssues.push({
+                            key: addrKey,
+                            original: addrValue,
+                            checksummed: checksummedAddr,
+                        });
                     }
-                    
-                    chainResults[addrKey] = { 
-                        exists: hasCode, 
-                        verified: hasCode, 
+
+                    chainResults[addrKey] = {
+                        exists: hasCode,
+                        verified: hasCode,
                         reason: hasCode ? 'Official deployment verified' : 'No code at address',
                         address: checksummedAddr,
                         configAddress: addrValue,
                         usedDefault: false,
-                        needsChecksumFix
+                        needsChecksumFix,
                     };
 
                     if (hasCode) {
                         const baseExplorerUrl = getExplorerUrl(chain);
-                        const explorerUrl = baseExplorerUrl ? `${baseExplorerUrl}/address/${checksummedAddr}#code` : '';
+                        const explorerUrl = baseExplorerUrl
+                            ? `${baseExplorerUrl}/address/${checksummedAddr}#code`
+                            : '';
                         const checksumNote = needsChecksumFix ? ' (needs checksum fix)' : '';
-                        console.log(`✓ ${checksummedAddr.substring(0, 10)}... (official)${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`);
+                        console.log(
+                            `✓ ${checksummedAddr.substring(0, 10)}... (official)${checksumNote}${explorerUrl ? ' ' + explorerUrl : ''}`,
+                        );
                     } else {
                         console.log(`✗ No code at official address - deployment may be pending`);
                         if (!corrections[key]) corrections[key] = { addresses: {} };
@@ -647,13 +763,13 @@ async function verifyContracts(chainConfig, rpcResults) {
                         corrections[key].addresses[addrKey] = ZERO_ADDRESS;
                     }
                 } catch (error) {
-                    chainResults[addrKey] = { 
-                        exists: false, 
-                        verified: false, 
+                    chainResults[addrKey] = {
+                        exists: false,
+                        verified: false,
                         reason: error.message,
                         address: addrValue,
                         configAddress: addrValue,
-                        usedDefault: false
+                        usedDefault: false,
                     };
                     console.log(`✗ Error: ${error.message}`);
                 }
@@ -734,23 +850,32 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
             if (corrections.removeRpcUrls && Array.isArray(corrections.removeRpcUrls)) {
                 const originalRpcs = [...corrected[key].rpcUrls];
                 const urlsToRemove = new Set(corrections.removeRpcUrls);
-                corrected[key].rpcUrls = originalRpcs.filter(url => !urlsToRemove.has(url));
-                
+                corrected[key].rpcUrls = originalRpcs.filter((url) => !urlsToRemove.has(url));
+
                 const removedCount = originalRpcs.length - corrected[key].rpcUrls.length;
                 if (removedCount > 0) {
-                    chainChanges.push(`Removed ${removedCount} misconfigured RPC(s) with wrong chainId`);
-                    
+                    chainChanges.push(
+                        `Removed ${removedCount} misconfigured RPC(s) with wrong chainId`,
+                    );
+
                     // Adjust defaultRpcUrlIndex if needed
                     if (corrected[key].defaultRpcUrlIndex >= corrected[key].rpcUrls.length) {
-                        corrected[key].defaultRpcUrlIndex = Math.max(0, corrected[key].rpcUrls.length - 1);
-                        chainChanges.push(`Adjusted defaultRpcUrlIndex to ${corrected[key].defaultRpcUrlIndex}`);
+                        corrected[key].defaultRpcUrlIndex = Math.max(
+                            0,
+                            corrected[key].rpcUrls.length - 1,
+                        );
+                        chainChanges.push(
+                            `Adjusted defaultRpcUrlIndex to ${corrected[key].defaultRpcUrlIndex}`,
+                        );
                     }
                 }
             }
 
             if (corrections.defaultRpcUrlIndex !== undefined) {
                 corrected[key].defaultRpcUrlIndex = corrections.defaultRpcUrlIndex;
-                chainChanges.push(`Updated defaultRpcUrlIndex to ${corrections.defaultRpcUrlIndex}`);
+                chainChanges.push(
+                    `Updated defaultRpcUrlIndex to ${corrections.defaultRpcUrlIndex}`,
+                );
             }
 
             if (corrections.chainId !== undefined) {
@@ -778,23 +903,31 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
                 chainChanges.push(`Added missing address ${addrKey} as zero address`);
             }
         }
-        
+
         // SECURITY: Always enforce official USDC/USDT addresses
         // Set to official address if available, otherwise zero address (removes bridged tokens)
         const officialUsdc = OFFICIAL_USDC_BY_CHAIN.get(key) || ZERO_ADDRESS;
         const currentUsdc = corrected[key].addresses.usdc || ZERO_ADDRESS;
         if (currentUsdc.toLowerCase() !== officialUsdc.toLowerCase()) {
-            const oldAddr = currentUsdc === ZERO_ADDRESS ? 'zero' : currentUsdc.substring(0, 10) + '...';
-            const newAddr = officialUsdc === ZERO_ADDRESS ? 'zero (no official deployment)' : officialUsdc.substring(0, 10) + '... (official)';
+            const oldAddr =
+                currentUsdc === ZERO_ADDRESS ? 'zero' : currentUsdc.substring(0, 10) + '...';
+            const newAddr =
+                officialUsdc === ZERO_ADDRESS
+                    ? 'zero (no official deployment)'
+                    : officialUsdc.substring(0, 10) + '... (official)';
             corrected[key].addresses.usdc = officialUsdc;
             chainChanges.push(`SECURITY: Set usdc from ${oldAddr} to ${newAddr}`);
         }
-        
+
         const officialUsdt = OFFICIAL_USDT_BY_CHAIN.get(key) || ZERO_ADDRESS;
         const currentUsdt = corrected[key].addresses.usdt || ZERO_ADDRESS;
         if (currentUsdt.toLowerCase() !== officialUsdt.toLowerCase()) {
-            const oldAddr = currentUsdt === ZERO_ADDRESS ? 'zero' : currentUsdt.substring(0, 10) + '...';
-            const newAddr = officialUsdt === ZERO_ADDRESS ? 'zero (no official deployment)' : officialUsdt.substring(0, 10) + '... (official)';
+            const oldAddr =
+                currentUsdt === ZERO_ADDRESS ? 'zero' : currentUsdt.substring(0, 10) + '...';
+            const newAddr =
+                officialUsdt === ZERO_ADDRESS
+                    ? 'zero (no official deployment)'
+                    : officialUsdt.substring(0, 10) + '... (official)';
             corrected[key].addresses.usdt = officialUsdt;
             chainChanges.push(`SECURITY: Set usdt from ${oldAddr} to ${newAddr}`);
         }
@@ -810,10 +943,7 @@ function generateCorrectedConfig(chainConfig, allCorrections) {
 
 // Format a chain object as JavaScript code
 function formatChainObject(key, chain, indent = '    ') {
-    const lines = [
-        `${indent}${key}: {`,
-        `${indent}    key: "${chain.key}",`,
-    ];
+    const lines = [`${indent}${key}: {`, `${indent}    key: "${chain.key}",`];
 
     // Add display field
     lines.push(`${indent}    display: "${chain.display}",`);
@@ -822,17 +952,25 @@ function formatChainObject(key, chain, indent = '    ') {
     lines.push(`${indent}    vmType: "${chain.vmType}",`);
     lines.push(`${indent}    chainId: ${chain.chainId},`);
     lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
-    
+
     // CoinGecko properties
-    const cgPlatformId = chain.cgPlatformId === null || chain.cgPlatformId === undefined ? 'null' : `"${chain.cgPlatformId}"`;
-    const cgGasAssetId = chain.cgGasAssetId === null || chain.cgGasAssetId === undefined ? 'null' : `"${chain.cgGasAssetId}"`;
+    const cgPlatformId =
+        chain.cgPlatformId === null || chain.cgPlatformId === undefined
+            ? 'null'
+            : `"${chain.cgPlatformId}"`;
+    const cgGasAssetId =
+        chain.cgGasAssetId === null || chain.cgGasAssetId === undefined
+            ? 'null'
+            : `"${chain.cgGasAssetId}"`;
     lines.push(`${indent}    cgPlatformId: ${cgPlatformId},`);
     lines.push(`${indent}    cgGasAssetId: ${cgGasAssetId},`);
-    
+
     // OpenOcean properties
     lines.push(`${indent}    openOceanSupported: ${chain.openOceanSupported ?? false},`);
     lines.push(`${indent}    openOceanChainCode: "${chain.openOceanChainCode ?? ''}",`);
-    lines.push(`${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress ?? ZERO_ADDRESS}",`);
+    lines.push(
+        `${indent}    openOceanNativeAddress: "${chain.openOceanNativeAddress ?? ZERO_ADDRESS}",`,
+    );
 
     // Add explorerUrls
     lines.push(`${indent}    explorerUrls: [`);
@@ -859,12 +997,21 @@ function formatChainObject(key, chain, indent = '    ') {
 
     // Add addresses - ensure proper ordering
     lines.push(`${indent}    addresses: {`);
-    
+
     // Order: token addresses first, then contract addresses
     const tokenAddresses = ['gasToken', 'wrappedGasToken', 'usdc', 'usdt'];
-    const contractAddresses = ['permit2', 'entryPoint', 'trustedForwarder', 'relayRouter', 'messageTransmitter', 'tokenMessenger', 'create5', 'multicall3'];
+    const contractAddresses = [
+        'permit2',
+        'entryPoint',
+        'trustedForwarder',
+        'relayRouter',
+        'messageTransmitter',
+        'tokenMessenger',
+        'create5',
+        'multicall3',
+    ];
     const otherAddresses = Object.keys(chain.addresses || {}).filter(
-        k => ![...tokenAddresses, ...contractAddresses].includes(k)
+        (k) => ![...tokenAddresses, ...contractAddresses].includes(k),
     );
 
     // Add token addresses
@@ -896,7 +1043,7 @@ function formatChainObject(key, chain, indent = '    ') {
 // Save corrected config to file
 function saveCorrectedConfig(correctedConfig) {
     const outputPath = path.join(__dirname, '..', 'chains-corrected.mjs');
-    
+
     const outputLines = [
         '// Auto-generated corrected chain configuration',
         `// Generated on ${new Date().toISOString()}`,
@@ -929,9 +1076,15 @@ function saveCorrectedConfig(correctedConfig) {
     outputLines.push('');
     outputLines.push('export function getExplorerUrl(chain) {');
     outputLines.push('    if (!chain) return null;');
-    outputLines.push('    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;');
-    outputLines.push('    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;');
-    outputLines.push('    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];');
+    outputLines.push(
+        '    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;',
+    );
+    outputLines.push(
+        '    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;',
+    );
+    outputLines.push(
+        '    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];',
+    );
     outputLines.push('}');
     outputLines.push('');
 
@@ -949,7 +1102,7 @@ async function cmdCheck() {
 async function cmdVerifyRpcs() {
     const chainConfig = await loadChainConfig();
     const { results, corrections } = await verifyRpcs(chainConfig);
-    
+
     if (Object.keys(corrections).length > 0) {
         console.log('\n=== Suggested Corrections ===');
         console.log(JSON.stringify(corrections, null, 2));
@@ -960,7 +1113,7 @@ async function cmdVerifyContracts() {
     const chainConfig = await loadChainConfig();
     const { results: rpcResults } = await verifyRpcs(chainConfig);
     const { results, corrections } = await verifyContracts(chainConfig, rpcResults);
-    
+
     if (Object.keys(corrections).length > 0) {
         console.log('\n=== Suggested Corrections ===');
         console.log(JSON.stringify(corrections, null, 2));
@@ -969,15 +1122,18 @@ async function cmdVerifyContracts() {
 
 async function cmdFix(argv) {
     const fullChainConfig = await loadChainConfig();
-    
+
     // Filter chains if --chains option is provided
     let chainConfig = fullChainConfig;
     let selectedKeys = null;
-    
+
     if (argv.chains) {
-        selectedKeys = argv.chains.split(',').map(k => k.trim()).filter(Boolean);
+        selectedKeys = argv.chains
+            .split(',')
+            .map((k) => k.trim())
+            .filter(Boolean);
         console.log(`\n=== Fixing specific chains: ${selectedKeys.join(', ')} ===\n`);
-        
+
         chainConfig = {};
         const notFound = [];
         for (const key of selectedKeys) {
@@ -987,25 +1143,28 @@ async function cmdFix(argv) {
                 notFound.push(key);
             }
         }
-        
+
         if (notFound.length > 0) {
             console.warn(`Warning: Chain keys not found: ${notFound.join(', ')}`);
         }
-        
+
         if (Object.keys(chainConfig).length === 0) {
             console.error('Error: No valid chain keys provided.');
             process.exit(1);
         }
     }
-    
+
     // Run all checks
     checkBasicIntegrity(chainConfig);
     const { corrections: rpcCorrections, results: rpcResults } = await verifyRpcs(chainConfig);
     const { corrections: contractCorrections } = await verifyContracts(chainConfig, rpcResults);
-    
+
     // Merge corrections
     const allCorrections = {};
-    for (const key of new Set([...Object.keys(rpcCorrections), ...Object.keys(contractCorrections)])) {
+    for (const key of new Set([
+        ...Object.keys(rpcCorrections),
+        ...Object.keys(contractCorrections),
+    ])) {
         allCorrections[key] = {
             ...rpcCorrections[key],
             ...contractCorrections[key],
@@ -1015,11 +1174,14 @@ async function cmdFix(argv) {
             },
         };
     }
-    
+
     // If filtering chains, merge corrections back into full config for output
     const configForOutput = selectedKeys ? fullChainConfig : chainConfig;
-    const { corrected, hasChanges, changesSummary } = generateCorrectedConfig(configForOutput, allCorrections);
-    
+    const { corrected, hasChanges, changesSummary } = generateCorrectedConfig(
+        configForOutput,
+        allCorrections,
+    );
+
     if (hasChanges) {
         // Print summary of changes
         console.log('\n=== Summary of Fixes ===');
@@ -1033,8 +1195,10 @@ async function cmdFix(argv) {
                 totalChanges++;
             }
         }
-        console.log(`\n✓ Total: ${totalChanges} changes across ${Object.keys(changesSummary).length} chains`);
-        
+        console.log(
+            `\n✓ Total: ${totalChanges} changes across ${Object.keys(changesSummary).length} chains`,
+        );
+
         saveCorrectedConfig(corrected);
         console.log('\n✓ Corrections applied. Review chains-corrected.mjs before using.');
     } else {
@@ -1115,7 +1279,7 @@ async function cmdInfo() {
     // Table headers
     const headers = ['Index', 'Key', 'Name', 'Chain ID', 'Default Explorer URL'];
     const colWidths = [8, 20, 30, 20, 50];
-    
+
     // Print header
     const headerRow = headers.map((h, i) => h.padEnd(colWidths[i])).join(' | ');
     console.log(headerRow);
@@ -1126,18 +1290,18 @@ async function cmdInfo() {
         const name = chain.display || chain.name || key;
         const chainId = chain.chainId.toString();
         const explorerUrl = getExplorerUrl(chain) || 'N/A';
-        
+
         const row = [
             index.toString().padEnd(colWidths[0]),
             key.substring(0, colWidths[1] - 1).padEnd(colWidths[1]),
             name.substring(0, colWidths[2] - 1).padEnd(colWidths[2]),
             chainId.padEnd(colWidths[3]),
-            explorerUrl.substring(0, colWidths[4] - 1).padEnd(colWidths[4])
+            explorerUrl.substring(0, colWidths[4] - 1).padEnd(colWidths[4]),
         ].join(' | ');
-        
+
         console.log(row);
     });
-    
+
     console.log(`\n✓ Total: ${totalChains} chains`);
 }
 
@@ -1150,48 +1314,51 @@ async function main() {
             'check',
             'Run basic integrity checks (duplicates)',
             {},
-            async () => await cmdCheck()
+            async () => await cmdCheck(),
         )
         .command(
             'verify-rpcs',
             'Verify RPC connectivity and chainIds',
             {},
-            async () => await cmdVerifyRpcs()
+            async () => await cmdVerifyRpcs(),
         )
         .command(
             'verify-contracts',
             'Verify contract interfaces on-chain',
             {},
-            async () => await cmdVerifyContracts()
+            async () => await cmdVerifyContracts(),
         )
         .command(
             'fix',
             'Run all checks and generate corrected config file',
             (yargs) => {
                 return yargs.option('chains', {
-                    describe: 'Comma-separated list of chain keys to fix (e.g., ethereum,base,polygon)',
+                    describe:
+                        'Comma-separated list of chain keys to fix (e.g., ethereum,base,polygon)',
                     type: 'string',
                 });
             },
-            async (argv) => await cmdFix(argv)
+            async (argv) => await cmdFix(argv),
         )
         .command(
             'info',
             'Display summary information about all chains',
             {},
-            async () => await cmdInfo()
+            async () => await cmdInfo(),
         )
         .command(
             'config-problems',
             'List chains with missing/invalid config values (wrappedGasToken, usdc, usdt, cgPlatformId, cgGasAssetId)',
             {},
-            async () => await cmdConfigProblems()
+            async () => await cmdConfigProblems(),
         )
-        .demandCommand(1, 'You must specify a command: check, verify-rpcs, verify-contracts, fix, info, or config-problems')
+        .demandCommand(
+            1,
+            'You must specify a command: check, verify-rpcs, verify-contracts, fix, info, or config-problems',
+        )
         .alias('h', 'help')
         .help()
-        .wrap(Math.min(120, process.stdout.columns || 100))
-        .argv;
+        .wrap(Math.min(120, process.stdout.columns || 100)).argv;
 }
 
 main().catch((err) => {

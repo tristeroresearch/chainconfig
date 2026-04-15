@@ -4,8 +4,9 @@ set -euo pipefail
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 
 node "$ROOT_DIR/scripts/sort_chain_keys.mjs" --write
+npx prettier --write "$ROOT_DIR/chains.mjs" "$ROOT_DIR/scripts" "$ROOT_DIR/.githooks"
 
-if ! git diff --quiet -- "$ROOT_DIR/chains.mjs"; then
-  git add "$ROOT_DIR/chains.mjs"
-  echo "pre-commit: sorted chainConfig keys and re-staged chains.mjs"
+if ! git diff --quiet -- "$ROOT_DIR/chains.mjs" "$ROOT_DIR/scripts" "$ROOT_DIR/.githooks"; then
+  git add "$ROOT_DIR/chains.mjs" "$ROOT_DIR/scripts" "$ROOT_DIR/.githooks"
+  echo "pre-commit: sorted chainConfig keys, ran prettier, and re-staged files"
 fi

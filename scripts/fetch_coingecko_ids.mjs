@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
  */
 function validateAndCompleteChain(chain) {
     const zeroAddr = '0x0000000000000000000000000000000000000000';
-    
+
     return {
         key: chain.key || 'unknown',
         display: chain.display || chain.name || 'Unknown',
@@ -28,13 +28,14 @@ function validateAndCompleteChain(chain) {
         openOceanSupported: chain.openOceanSupported || false,
         openOceanChainCode: chain.openOceanChainCode || '',
         openOceanNativeAddress: chain.openOceanNativeAddress || zeroAddr,
-        explorerUrls: Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
-            ? chain.explorerUrls
-            : (chain.explorerUrl ? [chain.explorerUrl] : ['']),
+        explorerUrls:
+            Array.isArray(chain.explorerUrls) && chain.explorerUrls.length > 0
+                ? chain.explorerUrls
+                : chain.explorerUrl
+                  ? [chain.explorerUrl]
+                  : [''],
         defaultExplorerUrlIndex: chain.defaultExplorerUrlIndex || 0,
-        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0
-            ? chain.rpcUrls
-            : [],
+        rpcUrls: Array.isArray(chain.rpcUrls) && chain.rpcUrls.length > 0 ? chain.rpcUrls : [],
         defaultRpcUrlIndex: chain.defaultRpcUrlIndex || 0,
         explorerApiUrl: chain.explorerApiUrl || undefined,
         addresses: {
@@ -67,14 +68,14 @@ const loadChainConfig = async () => {
  */
 async function fetchEtherscanSupportedChains() {
     console.log('Fetching Etherscan supported chains...');
-    
+
     try {
         const response = await fetch('https://api.etherscan.io/v2/chainlist');
         const data = await response.json();
 
         if (data.result && Array.isArray(data.result)) {
             // Return a Set of chainIds for quick lookup
-            const chainIds = new Set(data.result.map(chain => parseInt(chain.chainid)));
+            const chainIds = new Set(data.result.map((chain) => parseInt(chain.chainid)));
             console.log(`✓ Fetched ${chainIds.size} Etherscan-supported chains\n`);
             return chainIds;
         }
@@ -90,12 +91,12 @@ async function fetchEtherscanSupportedChains() {
  */
 async function fetchCoinGeckoPlatforms() {
     const apiKey = process.env.COINGECKO_API_KEY || process.env.CG_API_KEY;
-    const baseUrl = apiKey 
+    const baseUrl = apiKey
         ? 'https://pro-api.coingecko.com/api/v3'
         : 'https://api.coingecko.com/api/v3';
-    
+
     const headers = apiKey ? { 'x-cg-pro-api-key': apiKey } : {};
-    
+
     console.log(`Fetching CoinGecko platforms from ${baseUrl}...`);
     if (apiKey) {
         console.log('Using Pro API with API key');
@@ -105,14 +106,14 @@ async function fetchCoinGeckoPlatforms() {
 
     try {
         const response = await fetch(`${baseUrl}/asset_platforms`, { headers });
-        
+
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
         console.log(`✓ Fetched ${data.length} platforms from CoinGecko\n`);
-        
+
         return data;
     } catch (error) {
         console.error(`✗ Error fetching CoinGecko platforms: ${error.message}`);
@@ -125,11 +126,11 @@ async function fetchCoinGeckoPlatforms() {
  */
 function matchPlatformsToChains(chainConfig, platforms) {
     console.log('=== Matching Platforms to Chains ===\n');
-    
+
     const results = {};
     const matchedPlatforms = new Set();
     const unmatchedChains = [];
-    
+
     // Create lookup map by chain_identifier
     const platformsByChainId = new Map();
     for (const platform of platforms) {
@@ -137,38 +138,42 @@ function matchPlatformsToChains(chainConfig, platforms) {
             platformsByChainId.set(platform.chain_identifier, platform);
         }
     }
-    
+
     // Match chains to platforms
     for (const [key, chain] of Object.entries(chainConfig)) {
         const platform = platformsByChainId.get(chain.chainId);
-        
+
         if (platform) {
             results[key] = {
                 cgPlatformId: platform.id,
                 cgGasAssetId: platform.native_coin_id,
                 platformName: platform.name,
-                platformShortname: platform.shortname
+                platformShortname: platform.shortname,
             };
             matchedPlatforms.add(platform.id);
-            
-            console.log(`✓ ${chain.display?.padEnd(30)} → ${platform.id.padEnd(20)} (gas: ${platform.native_coin_id})`);
+
+            console.log(
+                `✓ ${chain.display?.padEnd(30)} → ${platform.id.padEnd(20)} (gas: ${platform.native_coin_id})`,
+            );
         } else {
             unmatchedChains.push({ key, chain });
             console.log(`○ ${chain.display?.padEnd(30)} → No CoinGecko platform found`);
         }
     }
-    
+
     console.log(`\n=== Summary ===`);
-    console.log(`Matched: ${Object.keys(results).length}/${Object.keys(chainConfig).length} chains`);
+    console.log(
+        `Matched: ${Object.keys(results).length}/${Object.keys(chainConfig).length} chains`,
+    );
     console.log(`Unmatched: ${unmatchedChains.length} chains`);
-    
+
     if (unmatchedChains.length > 0) {
         console.log('\nUnmatched chains:');
         unmatchedChains.forEach(({ key, chain }) => {
             console.log(`  - ${key} (${chain.display}, chainId: ${chain.chainId})`);
         });
     }
-    
+
     return results;
 }
 
@@ -176,10 +181,7 @@ function matchPlatformsToChains(chainConfig, platforms) {
  * Format a chain object as JavaScript code with CoinGecko fields
  */
 function formatChainObject(key, chain, indent = '    ') {
-    const lines = [
-        `${indent}${key}: {`,
-        `${indent}    key: "${chain.key}",`,
-    ];
+    const lines = [`${indent}${key}: {`, `${indent}    key: "${chain.key}",`];
 
     // Add display/name field
     if (chain.display !== undefined) {
@@ -193,7 +195,7 @@ function formatChainObject(key, chain, indent = '    ') {
     lines.push(`${indent}    vmType: "${chain.vmType || 'EVM'}",`);
     lines.push(`${indent}    chainId: ${chain.chainId},`);
     lines.push(`${indent}    lzSrcId: ${chain.lzSrcId},`);
-    
+
     // Add CoinGecko fields (always present, either as string or null)
     if (chain.cgPlatformId !== undefined) {
         const value = chain.cgPlatformId === null ? 'null' : `"${chain.cgPlatformId}"`;
@@ -229,12 +231,21 @@ function formatChainObject(key, chain, indent = '    ') {
 
     // Add addresses - ensure proper ordering
     lines.push(`${indent}    addresses: {`);
-    
+
     // Order: token addresses first, then contract addresses
     const tokenAddresses = ['gasToken', 'wrappedGasToken', 'usdc', 'usdt'];
-    const contractAddresses = ['permit2', 'entryPoint', 'trustedForwarder', 'relayRouter', 'messageTransmitter', 'tokenMessenger', 'create5', 'multicall3'];
+    const contractAddresses = [
+        'permit2',
+        'entryPoint',
+        'trustedForwarder',
+        'relayRouter',
+        'messageTransmitter',
+        'tokenMessenger',
+        'create5',
+        'multicall3',
+    ];
     const otherAddresses = Object.keys(chain.addresses || {}).filter(
-        k => ![...tokenAddresses, ...contractAddresses].includes(k)
+        (k) => ![...tokenAddresses, ...contractAddresses].includes(k),
     );
 
     // Add token addresses
@@ -268,7 +279,7 @@ function formatChainObject(key, chain, indent = '    ') {
  */
 function saveExtendedConfig(extendedConfig, outputFileName = 'chains-with-coingecko.mjs') {
     const outputPath = path.join(__dirname, '..', outputFileName);
-    
+
     const outputLines = [
         '// Auto-generated chain configuration with CoinGecko IDs',
         `// Generated on ${new Date().toISOString()}`,
@@ -299,7 +310,9 @@ function saveExtendedConfig(extendedConfig, outputFileName = 'chains-with-coinge
     outputLines.push('');
     outputLines.push('// Get RPC URL for a chain');
     outputLines.push('export function getRpcUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
     outputLines.push('    if (!chain.rpcUrls || chain.rpcUrls.length === 0) return null;');
     outputLines.push('    const index = chain.defaultRpcUrlIndex || 0;');
@@ -308,18 +321,26 @@ function saveExtendedConfig(extendedConfig, outputFileName = 'chains-with-coinge
     outputLines.push('');
     outputLines.push('// Get explorer URL for a chain');
     outputLines.push('export function getExplorerUrl(chainKeyOrObject) {');
-    outputLines.push('    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;');
+    outputLines.push(
+        '    const chain = typeof chainKeyOrObject === "string" ? chainConfig[chainKeyOrObject] : chainKeyOrObject;',
+    );
     outputLines.push('    if (!chain) return null;');
-    outputLines.push('    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;');
-    outputLines.push('    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;');
-    outputLines.push('    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];');
+    outputLines.push(
+        '    if (!Array.isArray(chain.explorerUrls) || chain.explorerUrls.length === 0) return null;',
+    );
+    outputLines.push(
+        '    const idx = Number.isInteger(chain.defaultExplorerUrlIndex) ? chain.defaultExplorerUrlIndex : 0;',
+    );
+    outputLines.push(
+        '    return chain.explorerUrls[Math.max(0, Math.min(idx, chain.explorerUrls.length - 1))];',
+    );
     outputLines.push('}');
     outputLines.push('');
 
     fs.writeFileSync(outputPath, outputLines.join('\n'), 'utf8');
     console.log(`\n✓ Extended configuration saved to: ${outputFileName}`);
     console.log(`  Path: ${outputPath}`);
-    
+
     return outputPath;
 }
 
@@ -341,16 +362,15 @@ async function main() {
             alias: 'o',
             description: 'Output filename (default: chains-with-coingecko.mjs)',
             type: 'string',
-            default: 'chains-with-coingecko.mjs'
+            default: 'chains-with-coingecko.mjs',
         })
         .option('save-mapping', {
             description: 'Save mapping as JSON file',
             type: 'boolean',
-            default: true
+            default: true,
         })
         .help()
-        .alias('help', 'h')
-        .argv;
+        .alias('help', 'h').argv;
 
     console.log('='.repeat(80));
     console.log('CHAIN CONFIGURATION ENHANCER');
@@ -374,11 +394,11 @@ async function main() {
 
         // Create extended config
         const extendedConfig = JSON.parse(JSON.stringify(chainConfig)); // Deep clone
-        
+
         // Add CoinGecko fields and update Etherscan API URLs
         console.log('\n=== Updating Chain Configuration ===\n');
         let etherscanUpdated = 0;
-        
+
         for (const [key, chain] of Object.entries(extendedConfig)) {
             // Add CoinGecko fields
             if (matches[key]) {
@@ -390,20 +410,26 @@ async function main() {
                 extendedConfig[key].cgPlatformId = null;
                 extendedConfig[key].cgGasAssetId = null;
             }
-            
+
             // Update explorerApiUrl for Etherscan-supported chains to use v2 API
             // If the chain is in the Etherscan-supported list and has an explorer API configured,
             // update it to use the v2 unified endpoint
-            if (etherscanChains.has(chain.chainId) && chain.explorerApiUrl && !chain.explorerApiUrl.includes('/v2/')) {
+            if (
+                etherscanChains.has(chain.chainId) &&
+                chain.explorerApiUrl &&
+                !chain.explorerApiUrl.includes('/v2/')
+            ) {
                 extendedConfig[key].explorerApiUrl = 'https://api.etherscan.io/v2/api';
-                console.log(`✓ ${chain.display?.padEnd(30)} → Updated to Etherscan v2 API (chainId: ${chain.chainId})`);
+                console.log(
+                    `✓ ${chain.display?.padEnd(30)} → Updated to Etherscan v2 API (chainId: ${chain.chainId})`,
+                );
                 etherscanUpdated++;
             }
-            
+
             // Validate and complete the schema
             extendedConfig[key] = validateAndCompleteChain(extendedConfig[key]);
         }
-        
+
         console.log(`\nUpdated ${etherscanUpdated} chains to use Etherscan v2 API`);
 
         // Save extended config
@@ -425,7 +451,7 @@ async function main() {
 }
 
 // Run main function
-main().catch(error => {
+main().catch((error) => {
     console.error('Fatal error:', error);
     process.exit(1);
 });
