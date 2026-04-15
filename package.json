@@ -8,6 +8,10 @@
     "verify-rpcs": "node scripts/integrity_check.mjs verify-rpcs",
     "verify-contracts": "node scripts/integrity_check.mjs verify-contracts",
     "fix": "node scripts/integrity_check.mjs fix",
+    "sort-keys": "node scripts/sort_chain_keys.mjs --write",
+    "check-key-order": "node scripts/sort_chain_keys.mjs --check",
+    "dump-keys": "node scripts/dump_chain_keys.mjs",
+    "install-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/pre-commit",
     "fetch-gaszip": "node scripts/fetch_gaszip_chains.mjs",
     "fetch-chainlist": "node scripts/fetch_chainlist_rpcs.mjs"
   },

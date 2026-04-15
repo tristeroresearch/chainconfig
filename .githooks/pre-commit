@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+node "$ROOT_DIR/scripts/sort_chain_keys.mjs" --write
+
+if ! git diff --quiet -- "$ROOT_DIR/chains.mjs"; then
+  git add "$ROOT_DIR/chains.mjs"
+  echo "pre-commit: sorted chainConfig keys and re-staged chains.mjs"
+fi
